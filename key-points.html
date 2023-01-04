@@ -225,7 +225,7 @@
 <div class="accordion accordion-flush" id="accordionFlush6">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading6">
-        <a href="delayed-evaluation.html">5. delayed-evaluation</a>
+        <a href="delayed-evaluation.html">5. Delayed evaluation</a>
     </div>
 <!--/div.accordion-header-->
         
@@ -368,17 +368,15 @@ output</li>
 with your lesson</li>
 <li>Run <code>sandpaper::build_lesson()</code> to preview your lesson
 locally</li>
-</ul></section><section id="delayed-evaluation"><h2 class="section-heading"><a href="delayed-evaluation.html">delayed-evaluation</a></h2>
+</ul></section><section id="delayed-evaluation"><h2 class="section-heading"><a href="delayed-evaluation.html">Delayed evaluationDask Delayed<a class="anchor" aria-label="anchor" href="#dask-delayed"></a></a></h2>
 <hr class="half-width">
 <ul>
-<li>Use <code>.md</code> files for episodes when you want static
-content</li>
-<li>Use <code>.Rmd</code> files for episodes when you need to generate
-output</li>
-<li>Run <code>sandpaper::check_lesson()</code> to identify any issues
-with your lesson</li>
-<li>Run <code>sandpaper::build_lesson()</code> to preview your lesson
-locally</li>
+<li>We can change the strategy by which a computation is evaluated.</li>
+<li>Nothing is computed until we run <code>compute()</code>.</li>
+<li>By using delayed evaluation, Dask knows which jobs can be run in
+parallel.</li>
+<li>Call <code>compute</code> only once at the end of your program to
+get the best results.</li>
 </ul></section><section id="map-and-reduce"><h2 class="section-heading"><a href="map-and-reduce.html">map-and-reduce</a></h2>
 <hr class="half-width">
 <ul>
