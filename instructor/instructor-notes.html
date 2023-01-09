@@ -249,7 +249,7 @@
 <div class="accordion accordion-flush" id="accordionFlush8">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading8">
-        <a href="exercise-with-fractals.html">7. exercise-with-fractals</a>
+        <a href="exercise-with-fractals.html">7. Exercise with Fractals</a>
     </div>
 <!--/div.accordion-header-->
         
@@ -335,26 +335,54 @@
     <main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Instructor Notes</h1>
         
-
-<p>This is a placeholder file. Please add content here.</p>
+<section id="testing-this-lesson"><h2 class="section-heading">Testing this lesson<a class="anchor" aria-label="anchor" href="#testing-this-lesson"></a>
+</h2>
+<hr class="half-width">
+<p>A lot of the code in this lesson can be tested using <a href="https://entangled.github.io" class="external-link">Entangled</a>. You may tangle source
+files by running</p>
+<pre class="shell"><code>entangled tangle -a</code></pre>
+<p>A set of source files will appear in
+<code>&lt;project-root&gt;/src</code>, including a Poetry environment
+for running the tests and benchmarks. You may also run
+<code>entangled daemon</code> if you want to debug the code, changes
+made to the files in <code>src</code> will then be merged back into the
+lesson material automatically.</p>
+<div class="codewrapper sourceCode" id="cb2" file="src/pyproject.toml">
+<h3 class="code-label">TOML<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode toml" tabindex="0"><code class="sourceCode toml"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">[</span><span class="dt">tool</span><span class="kw">.</span><span class="dt">poetry</span><span class="kw">]</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="dt">name</span> <span class="op">=</span> <span class="st">"parallel-python"</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="dt">version</span> <span class="op">=</span> <span class="st">"0.1.0"</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="dt">description</span> <span class="op">=</span> <span class="st">"Testing environment for Parallel Python workshop"</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="dt">authors</span> <span class="op">=</span> <span class="op">[</span><span class="st">"Johan Hidding &lt;j.hidding@esciencecenter.nl&gt;"</span><span class="op">]</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="dt">license</span> <span class="op">=</span> <span class="st">"Apache-2.0"</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="kw">[</span><span class="dt">tool</span><span class="kw">.</span><span class="dt">poetry</span><span class="kw">.</span><span class="dt">dependencies</span><span class="kw">]</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="dt">python</span> <span class="op">=</span> <span class="st">"&gt;=3.9, &lt;3.11"</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="dt">numba</span> <span class="op">=</span> <span class="st">"^0.56.4"</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="dt">dask</span> <span class="op">=</span> <span class="op">{</span><span class="dt">extras</span><span class="op"> =</span> <span class="op">[</span><span class="st">"complete"</span><span class="op">], </span><span class="dt">version</span><span class="op"> =</span> <span class="st">"^2022.12.1"</span><span class="op">}</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="dt">richbench</span> <span class="op">=</span> <span class="st">"^1.0.3"</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="dt">matplotlib</span> <span class="op">=</span> <span class="st">"^3.6.2"</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="dt">numba-progress</span> <span class="op">=</span> <span class="st">"^0.0.4"</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="kw">[</span><span class="dt">tool</span><span class="kw">.</span><span class="dt">poetry</span><span class="kw">.</span><span class="dt">dev-dependencies</span><span class="kw">]</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="kw">[</span><span class="dt">build-system</span><span class="kw">]</span></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a><span class="dt">requires</span> <span class="op">=</span> <span class="op">[</span><span class="st">"poetry-core&gt;=1.0.0"</span><span class="op">]</span></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a><span class="dt">build-backend</span> <span class="op">=</span> <span class="st">"poetry.core.masonry.api"</span></span></code></pre>
+</div>
 <!-- 
 Place links that you need to refer to multiple times across pages here. Delete
 any links that you are not going to use. 
  -->
-
-
-      <section id="aggregate-instructor-notes"><section id="introduction"><h2 class="section-heading"><a href="introduction.html">introductionCommon problems<a class="anchor" aria-label="anchor" href="#common-problems"></a>Overview and rationale<a class="anchor" aria-label="anchor" href="#overview-and-rationale"></a>Why Python?<a class="anchor" aria-label="anchor" href="#why-python"></a>What is parallel computing?<a class="anchor" aria-label="anchor" href="#what-is-parallel-computing"></a></a></h2>
+</section><section id="aggregate-instructor-notes"><section id="introduction"><h2 class="section-heading"><a href="introduction.html">introductionCommon problems<a class="anchor" aria-label="anchor" href="#common-problems"></a>Overview and rationale<a class="anchor" aria-label="anchor" href="#overview-and-rationale"></a>Why Python?<a class="anchor" aria-label="anchor" href="#why-python"></a>What is parallel computing?<a class="anchor" aria-label="anchor" href="#what-is-parallel-computing"></a></a></h2>
 <hr class="half-width"></section><section id="benchmarking"><h2 class="section-heading"><a href="benchmarking.html">BenchmarkingA first example with Dask<a class="anchor" aria-label="anchor" href="#a-first-example-with-dask"></a>Memory profiling<a class="anchor" aria-label="anchor" href="#memory-profiling"></a>Using many cores<a class="anchor" aria-label="anchor" href="#using-many-cores"></a></a></h2>
 <hr class="half-width"></section><section id="computing-pi"><h2 class="section-heading"><a href="computing-pi.html">Computing $\pi$Parallelizing a Python application<a class="anchor" aria-label="anchor" href="#parallelizing-a-python-application"></a>Using Numba to accelerate Python code<a class="anchor" aria-label="anchor" href="#using-numba-to-accelerate-python-code"></a></a></h2>
 <hr class="half-width"></section><section id="threads-and-processes"><h2 class="section-heading"><a href="threads-and-processes.html">Threads and processesThreading<a class="anchor" aria-label="anchor" href="#threading"></a>Multiprocessing<a class="anchor" aria-label="anchor" href="#multiprocessing"></a></a></h2>
 <hr class="half-width"></section><section id="delayed-evaluation"><h2 class="section-heading"><a href="delayed-evaluation.html">Delayed evaluationDask Delayed<a class="anchor" aria-label="anchor" href="#dask-delayed"></a></a></h2>
 <hr class="half-width"></section><section id="map-and-reduce"><h2 class="section-heading"><a href="map-and-reduce.html">Map and reduce</a></h2>
-<hr class="half-width"></section><section id="exercise-with-fractals"><h2 class="section-heading"><a href="exercise-with-fractals.html">exercise-with-fractals</a></h2>
-<hr class="half-width">
-<p>Inline instructor notes can help inform instructors of timing
-challenges associated with the lessons. They appear in the “Instructor
-View”</p>
-<hr></section><section id="extra-asyncio"><h2 class="section-heading"><a href="extra-asyncio.html">asyncio</a></h2>
+<hr class="half-width"></section><section id="exercise-with-fractals"><h2 class="section-heading"><a href="exercise-with-fractals.html">Exercise with FractalsThe Mandelbrot and Julia fractals<a class="anchor" aria-label="anchor" href="#the-mandelbrot-and-julia-fractals"></a></a></h2>
+<hr class="half-width"></section><section id="extra-asyncio"><h2 class="section-heading"><a href="extra-asyncio.html">asyncio</a></h2>
 <hr class="half-width">
 <p>Inline instructor notes can help inform instructors of timing
 challenges associated with the lessons. They appear in the “Instructor
@@ -391,7 +419,7 @@ View”</p>
         
         <p><a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">Template licensed under CC-BY 4.0</a> by <a href="https://carpentries.org" class="external-link">The Carpentries</a></p>
         <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.11.3" class="external-link">sandpaper (0.11.3)</a>,
-        <a href="https://github.com/carpentries/pegboard/tree/0.3.2" class="external-link">pegboard (0.3.2)</a>,
+        <a href="https://github.com/carpentries/pegboard/tree/0.4.1" class="external-link">pegboard (0.4.1)</a>,
       and <a href="https://github.com/carpentries/varnish/tree/0.2.13" class="external-link">varnish (0.2.13)</a>.</p>
 			</div>
 		</footer>
@@ -413,9 +441,9 @@ View”</p>
   "creativeWorkStatus": "active",
   "url": "https://template-source.github.io/NA/instructor/instructor-notes.html",
   "identifier": "https://template-source.github.io/NA/instructor/instructor-notes.html",
-  "dateCreated": "2023-01-06",
-  "dateModified": "2023-01-06",
-  "datePublished": "2023-01-06"
+  "dateCreated": "2023-01-09",
+  "dateModified": "2023-01-09",
+  "datePublished": "2023-01-09"
 }
 
   </script><script>
