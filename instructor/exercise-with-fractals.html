@@ -421,7 +421,7 @@ do you get?</p>
   Create a BoundingBox class
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <p>We start with a naive implementation. It may be convenient to define
 a <code>BoundingBox</code> class in a separate module
@@ -465,7 +465,7 @@ on.</p>
   Plotting function
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb6" file="src/mandelbrot/plotting.py">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -502,7 +502,7 @@ on.</p>
   Some solutions
   </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <p>The main approach with Python will be: use Numba to make this fast.
 Then there are two ways to parallelize: let Numba parallelize the
@@ -676,7 +676,7 @@ computation to fewer cores.</p>
   Numba vectorize
   </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
 <div class="accordion-body">
 <p>A solution requiring the minimum amount of extra code, is to use
 Numba’s <code>@guvectorize</code> decorator. The speed-up (on my
@@ -872,7 +872,7 @@ any links that you are not going to use.
   "identifier": "https://template-source.github.io/NA/instructor/exercise-with-fractals.html",
   "dateCreated": "2023-01-09",
   "dateModified": "2023-01-09",
-  "datePublished": "2023-01-09"
+  "datePublished": "2023-01-10"
 }
 
   </script><script>
