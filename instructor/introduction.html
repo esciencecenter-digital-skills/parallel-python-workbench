@@ -18,12 +18,12 @@
   <div class="container-fluid top-nav-container">
     <div class="col-md-6">
       <div class="large-logo">
-        <img alt="Carpentries Incubator" src="../assets/images/incubator-logo.svg"><abbr class="icon" title="This lesson is in the pre-alpha phase, which means that it is in early development, but has not yet been taught." style="text-decoration: unset">
+        <img alt="Carpentries Incubator" src="../assets/images/incubator-logo.svg"><abbr class="icon" title="This lesson is in the beta phase, which means that it is ready for teaching by instructors outside of the original author team." style="text-decoration: unset">
            
-          <a href="https://cdh.carpentries.org/the-lesson-life-cycle.html#early-development-pre-alpha-through-alpha" class="external-link alert-link" style="color: #383838">Pre-Alpha
-            <i aria-hidden="true" class="icon" data-feather="alert-octagon" style="color: #FF4955; border-radius: 5px"></i>
+          <a href="https://cdh.carpentries.org/the-lesson-life-cycle.html#polishing-beta-stage" class="external-link alert-link" style="color: #383838">Beta
+            <i aria-hidden="true" class="icon" data-feather="alert-circle" style="color: #001483; border-radius: 5px"></i>
           </a>
-          <span class="visually-hidden">This lesson is in the pre-alpha phase, which means that it is in early development, but has not yet been taught.</span>
+          <span class="visually-hidden">This lesson is in the beta phase, which means that it is ready for teaching by instructors outside of the original author team.</span>
         </abbr>
         
       </div>
@@ -211,7 +211,7 @@
 <div class="accordion accordion-flush" id="accordionFlush9">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading9">
-        <a href="extra-asyncio.html">8. asyncio</a>
+        <a href="extra-asyncio.html">8. Asyncio</a>
     </div><!--/div.accordion-header-->
         
   </div><!--/div.accordion-item-->
@@ -220,7 +220,7 @@
 <div class="accordion accordion-flush" id="accordionFlush10">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading10">
-        <a href="extra-external-c.html">9. extra-external-c</a>
+        <a href="extra-external-c.html">9. Calling external C and C++ libraries from Python</a>
     </div><!--/div.accordion-header-->
         
   </div><!--/div.accordion-item-->
@@ -277,7 +277,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>introduction</h1>
-        <p> Last updated on 2023-01-04 | 
+        <p> Last updated on 2023-01-11 | 
         
         <a href="https://example.com/template-source/edit/main/episodes/introduction.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
         
@@ -493,7 +493,7 @@ parallelizable.</p>
 <p>Note that each successive loop uses the result of the previous loop.
 In that way, it is dependent on the previous loop. The following
 dependency diagram makes that clear:</p>
-<figure><img src="../fig/serial.svg" alt="" class="figure mx-auto d-block"><figcaption>serial execution</figcaption></figure><p>Although we are performing the loops in a serial way in the snippet
+<figure><img src="../fig/serial.svg" alt="boxes and arrows" class="figure mx-auto d-block"><figcaption>serial execution</figcaption></figure><p>Although we are performing the loops in a serial way in the snippet
 above, nothing avoids us from performing this calculation in parallel.
 The following example shows that parts of the computations can be done
 independently:</p>
@@ -517,7 +517,7 @@ independently:</p>
 </h3>
 <pre class="output" tabindex="0"><code><span><span class="fl">10</span></span></code></pre>
 </div>
-<figure><img src="../fig/parallel.svg" alt="" class="figure mx-auto d-block"><figcaption>parallel execution</figcaption></figure><p>The technique for parallelising sums like this is called
+<figure><img src="../fig/parallel.svg" alt="boxes and arrows" class="figure mx-auto d-block"><figcaption>parallel execution</figcaption></figure><p>The technique for parallelising sums like this is called
 <strong>chunking</strong>.</p>
 <p>There is a subclass of algorithms where the subtasks are completely
 independent. These kinds of algorithms are known as <a href="https://en.wikipedia.org/wiki/Embarrassingly_parallel" class="external-link">embarrassingly
@@ -558,7 +558,7 @@ you also think of one that is fundamentally non-parallelizable?</p>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p>Answers may differ. An ubiquitous example of a naturally parallel
 problem is a parameter scan, where you need to evaluate some model for N
@@ -628,7 +628,7 @@ soup done any faster?</li>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <ul><li>You can cut vegetables while simmering the split peas.</li>
 <li>If you have help, you can parallelize cutting vegetables
@@ -700,7 +700,7 @@ any links that you are not going to use.
         
         <p><a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">Template licensed under CC-BY 4.0</a> by <a href="https://carpentries.org" class="external-link">The Carpentries</a></p>
         <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.11.3" class="external-link">sandpaper (0.11.3)</a>,
-        <a href="https://github.com/carpentries/pegboard/tree/0.4.1" class="external-link">pegboard (0.4.1)</a>,
+        <a href="https://github.com/carpentries/pegboard/tree/0.4.2" class="external-link">pegboard (0.4.2)</a>,
       and <a href="https://github.com/carpentries/varnish/tree/0.2.13" class="external-link">varnish (0.2.13)</a>.</p>
 			</div>
 		</footer></div> <!-- / div.container -->
@@ -721,9 +721,9 @@ any links that you are not going to use.
   "creativeWorkStatus": "active",
   "url": "https://template-source.github.io/NA/instructor/introduction.html",
   "identifier": "https://template-source.github.io/NA/instructor/introduction.html",
-  "dateCreated": "2023-01-09",
-  "dateModified": "2023-01-04",
-  "datePublished": "2023-01-10"
+  "dateCreated": "2023-01-11",
+  "dateModified": "2023-01-11",
+  "datePublished": "2023-01-11"
 }
 
   </script><script>

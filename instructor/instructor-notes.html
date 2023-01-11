@@ -33,12 +33,12 @@
   <div class="container-fluid top-nav-container">
     <div class="col-md-6">
       <div class="large-logo">
-        <img alt="Carpentries Incubator" src="../assets/images/incubator-logo.svg"><abbr class="icon" title="This lesson is in the pre-alpha phase, which means that it is in early development, but has not yet been taught." style="text-decoration: unset">
+        <img alt="Carpentries Incubator" src="../assets/images/incubator-logo.svg"><abbr class="icon" title="This lesson is in the beta phase, which means that it is ready for teaching by instructors outside of the original author team." style="text-decoration: unset">
            
-          <a href="https://cdh.carpentries.org/the-lesson-life-cycle.html#early-development-pre-alpha-through-alpha" class="external-link alert-link" style="color: #383838">Pre-Alpha
-            <i aria-hidden="true" class="icon" data-feather="alert-octagon" style="color: #FF4955; border-radius: 5px"></i>
+          <a href="https://cdh.carpentries.org/the-lesson-life-cycle.html#polishing-beta-stage" class="external-link alert-link" style="color: #383838">Beta
+            <i aria-hidden="true" class="icon" data-feather="alert-circle" style="color: #001483; border-radius: 5px"></i>
           </a>
-          <span class="visually-hidden">This lesson is in the pre-alpha phase, which means that it is in early development, but has not yet been taught.</span>
+          <span class="visually-hidden">This lesson is in the beta phase, which means that it is ready for teaching by instructors outside of the original author team.</span>
         </abbr>
         
       </div>
@@ -261,7 +261,7 @@
 <div class="accordion accordion-flush" id="accordionFlush9">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading9">
-        <a href="extra-asyncio.html">8. asyncio</a>
+        <a href="extra-asyncio.html">8. Asyncio</a>
     </div>
 <!--/div.accordion-header-->
         
@@ -273,7 +273,7 @@
 <div class="accordion accordion-flush" id="accordionFlush10">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading10">
-        <a href="extra-external-c.html">9. extra-external-c</a>
+        <a href="extra-external-c.html">9. Calling external C and C++ libraries from Python</a>
     </div>
 <!--/div.accordion-header-->
         
@@ -364,12 +364,26 @@ lesson material automatically.</p>
 <span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="dt">richbench</span> <span class="op">=</span> <span class="st">"^1.0.3"</span></span>
 <span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="dt">matplotlib</span> <span class="op">=</span> <span class="st">"^3.6.2"</span></span>
 <span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="dt">numba-progress</span> <span class="op">=</span> <span class="st">"^0.0.4"</span></span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="kw">[</span><span class="dt">tool</span><span class="kw">.</span><span class="dt">poetry</span><span class="kw">.</span><span class="dt">dev-dependencies</span><span class="kw">]</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="dt">pandas</span> <span class="op">=</span> <span class="st">"^1.5.2"</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="dt">plotnine</span> <span class="op">=</span> <span class="st">"^0.10.1"</span></span>
 <span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="kw">[</span><span class="dt">build-system</span><span class="kw">]</span></span>
-<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a><span class="dt">requires</span> <span class="op">=</span> <span class="op">[</span><span class="st">"poetry-core&gt;=1.0.0"</span><span class="op">]</span></span>
-<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a><span class="dt">build-backend</span> <span class="op">=</span> <span class="st">"poetry.core.masonry.api"</span></span></code></pre>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="kw">[</span><span class="dt">tool</span><span class="kw">.</span><span class="dt">poetry</span><span class="kw">.</span><span class="dt">dev-dependencies</span><span class="kw">]</span></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a><span class="kw">[</span><span class="dt">build-system</span><span class="kw">]</span></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a><span class="dt">requires</span> <span class="op">=</span> <span class="op">[</span><span class="st">"poetry-core&gt;=1.0.0"</span><span class="op">]</span></span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a><span class="dt">build-backend</span> <span class="op">=</span> <span class="st">"poetry.core.masonry.api"</span></span></code></pre>
+</div>
+<div class="codewrapper sourceCode" id="cb3" file="src/Makefile">
+<h3 class="code-label">MAKEFILE<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode makefile" tabindex="0"><code class="sourceCode makefile"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="dt">.RECIPEPREFIX </span><span class="ch">=</span><span class="st"> &gt;</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="ot">.PHONY:</span><span class="dt"> bench</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="dv">bench:</span><span class="dt"> mandelbrot-timings.svg</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="dv">mandelbrot-timings.svg:</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>&gt; poetry run python -m mandelbrot.bench_all</span></code></pre>
 </div>
 <!-- 
 Place links that you need to refer to multiple times across pages here. Delete
@@ -382,17 +396,13 @@ any links that you are not going to use.
 <hr class="half-width"></section><section id="delayed-evaluation"><h2 class="section-heading"><a href="delayed-evaluation.html">Delayed evaluationDask Delayed<a class="anchor" aria-label="anchor" href="#dask-delayed"></a></a></h2>
 <hr class="half-width"></section><section id="map-and-reduce"><h2 class="section-heading"><a href="map-and-reduce.html">Map and reduce</a></h2>
 <hr class="half-width"></section><section id="exercise-with-fractals"><h2 class="section-heading"><a href="exercise-with-fractals.html">Exercise with FractalsThe Mandelbrot and Julia fractals<a class="anchor" aria-label="anchor" href="#the-mandelbrot-and-julia-fractals"></a></a></h2>
-<hr class="half-width"></section><section id="extra-asyncio"><h2 class="section-heading"><a href="extra-asyncio.html">asyncio</a></h2>
+<hr class="half-width"></section><section id="extra-asyncio"><h2 class="section-heading"><a href="extra-asyncio.html">AsyncioIntroduction to Asyncio<a class="anchor" aria-label="anchor" href="#introduction-to-asyncio"></a>A first program<a class="anchor" aria-label="anchor" href="#a-first-program"></a>Working with <code>asyncio</code> outside Jupyter<a class="anchor" aria-label="anchor" href="#working-with-asyncio-outside-jupyter"></a></a></h2>
 <hr class="half-width">
-<p>Inline instructor notes can help inform instructors of timing
-challenges associated with the lessons. They appear in the “Instructor
-View”</p>
-<hr></section><section id="extra-external-c"><h2 class="section-heading"><a href="extra-external-c.html">extra-external-c</a></h2>
-<hr class="half-width">
-<p>Inline instructor notes can help inform instructors of timing
-challenges associated with the lessons. They appear in the “Instructor
-View”</p>
-<hr></section></section>
+<p>This section goes rather in depth on coroutines. This is meant to
+grow the correct mental model about what’s going on with
+<code>asyncio</code>.</p>
+<hr></section><section id="extra-external-c"><h2 class="section-heading"><a href="extra-external-c.html">Calling external C and C++ libraries from PythonCalling C and C++ libraries<a class="anchor" aria-label="anchor" href="#calling-c-and-c-libraries"></a>Call the C library from multiple threads simultaneously.<a class="anchor" aria-label="anchor" href="#call-the-c-library-from-multiple-threads-simultaneously-"></a></a></h2>
+<hr class="half-width"></section></section>
 </div>
     </main>
 </div>
@@ -419,7 +429,7 @@ View”</p>
         
         <p><a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">Template licensed under CC-BY 4.0</a> by <a href="https://carpentries.org" class="external-link">The Carpentries</a></p>
         <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.11.3" class="external-link">sandpaper (0.11.3)</a>,
-        <a href="https://github.com/carpentries/pegboard/tree/0.4.1" class="external-link">pegboard (0.4.1)</a>,
+        <a href="https://github.com/carpentries/pegboard/tree/0.4.2" class="external-link">pegboard (0.4.2)</a>,
       and <a href="https://github.com/carpentries/varnish/tree/0.2.13" class="external-link">varnish (0.2.13)</a>.</p>
 			</div>
 		</footer>
@@ -441,9 +451,9 @@ View”</p>
   "creativeWorkStatus": "active",
   "url": "https://template-source.github.io/NA/instructor/instructor-notes.html",
   "identifier": "https://template-source.github.io/NA/instructor/instructor-notes.html",
-  "dateCreated": "2023-01-09",
-  "dateModified": "2023-01-10",
-  "datePublished": "2023-01-10"
+  "dateCreated": "2023-01-11",
+  "dateModified": "2023-01-11",
+  "datePublished": "2023-01-11"
 }
 
   </script><script>
