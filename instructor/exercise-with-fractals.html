@@ -421,7 +421,7 @@ do you get?</p>
   Create a BoundingBox class
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p>We start with a naive implementation. It may be convenient to define
 a <code>BoundingBox</code> class in a separate module
@@ -466,7 +466,7 @@ on.</p>
   Plotting function
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb6" file="src/mandelbrot/plotting.py">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -503,7 +503,7 @@ on.</p>
   Some solutions
   </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
 <p>The main approach with Python will be: use Numba to make this fast.
 Then there are two ways to parallelize: let Numba parallelize the
@@ -528,7 +528,7 @@ last option is almost always slower than
   Numba (serial)
   </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
 <div class="accordion-body">
 <p>When we port the core Mandelbrot function to Numba, we need to keep
 some best practices in mind:</p>
@@ -629,7 +629,7 @@ version.</p>
   Domain splitting
   </h4>
 </button>
-<div id="collapseSolution5" class="accordion-collapse collapse" data-bs-parent="#accordionSolution5" aria-labelledby="headingSolution5">
+<div id="collapseSolution5" class="accordion-collapse collapse" aria-labelledby="headingSolution5" data-bs-parent="#accordionSolution5">
 <div class="accordion-body">
 <p>We split the computation into a set of sub-domains. The
 <code>BoundingBox.split()</code> method is designed such that if we
@@ -711,7 +711,7 @@ extensive, but also the fastest.</p>
   Numba vectorize
   </h4>
 </button>
-<div id="collapseSolution6" class="accordion-collapse collapse" data-bs-parent="#accordionSolution6" aria-labelledby="headingSolution6">
+<div id="collapseSolution6" class="accordion-collapse collapse" aria-labelledby="headingSolution6" data-bs-parent="#accordionSolution6">
 <div class="accordion-body">
 <p>Another solution is to use Numba’s <code>@guvectorize</code>
 decorator. The speed-up (on my machine) is not as dramatic as with the
@@ -778,7 +778,7 @@ domain-decomposition though.</p>
   Benchmarks
   </h4>
 </button>
-<div id="collapseSolution7" class="accordion-collapse collapse" data-bs-parent="#accordionSolution7" aria-labelledby="headingSolution7">
+<div id="collapseSolution7" class="accordion-collapse collapse" aria-labelledby="headingSolution7" data-bs-parent="#accordionSolution7">
 <div class="accordion-body">
 <figure><img src="../fig/mandelbrot-timings.svg" alt="performance curves" class="figure mx-auto d-block"><figcaption>Benchmarks</figcaption></figure><div class="codewrapper sourceCode" id="cb12" file="src/mandelbrot/bench_all.py">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -932,8 +932,7 @@ any links that you are not going to use.
         
         <a href="https://example.com/template-source/edit/main/episodes/exercise-with-fractals.md" class="external-link">Edit on GitHub</a>
         
-        
-        
+	
         | <a href="https://example.com/template-source/blob/main/CONTRIBUTING.md" class="external-link">Contributing</a> 
         | <a href="https://example.com/template-source/" class="external-link">Source</a></p>
 				<p><a href="https://example.com/template-source/blob/main/CITATION" class="external-link">Cite</a> | <a href="mailto:j.hidding@esciencecenter.nl">Contact</a> | <a href="https://carpentries.org/about/" class="external-link">About</a></p>
@@ -945,7 +944,7 @@ any links that you are not going to use.
         <p><a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">Template licensed under CC-BY 4.0</a> by <a href="https://carpentries.org" class="external-link">The Carpentries</a></p>
         <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.11.3" class="external-link">sandpaper (0.11.3)</a>,
         <a href="https://github.com/carpentries/pegboard/tree/0.4.2" class="external-link">pegboard (0.4.2)</a>,
-      and <a href="https://github.com/carpentries/varnish/tree/0.2.13" class="external-link">varnish (0.2.13)</a>.</p>
+      and <a href="https://github.com/carpentries/varnish/tree/0.2.14" class="external-link">varnish (0.2.14)</a>.</p>
 			</div>
 		</footer></div> <!-- / div.container -->
 	<div id="to-top">
@@ -967,7 +966,7 @@ any links that you are not going to use.
   "identifier": "https://template-source.github.io/NA/instructor/exercise-with-fractals.html",
   "dateCreated": "2023-01-11",
   "dateModified": "2023-01-11",
-  "datePublished": "2023-01-17"
+  "datePublished": "2023-01-24"
 }
 
   </script><script>
