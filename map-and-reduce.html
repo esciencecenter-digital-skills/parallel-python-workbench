@@ -323,12 +323,12 @@ automatically parallelized over the chunks inside the bag.</p>
 patterns: the most important of these are <code>map</code>,
 <code>filter</code>, <code>groupby</code>, <code>flatten</code>, and
 <code>reduction</code>.</p>
-<div id="discussion1" class="callout discussion">
+<div id="discussion" class="callout discussion">
 <div class="callout-square">
 <i class="callout-icon" data-feather="message-circle"></i>
 </div>
 <div id="discussion" class="callout-inner">
-<h3 class="callout-title">Discussion<a class="anchor" aria-label="anchor" href="#discussion1"></a>
+<h3 class="callout-title">Discussion<a class="anchor" aria-label="anchor" href="#discussion"></a>
 </h3>
 <div class="callout-content">
 <p>Open the <a href="https://docs.dask.org/en/latest/bag-api.html" class="external-link">Dask
@@ -420,13 +420,13 @@ letter ‘a’, and <code>False</code> if it doesn’t.</p>
 </h3>
 <pre class="output" tabindex="0"><code>[out]: ['mary', 'had', 'a', 'lamb']</code></pre>
 </div>
-<div id="challenge1" class="callout challenge">
+<div id="difference-between-filter-and-map" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="difference-between-filter-and-map" class="callout-inner">
 <h3 class="callout-title">Difference between <code>filter</code> and
-<code>map</code><a class="anchor" aria-label="anchor" href="#challenge1"></a>
+<code>map</code><a class="anchor" aria-label="anchor" href="#difference-between-filter-and-map"></a>
 </h3>
 <div class="callout-content">
 <p>Without executing it, try to forecast what would be the output of
@@ -461,12 +461,12 @@ letter ‘a’, and <code>False</code> if it doesn’t.</p>
 <span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>bag.reduction(count_chars, <span class="bu">sum</span>).visualize()</span></code></pre>
 </div>
-<figure><img src="fig/dask-bag-reduction.svg" class="output figure mx-auto d-block" alt="boxes and arrows"><figcaption>A reduction.</figcaption></figure><div id="challenge2" class="callout challenge">
+<figure><img src="fig/dask-bag-reduction.svg" class="output figure mx-auto d-block" alt="boxes and arrows"><figcaption>A reduction.</figcaption></figure><div id="challenge-consider-pluck" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="challenge-consider-pluck" class="callout-inner">
-<h3 class="callout-title">Challenge: consider <code>pluck</code><a class="anchor" aria-label="anchor" href="#challenge2"></a>
+<h3 class="callout-title">Challenge: consider <code>pluck</code><a class="anchor" aria-label="anchor" href="#challenge-consider-pluck"></a>
 </h3>
 <div class="callout-content">
 <p>We previously discussed some generic operations on bags. In the
@@ -514,12 +514,12 @@ be a bag of dictionaries.</p>
 </div>
 </div>
 <p>FIXME: find replacement for word counting example</p>
-<div id="challenge3" class="callout challenge">
+<div id="challenge-dask-version-of-pi-estimation" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="challenge-dask-version-of-pi-estimation" class="callout-inner">
-<h3 class="callout-title">Challenge: Dask version of Pi estimation<a class="anchor" aria-label="anchor" href="#challenge3"></a>
+<h3 class="callout-title">Challenge: Dask version of Pi estimation<a class="anchor" aria-label="anchor" href="#challenge-dask-version-of-pi-estimation"></a>
 </h3>
 <div class="callout-content">
 <p>Use <code>map</code> and <code>mean</code> functions on Dask bags to
@@ -562,12 +562,12 @@ compute <span class="math inline">\(\pi\)</span>.</p>
 </div>
 </div>
 </div>
-<div id="callout1" class="callout callout">
+<div id="note" class="callout callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div id="note" class="callout-inner">
-<h3 class="callout-title">Note<a class="anchor" aria-label="anchor" href="#callout1"></a>
+<h3 class="callout-title">Note<a class="anchor" aria-label="anchor" href="#note"></a>
 </h3>
 <div class="callout-content">
 <p>By default Dask runs a bag using multi-processing. This alleviates
@@ -625,7 +625,7 @@ any links that you are not going to use.
         <p>Materials licensed under <a href="LICENSE.html">CC-BY 4.0</a> by the authors</p>
         
         <p><a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">Template licensed under CC-BY 4.0</a> by <a href="https://carpentries.org" class="external-link">The Carpentries</a></p>
-        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.11.16" class="external-link">sandpaper (0.11.16)</a>,
+        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.12.0" class="external-link">sandpaper (0.12.0)</a>,
         <a href="https://github.com/carpentries/pegboard" class="external-link">pegboard (0.5.3)</a>,
       and <a href="https://github.com/carpentries/varnish/tree/0.2.16" class="external-link">varnish (0.2.16)</a>.</p>
 			</div>
@@ -649,7 +649,7 @@ any links that you are not going to use.
   "identifier": "https://template-source.github.io/NA/map-and-reduce.html",
   "dateCreated": "2023-03-07",
   "dateModified": "2023-01-11",
-  "datePublished": "2023-05-16"
+  "datePublished": "2023-05-23"
 }
 
   </script><script>

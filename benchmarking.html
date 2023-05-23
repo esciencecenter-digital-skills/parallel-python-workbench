@@ -338,12 +338,12 @@ examples.</p>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>work <span class="op">=</span> da.arange(<span class="dv">10</span><span class="op">**</span><span class="dv">7</span>).<span class="bu">sum</span>()</span>
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>result <span class="op">=</span> work.compute()</span></code></pre>
 </div>
-<div id="callout1" class="callout callout">
+<div id="try-a-heavy-enough-task" class="callout callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div id="try-a-heavy-enough-task" class="callout-inner">
-<h3 class="callout-title">Try a heavy enough task<a class="anchor" aria-label="anchor" href="#callout1"></a>
+<h3 class="callout-title">Try a heavy enough task<a class="anchor" aria-label="anchor" href="#try-a-heavy-enough-task"></a>
 </h3>
 <div class="callout-content">
 <p>It could be that a task this small does not register on your radar.
@@ -441,12 +441,12 @@ needed):</p>
 <span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre>
 </div>
 <p>The figure should be similar to the one below:</p>
-<figure><img src="fig/memory.png" alt="showing very high peak for numpy, and constant low line for dask" class="figure mx-auto d-block"><figcaption>Memory performance</figcaption></figure><div id="challenge1" class="callout challenge">
+<figure><img src="fig/memory.png" alt="showing very high peak for numpy, and constant low line for dask" class="figure mx-auto d-block"><figcaption>Memory performance</figcaption></figure><div id="exercise-plenary" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="exercise-plenary" class="callout-inner">
-<h3 class="callout-title">Exercise (plenary)<a class="anchor" aria-label="anchor" href="#challenge1"></a>
+<h3 class="callout-title">Exercise (plenary)<a class="anchor" aria-label="anchor" href="#exercise-plenary"></a>
 </h3>
 <div class="callout-content">
 <p>Why is the Dask solution more memory efficient?</p>
@@ -460,7 +460,7 @@ needed):</p>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p>Chunking! Dask chunks the large array, such that the data is never
 entirely in memory.</p>
@@ -468,12 +468,12 @@ entirely in memory.</p>
 </div>
 </div>
 </div>
-<div id="callout2" class="callout callout">
+<div id="profiling-from-dask" class="callout callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div id="profiling-from-dask" class="callout-inner">
-<h3 class="callout-title">Profiling from Dask<a class="anchor" aria-label="anchor" href="#callout2"></a>
+<h3 class="callout-title">Profiling from Dask<a class="anchor" aria-label="anchor" href="#profiling-from-dask"></a>
 </h3>
 <div class="callout-content">
 <p>Dask has several option to do profiling from Dask itself. See the <a href="https://docs.dask.org/en/latest/diagnostics-local.html" class="external-link">dask
@@ -487,12 +487,12 @@ documentation</a> for more information.</p>
 <p>Using more cores for a computation can decrease the run time. The
 first question is of course: how many cores do I have? See the snippets
 below to find out:</p>
-<div id="callout3" class="callout callout">
+<div id="find-out-how-many-cores-your-machine-has" class="callout callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div id="find-out-how-many-cores-your-machine-has" class="callout-inner">
-<h3 class="callout-title">Find out how many cores your machine has<a class="anchor" aria-label="anchor" href="#callout3"></a>
+<h3 class="callout-title">Find out how many cores your machine has<a class="anchor" aria-label="anchor" href="#find-out-how-many-cores-your-machine-has"></a>
 </h3>
 <div class="callout-content">
 <p>The number of cores can be found from Python by executing:</p>
@@ -531,12 +531,12 @@ reasons for this, hyper-threading being one of them.</p>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> pd.DataFrame({<span class="st">"n"</span>: <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">9</span>), <span class="st">"t"</span>: x})</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>data.set_index(<span class="st">"n"</span>).plot()</span></code></pre>
 </div>
-<figure><img src="fig/more-cores.svg" alt="showing that using more cores can also make things slower" class="figure mx-auto d-block"><figcaption>Timings against number of cores</figcaption></figure><div id="discussion1" class="callout discussion">
+<figure><img src="fig/more-cores.svg" alt="showing that using more cores can also make things slower" class="figure mx-auto d-block"><figcaption>Timings against number of cores</figcaption></figure><div id="discussion" class="callout discussion">
 <div class="callout-square">
 <i class="callout-icon" data-feather="message-circle"></i>
 </div>
 <div id="discussion" class="callout-inner">
-<h3 class="callout-title">Discussion<a class="anchor" aria-label="anchor" href="#discussion1"></a>
+<h3 class="callout-title">Discussion<a class="anchor" aria-label="anchor" href="#discussion"></a>
 </h3>
 <div class="callout-content">
 <p>Why is the runtime increasing if we add more than 4 cores? This has
@@ -598,7 +598,7 @@ any links that you are not going to use.
         <p>Materials licensed under <a href="LICENSE.html">CC-BY 4.0</a> by the authors</p>
         
         <p><a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">Template licensed under CC-BY 4.0</a> by <a href="https://carpentries.org" class="external-link">The Carpentries</a></p>
-        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.11.16" class="external-link">sandpaper (0.11.16)</a>,
+        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.12.0" class="external-link">sandpaper (0.12.0)</a>,
         <a href="https://github.com/carpentries/pegboard" class="external-link">pegboard (0.5.3)</a>,
       and <a href="https://github.com/carpentries/varnish/tree/0.2.16" class="external-link">varnish (0.2.16)</a>.</p>
 			</div>
@@ -622,7 +622,7 @@ any links that you are not going to use.
   "identifier": "https://template-source.github.io/NA/benchmarking.html",
   "dateCreated": "2023-03-07",
   "dateModified": "2023-01-04",
-  "datePublished": "2023-05-16"
+  "datePublished": "2023-05-23"
 }
 
   </script><script>

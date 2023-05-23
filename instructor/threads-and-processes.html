@@ -340,12 +340,12 @@ section, we’ll use it to estimate pi once again.</p>
 <span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>t1.join()</span>
 <span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>t2.join()</span></code></pre>
 </div>
-<div id="discussion1" class="callout discussion">
+<div id="discussion-wheres-the-speed-up" class="callout discussion">
 <div class="callout-square">
 <i class="callout-icon" data-feather="message-circle"></i>
 </div>
 <div id="discussion-wheres-the-speed-up" class="callout-inner">
-<h3 class="callout-title">Discussion: where’s the speed-up?<a class="anchor" aria-label="anchor" href="#discussion1"></a>
+<h3 class="callout-title">Discussion: where’s the speed-up?<a class="anchor" aria-label="anchor" href="#discussion-wheres-the-speed-up"></a>
 </h3>
 <div class="callout-content">
 <p>While mileage may vary, parallelizing <code>calc_pi</code>,
@@ -401,13 +401,13 @@ easy.</p>
 without referencing any Python objects, while the <code>nogil</code>
 argument enables lifting the GIL during the execution of the
 function.</p>
-<div id="callout1" class="callout callout">
+<div id="use-nopythontrue-or-numba.njit" class="callout callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div id="use-nopythontrue-or-numba.njit" class="callout-inner">
 <h3 class="callout-title">Use <code>nopython=True</code> or
-<code>@numba.njit</code><a class="anchor" aria-label="anchor" href="#callout1"></a>
+<code>@numba.njit</code><a class="anchor" aria-label="anchor" href="#use-nopythontrue-or-numba.njit"></a>
 </h3>
 <div class="callout-content">
 <p>It’s generally a good idea to use <code>nopython=True</code> with
@@ -420,13 +420,13 @@ down most Numba code. There’s even a decorator that has
 </div>
 <p>Now we can run the benchmark again, using <code>calc_pi_nogil</code>
 instead of <code>calc_pi</code>.</p>
-<div id="challenge1" class="callout challenge">
+<div id="exercise-try-threading-on-a-numpy-function" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="exercise-try-threading-on-a-numpy-function" class="callout-inner">
 <h3 class="callout-title">Exercise: try threading on a Numpy
-function<a class="anchor" aria-label="anchor" href="#challenge1"></a>
+function<a class="anchor" aria-label="anchor" href="#exercise-try-threading-on-a-numpy-function"></a>
 </h3>
 <div class="callout-content">
 <p>Many Numpy functions unlock the GIL. Try to sort two randomly
@@ -505,13 +505,13 @@ multiprocessing is beneficial under limited circumstances - namely, when
 the resource utilisation (or runtime) of a function is
 <em>measureably</em> larger than the overhead of creating a new
 process.</p>
-<div id="callout2" class="callout callout">
+<div id="protect-process-creation-with-an-if-block" class="callout callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div id="protect-process-creation-with-an-if-block" class="callout-inner">
 <h3 class="callout-title">Protect process creation with an
-<code>if</code>-block<a class="anchor" aria-label="anchor" href="#callout2"></a>
+<code>if</code>-block<a class="anchor" aria-label="anchor" href="#protect-process-creation-with-an-if-block"></a>
 </h3>
 <div class="callout-content">
 <p>A module should be safely importable. Any code that creates
@@ -549,13 +549,13 @@ and <code>Pipe</code>s. Multiprocessing queues behave similarly to
 regular queues: - FIFO: first in, first out -
 <code>queue_instance.put(&lt;obj&gt;)</code> to add -
 <code>queue_instance.get()</code> to retrieve</p>
-<div id="challenge2" class="callout challenge">
+<div id="exercise-reimplement-calc_pi-to-use-a-queue-to-return-the-result" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="exercise-reimplement-calc_pi-to-use-a-queue-to-return-the-result" class="callout-inner">
 <h3 class="callout-title">Exercise: reimplement <code>calc_pi</code> to
-use a queue to return the result<a class="anchor" aria-label="anchor" href="#challenge2"></a>
+use a queue to return the result<a class="anchor" aria-label="anchor" href="#exercise-reimplement-calc_pi-to-use-a-queue-to-return-the-result"></a>
 </h3>
 <div class="callout-content">
 
@@ -610,12 +610,12 @@ use a queue to return the result<a class="anchor" aria-label="anchor" href="#cha
 </div>
 </div>
 </div>
-<div id="callout3" class="callout callout">
+<div id="sharing-state" class="callout callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div id="sharing-state" class="callout-inner">
-<h3 class="callout-title">Sharing state<a class="anchor" aria-label="anchor" href="#callout3"></a>
+<h3 class="callout-title">Sharing state<a class="anchor" aria-label="anchor" href="#sharing-state"></a>
 </h3>
 <div class="callout-content">
 <p>It is also possible to share state between processes. The simpler of
@@ -650,13 +650,13 @@ toplevel function <code>multiprocessing.Pool</code>, or by calling the
 can be submitted by calling methods like <code>.apply()</code>,
 <code>.map()</code>, <code>.starmap()</code>, or their
 <code>.*_async()</code> versions.</p>
-<div id="challenge3" class="callout challenge">
+<div id="exercise-adapt-the-original-exercise-to-submit-tasks-to-a-pool" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="exercise-adapt-the-original-exercise-to-submit-tasks-to-a-pool" class="callout-inner">
 <h3 class="callout-title">Exercise: adapt the original exercise to
-submit tasks to a pool<a class="anchor" aria-label="anchor" href="#challenge3"></a>
+submit tasks to a pool<a class="anchor" aria-label="anchor" href="#exercise-adapt-the-original-exercise-to-submit-tasks-to-a-pool"></a>
 </h3>
 <div class="callout-content">
 <ul><li>Use the original <code>calc_pi</code> function (without the
@@ -771,7 +771,7 @@ any links that you are not going to use.
         <p>Materials licensed under <a href="../LICENSE.html">CC-BY 4.0</a> by the authors</p>
         
         <p><a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">Template licensed under CC-BY 4.0</a> by <a href="https://carpentries.org" class="external-link">The Carpentries</a></p>
-        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.11.16" class="external-link">sandpaper (0.11.16)</a>,
+        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.12.0" class="external-link">sandpaper (0.12.0)</a>,
         <a href="https://github.com/carpentries/pegboard" class="external-link">pegboard (0.5.3)</a>,
       and <a href="https://github.com/carpentries/varnish/tree/0.2.16" class="external-link">varnish (0.2.16)</a>.</p>
 			</div>
@@ -795,7 +795,7 @@ any links that you are not going to use.
   "identifier": "https://template-source.github.io/NA/instructor/threads-and-processes.html",
   "dateCreated": "2023-03-07",
   "dateModified": "2023-01-06",
-  "datePublished": "2023-05-16"
+  "datePublished": "2023-05-23"
 }
 
   </script><script>
