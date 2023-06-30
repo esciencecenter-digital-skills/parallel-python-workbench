@@ -20,8 +20,8 @@ exercises: 20
 
 
 # A first example with Dask
-We will create parallel programs in Python later. First let's see a small example. Open
-your system monitor (this will vary between specific operating systems), and run the following code examples.
+We will create parallel programs in Python later. First let's see a small example. 
+Open your system monitor (this will vary between specific operating systems), and run the following code examples.
 
 ```python
 # Summation making use of numpy:
@@ -39,27 +39,32 @@ result = work.compute()
 
 :::callout
 ## Try a heavy enough task
-Your radar may not detect so small a task. In your computer, you may have to gradually raise the problem size to ``10**8`` or ``10**9`` to observe the effect in a long enough run. But be careful and increase slowly! Asking for too much memory can make your computer slow to a crawl.
+Your radar may not detect so small a task. 
+In your computer, you may have to gradually raise the problem size to ``10**8`` or ``10**9`` to observe the effect in a long enough run. 
+But be careful and increase slowly! 
+Asking for too much memory can make your computer slow to a crawl.
 :::
 
 ![System monitor](fig/system-monitor.jpg){alt="screenshot of system monitor"}
 
-How can we monitor this more conveniently? In Jupyter we can use some line magics, small "magic words" preceded
-by the symbol `%%` that modify the behaviour of the cell.
+How can we monitor this more conveniently? 
+In Jupyter we can use some line magics, small "magic words" preceded by the symbol `%%` that modify the behaviour of the cell.
 
 ```python
 %%time
 np.arange(10**7).sum()
 ```
 
-The `%%time` line magic checks how long it took for a computation to finish. It does not affect how the computation is performed. In this regard it is very similar to the `time` shell command.
+The `%%time` line magic checks how long it took for a computation to finish. 
+It does not affect how the computation is performed. 
+In this regard it is very similar to the `time` shell command.
 
 If run the chunk several times, we will notice variability in the reported times.
 How can we trust this timer, then?
 A possible solution will be to time the chunk several times, and take the average time as our valid measure.
 The `%%timeit` line magic does exactly this in a concise and conveninet manner!
-`%%timeit` first measures how long it takes to run a command once, then
-repeats it enough times to get an average run-time. Also, `%%timeit` can measure run times discountinh the overhead of setting up a problem and measuring only the performance of the code in the cell.
+`%%timeit` first measures how long it takes to run a command once, then repeats it enough times to get an average run-time. 
+Also, `%%timeit` can measure run times discountinh the overhead of setting up a problem and measuring only the performance of the code in the cell.
 So this outcome is more trustworthy.
 
 ```python
@@ -87,7 +92,8 @@ It can be installed executing the code below in the console:
 pip install memory_profiler
 ~~~
 
-The memory usage of the serial and parallel versions of a code will vary. In Jupyter, type the following lines to see the effect in the code presented above (again, increase the baseline value `10**7` if needed):
+The memory usage of the serial and parallel versions of a code will vary. 
+In Jupyter, type the following lines to see the effect in the code presented above (again, increase the baseline value `10**7` if needed):
 
 ```python
 import numpy as np
@@ -132,11 +138,14 @@ Chunking! Dask chunks the large array so that the data is never entirely in memo
 
 :::callout
 ## Profiling from Dask
-Dask has several built-in option for profiling. See the [dask documentation](https://docs.dask.org/en/latest/diagnostics-local.html) for more information.
+Dask has several built-in option for profiling. 
+See the [dask documentation](https://docs.dask.org/en/latest/diagnostics-local.html) for more information.
 :::
 
 # Using many cores
-Using more cores for a computation can decrease the run time. The first question is of course: how many cores do I have? See the snippet below to find this out:
+Using more cores for a computation can decrease the run time. 
+The first question is of course: how many cores do I have? 
+See the snippet below to find this out:
 
 :::callout
 ## Find out the number of cores in your machine
@@ -150,9 +159,10 @@ print(f"The number of physical/logical cores is {N_physical_cores}/{N_logical_co
 ```
 :::
 
-Usually the number of logical cores is higher than the number of physical cores. This is due to *hyper-threading*,
-which enables each physical CPU core to execute several threads at the same time. Even with simple examples,
-performance may scale unexpectedly. There are many reasons for this, hyper-threading being one of them.
+Usually the number of logical cores is higher than the number of physical cores. 
+This is due to *hyper-threading*, which enables each physical CPU core to execute several threads at the same time. 
+Even with simple examples, performance may scale unexpectedly. 
+There are many reasons for this, hyper-threading being one of them.
 See the ensuing example.
 
 On a machine with 4 physical and 8 logical cores, this admittedly oversimplistic benchmark:
@@ -176,13 +186,15 @@ data.set_index("n").plot()
 
 :::discussion
 ## Discussion
-Why is the runtime increasing if we add more than 4 cores? This has to do with **hyper-threading**. On most architectures it does not make much sense to use more workers than physical cores you have.
+Why is the runtime increasing if we add more than 4 cores? 
+This has to do with **hyper-threading**. 
+On most architectures it does not make much sense to use more workers than physical cores you have.
 :::
 
 :::keypoints
 - Understanding performance is often non-trivial.
 - Memory is just as important as speed.
-- To  measure is to know.
+- To measure is to know.
 :::
 
 
