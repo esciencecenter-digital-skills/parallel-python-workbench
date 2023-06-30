@@ -24,15 +24,16 @@ The algorithm we present is a classical demonstration of the power of Monte Carl
 This is a category of algorithms using random numbers to approximate exact results.
 This approach is simple and has a straightforward geometrical interpretation.
 
-We can compute the value of π using a random number generator. We count the points falling inside the blue circle M compared to the green square N.
+We can compute the value of π using a random number generator. 
+We count the points falling inside the blue circle M compared to the green square N.
 The ratio 4M/N then approximates π.
 
 ![Computing Pi](fig/calc_pi_3_wide.svg){alt="the area of a unit sphere contains a multiple of pi"}
 
 :::challenge
 ## Challenge: Implement the algorithm
-Use only standard Python and the method `random.uniform`. The function should have the following
-interface:
+Use only standard Python and the method `random.uniform`. 
+The function should have the following interface:
 
 ```python
 import random
@@ -74,9 +75,8 @@ def calc_pi(N):
 ::::
 :::
 
-Before we parallelize this program, the inner function must be as
-efficient as we can make it. We show two techniques for doing this: *vectorization* using `numpy`, and
-*native code generation* using `numba`.
+Before we parallelize this program, the inner function must be as efficient as we can make it. 
+We show two techniques for doing this: *vectorization* using `numpy`, and *native code generation* using `numba`.
 
 We first demonstrate a Numpy version of this algorithm:
 
@@ -91,10 +91,9 @@ def calc_pi_numpy(N):
     return 4 * M / N
 ```
 
-This is a **vectorized** version of the original algorithm. It nicely demonstrates **data parallelization**,
-where a **single operation** is replicated over collections of data.
-It contrasts with **task parallelization**, where **different independent** procedures are performed in
-parallel (think, for example, about cutting the vegetables while simmering the split peas).
+This is a **vectorized** version of the original algorithm. 
+It nicely demonstrates **data parallelization**, where a **single operation** is replicated over collections of data.
+It contrasts with **task parallelization**, where **different independent** procedures are performed in parallel (think, for example, about cutting the vegetables while simmering the split peas).
 
 This implementation is much faster than the 'naive' implementation above: 
 
@@ -116,8 +115,9 @@ What is the downside of the vectorized implementation?
 
 :::challenge
 ## Challenge: Daskify
-Write `calc_pi_dask` to make the Numpy version parallel. Compare its speed and memory performance with
-the Numpy version. NB: Remember that API of `dask.array` mimics that of the Numpy.
+Write `calc_pi_dask` to make the Numpy version parallel. 
+Compare its speed and memory performance with the Numpy version. 
+NB: Remember that API of `dask.array` mimics that of the Numpy.
 
 ::::solution
 ## Solution
@@ -142,7 +142,8 @@ def calc_pi_dask(N):
 :::
 
 # Using Numba to accelerate Python code
-Numba makes it easier to create accelerated functions. You can activate it with the decorator `numba.jit`.
+Numba makes it easier to create accelerated functions. 
+You can activate it with the decorator `numba.jit`.
 
 ```python
 import numba
@@ -156,7 +157,8 @@ def sum_range_numba(a):
     return x
 ```
 
-Let's time three versions of the same test. First, native Python iterators:
+Let's time three versions of the same test. 
+First, native Python iterators:
 
 ```python
 %timeit sum(range(10**7))
@@ -186,20 +188,23 @@ Finally, with Numba:
 162 ns ± 0.885 ns per loop (mean ± std. dev. of 7 runs, 10000000 loops each)
 ```
 
-Numba is hundredfold faster in this case! It gets this speedup with "just-in-time" compilation (JIT) —, that is, compiling the Python
-function into machine code just before it is called, as the `@numba.jit` decorator indicates.
+Numba is hundredfold faster in this case! It gets this speedup with "just-in-time" compilation (JIT) 
+— that is, compiling the Python function into machine code just before it is called, as the `@numba.jit` decorator indicates.
 Numba does not support every Python and Numpy feature, but functions written with a for-loop with a large number of iterates, like in our `sum_range_numba()`, are good candidates.
 
 :::callout
 ## Just-in-time compilation speedup
 
-The first time you call a function decorated with `@numba.jit`, you may see no or little speedup. The function can then be much faster in subsequent calls. Also, `timeit` may throw this warning:
+The first time you call a function decorated with `@numba.jit`, you may see no or little speedup. 
+The function can then be much faster in subsequent calls. 
+Also, `timeit` may throw this warning:
 
 `The slowest run took 14.83 times longer than the fastest. This could mean that an intermediate result is being cached.`
 
 Why does this happen?
-On the first call, the JIT compiler needs to compile the function. On subsequent calls, it reuses the
-function previously compiled. The compiled function can *only* be reused if the types of its arguments (int, float, and the like) are the same as the point of compilation.
+On the first call, the JIT compiler needs to compile the function. 
+On subsequent calls, it reuses the function previously compiled. 
+The compiled function can *only* be reused if the types of its arguments (int, float, and the like) are the same as the point of compilation.
 
 See this example, where `sum_range_numba` is timed once again with a float argument instead of an int:
 ```python
