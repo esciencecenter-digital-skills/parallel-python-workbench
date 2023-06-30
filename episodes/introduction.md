@@ -36,11 +36,11 @@ Most problems will fit in one of two categories:
 In this course we show several ways of speeding up your program and making it run in parallel. 
 We introduce the following modules:
 
-1. `threading` allows different parts of your program to run concurrently on a single computer (with shared memory)
-3. `dask` makes scalable parallel computing easy
-4. `numba` speeds up your Python functions by translating them to optimized machine code
-5. `memory_profile` monitors memory performance
-6. `asyncio` Python's native asynchronous programming
+1. `threading` allows different parts of your program to run concurrently on a single computer (with shared memory).
+3. `dask` makes scalable parallel computing easy.
+4. `numba` speeds up your Python functions by translating them to optimized machine code.
+5. `memory_profile` monitors memory performance.
+6. `asyncio` Python's native asynchronous programming.
 
 FIXME: Actually explain functional programming & distributed programming.
 More importantly, we show how to change the design of a program to fit parallel paradigms. 
@@ -125,7 +125,7 @@ Later in the course we see that things are actually more complicated.
 Some tasks are easily parallelizable while others inherently are not. 
 However, it might not always be immediately apparent that a task is parallelizable.
 
-Let us consider the following piece of code.
+Let us consider the following piece of code:
 
 ```python
 x = [1, 2, 3, 4] # Write input
@@ -196,7 +196,7 @@ Can you also think of one that is fundamentally non-parallelizable?
 Please write your answers in the collaborative document.
 
 ::::solution
-Answers may differ. 
+Answers may vary. 
 An ubiquitous example of a naturally parallel problem is a parameter scan, where you need to evaluate some model for N different configurations of input parameters.
 
 Time-dependent models are a category of problems very hard to parallelize, since every state depends on the previous one(s). 
