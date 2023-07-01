@@ -21,12 +21,17 @@ from matplotlib import pyplot as plt
 import numpy as np
 ```
 
-We will be computing the famous [Mandelbrot
-fractal](https://en.wikipedia.org/wiki/Mandelbrot_fractal).
+We will be computing the famous [Mandelbrot fractal](https://en.wikipedia.org/wiki/Mandelbrot_fractal).
 
 :::callout
 ## Complex numbers
-Complex numbers are a special representation of rotations and scalings in the two-dimensional plane. Multiplying two complex numbers is the same as taking a point, rotate it by an angle $\phi$ and scale it by the absolute value. Multiplying with a number $z \in \mathbb{C}$ by 1 preserves $z$. Multiplying a point at $i = (0, 1)$ (having a positive angle of 90 degrees and absolute value 1), rotates it anti-clockwise by 90 degrees. Then you might see that $i^2 = (-1, 0)$. The funny thing is that we can treat $i$ as any ordinary number, and all our algebra still works out. This is actually nothing short of a miracle! We can write a complex number
+Complex numbers are a special representation of rotations and scalings in the two-dimensional plane.
+Multiplying two complex numbers is the same as taking a point, rotate it by an angle $\phi$ and scale it by the absolute value.
+Multiplying with a number $z \in \mathbb{C}$ by 1 preserves $z$.
+Multiplying a point at $i = (0, 1)$ (having a positive angle of 90 degrees and absolute value 1), rotates it anti-clockwise by 90 degrees.
+Then you might see that $i^2 = (-1, 0)$.
+The funny thing is that we can treat $i$ as any ordinary number, and all our algebra still works out.
+This is actually nothing short of a miracle! We can write a complex number
 
 $$z = x + iy,$$
 
@@ -37,9 +42,8 @@ The Mandelbrot set is the set of complex numbers $$c \in \mathbb{C}$$ for which 
 
 $$z_{n+1} = z_n^2 + c,$$
 
-converges, starting iteration at $z_0 = 0$. We can visualize the Mandelbrot set by plotting the
-number of iterations needed for the absolute value $|z_n|$ to exceed 2 (for which it can be shown
-that the iteration always diverges).
+converges, starting iteration at $z_0 = 0$.
+We can visualize the Mandelbrot set by plotting the number of iterations needed for the absolute value $|z_n|$ to exceed 2 (for which it can be shown that the iteration always diverges).
 
 ![The whole Mandelbrot set](fig/mandelbrot-all.png){alt="colorful rendering of mandelbrot set"}
 
@@ -77,8 +81,8 @@ ax.set_xlabel("$\Re(c)$")
 ax.set_ylabel("$\Im(c)$")
 ```
 
-Things become really loads of fun when we zoom in. We can play around with the `center` and
-`extent` values, and necessarily `max_iter`, to control our window.
+Things become really loads of fun when we zoom in.
+We can play around with the `center` and `extent` values, and necessarily `max_iter`, to control our window.
 
 ```python
 max_iter = 1024
@@ -92,11 +96,14 @@ When we zoom in on the Mandelbrot fractal, we get smaller copies of the larger s
 
 :::challenge
 ## Exercise
-Turn this into an efficient parallel program. What kind of speed-ups do you get?
+Turn this into an efficient parallel program.
+What kind of speed-ups do you get?
 
 ::::solution
 ### Create a `BoundingBox` class
-We start with a naive implementation. It may be convenient to define a `BoundingBox` class in a separate module `bounding_box.py`. We add methods to this class later on.
+We start with a naive implementation.
+It may be convenient to define a `BoundingBox` class in a separate module `bounding_box.py`.
+We add methods to this class later on.
 
 ``` {.python file="src/mandelbrot/bounding_box.py"}
 from dataclasses import dataclass
@@ -155,7 +162,9 @@ def plot_fractal(box: BoundingBox, values: np.ndarray, ax=None):
 
 ::::solution
 ## Some solutions
-The natural approach with Python is to speed this up with Numba. Then, there are three ways to parallelize: first, let Numba parallelize the function; second, do a manual domain decomposition and use one of the many Python ways to run things multi-threaded; third, create a vectorized function and parallelize using `dask.array`. This last option is almost always slower than `@njit(parallel=True)` and domain decomposition.
+The natural approach with Python is to speed this up with Numba.
+Then, there are three ways to parallelize: first, let Numba parallelize the function; second, do a manual domain decomposition and use one of the many Python ways to run things multi-threaded; third, create a vectorized function and parallelize using `dask.array`.
+This last option is almost always slower than `@njit(parallel=True)` and domain decomposition.
 
 ``` {.python file="src/mandelbrot/__init__.py"}
 
@@ -167,7 +176,8 @@ The natural approach with Python is to speed this up with Numba. Then, there are
 When we port the core Mandelbrot function to Numba, we need to keep some best practices in mind:
 
 - Don't pass composite objects other than Numpy arrays.
-- Avoid acquiring memory inside a Numba function; create an array in Python, then pass it to the Numba function.
+- Avoid acquiring memory inside a Numba function; 
+  create an array in Python, then pass it to the Numba function.
 - Write a Pythonic wrapper around the Numba function for easy use.
 
 ``` {.python file="src/mandelbrot/numba_serial.py"}
@@ -206,7 +216,9 @@ def compute_mandelbrot(
 ```
 
 ### Numba `parallel=True`
-We can parallelize loops directly with Numba. Pass the flag `parallel=True` and use `prange` to create the loop. Here, it is even more important to obtain the result array outside the context of Numba, otherwise the result will be slower than the serial version.
+We can parallelize loops directly with Numba.
+Pass the flag `parallel=True` and use `prange` to create the loop.
+Here, it is even more important to obtain the result array outside the context of Numba, otherwise the result will be slower than the serial version.
 
 ``` {.python file="src/mandelbrot/numba_parallel.py"}
 from typing import Optional
@@ -246,7 +258,8 @@ def compute_mandelbrot(box: BoundingBox, max_iter: int,
 
 ::::solution
 ## Domain splitting
-We split the computation into a set of sub-domains. The `BoundingBox.split()` method is designed so that, if we deep-map the resulting list-of-lists, we can recombine the results using `numpy.block()`.
+We split the computation into a set of sub-domains.
+The `BoundingBox.split()` method is designed so that, if we deep-map the resulting list-of-lists, we can recombine the results using `numpy.block()`.
 
 ``` {.python #bounding-box-methods}
 def split(self, n):
@@ -260,9 +273,14 @@ def split(self, n):
             for j in range(n)]
 ```
 
-To perform the computation in parallel, lets go ahead and chose the most difficult path: `asyncio`. There are other ways to do this, setting up a number of threads, or use Dask. However, `asyncio` is available to us in Python natively. In the end, the result is very similar to what we would get using `dask.delayed`.
+To perform the computation in parallel, lets go ahead and chose the most difficult path: `asyncio`.
+There are other ways to do this, setting up a number of threads, or use Dask.
+However, `asyncio` is available to us in Python natively.
+In the end, the result is very similar to what we would get using `dask.delayed`.
 
-This may seem as a lot of code, but remember: we only used Numba to compile the core part and then used Asyncio to parallelize. The progress bar is a bit of flutter and the semaphore is only there to throttle the computation to fewer cores. Even then, this solution is by far the most extensive, but also the fastest.
+This may seem as a lot of code, but remember: we only used Numba to compile the core part and then used Asyncio to parallelize.
+The progress bar is a bit of flutter and the semaphore is only there to throttle the computation to fewer cores.
+Even then, this solution is by far the most extensive, but also the fastest.
 
 ``` {.python file="src/mandelbrot/domain_splitting.py"}
 from typing import Optional
@@ -307,7 +325,8 @@ def compute_mandelbrot(box: BoundingBox, max_iter: int,
 
 ::::solution
 ## Numba vectorize
-Another solution is to use Numba's `@guvectorize` decorator. The speed-up (on my machine) is not as dramatic as with the domain decomposition though.
+Another solution is to use Numba's `@guvectorize` decorator.
+The speed-up (on my machine) is not as dramatic as with the domain decomposition though.
 
 ``` {.python #bounding-box-methods}
 def grid(self):
@@ -428,9 +447,8 @@ if __name__ == "__main__":
 :::
 
 ## Extra: Julia sets
-For each value $$c$$ we can compute the Julia set, namely the set of starting values $$z_1$$ for
-which the iteration over $$z_{n+1}=z_n^2 + c$$ converges. Every location on the Mandelbrot image
-corresponds to its own unique Julia set.
+For each value $$c$$ we can compute the Julia set, namely the set of starting values $$z_1$$ for which the iteration over $$z_{n+1}=z_n^2 + c$$ converges.
+Every location on the Mandelbrot image corresponds to its own unique Julia set.
 
 ```python
 max_iter = 256
@@ -451,7 +469,7 @@ for j in range(height):
         result[j, i] = k
 ```
 
-If we take the center of the last image, we get the following rendering of the Julia set:
+If we take the centre of the last image, we get the following rendering of the Julia set:
 
 ![Example of a Julia set](fig/julia-1.png){alt="colorful rendering of a Julia set"}
 
