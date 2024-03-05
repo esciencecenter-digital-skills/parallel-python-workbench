@@ -377,9 +377,9 @@ want to work with (in this case, the numbers from 0 to 5).</p>
 <div class="codewrapper sourceCode" id="cb1">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> dask.bag <span class="im">as</span> db</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>bag <span class="op">=</span> db.from_sequence([<span class="st">'mary'</span>, <span class="st">'had'</span>, <span class="st">'a'</span>, <span class="st">'little'</span>, <span class="st">'lamb'</span>])</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="im">import</span> dask.bag <span class="im">as</span> db</span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a>bag <span class="op">=</span> db.from_sequence([<span class="st">'mary'</span>, <span class="st">'had'</span>, <span class="st">'a'</span>, <span class="st">'little'</span>, <span class="st">'lamb'</span>])</span></code></pre>
 </div>
 <p>{: .source}</p>
 <div class="section level3">
@@ -390,12 +390,12 @@ its argument:</p>
 <div class="codewrapper sourceCode" id="cb2">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a function for mapping</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> f(x):</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> x.upper()</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the map and compute it</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>bag.<span class="bu">map</span>(f).compute()</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="co"># Create a function for mapping</span></span>
+<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a><span class="kw">def</span> f(x):</span>
+<span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a>    <span class="cf">return</span> x.upper()</span>
+<span id="cb2-4"><a href="#cb2-4" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" tabindex="-1"></a><span class="co"># Create the map and compute it</span></span>
+<span id="cb2-6"><a href="#cb2-6" tabindex="-1"></a>bag.<span class="bu">map</span>(f).compute()</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -406,10 +406,11 @@ its argument:</p>
 <div class="codewrapper sourceCode" id="cb4">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualize the map</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>bag.<span class="bu">map</span>(f).visualize()</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="co"># Visualize the map</span></span>
+<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a>bag.<span class="bu">map</span>(f).visualize()</span></code></pre>
 </div>
-<figure><img src="../fig/dask-bag-map.svg" class="output figure mx-auto d-block" alt="boxes and arrows"><figcaption>A map operation.</figcaption></figure></div>
+<figure><img src="../fig/dask-bag-map.svg" class="output figure mx-auto d-block" alt="boxes and arrows"><div class="figcaption">A map operation.</div>
+</figure></div>
 <div class="section level3">
 <h3 id="filter">Filter<a class="anchor" aria-label="anchor" href="#filter"></a></h3>
 <p>To illustrate the concept of <code>filter</code>, it is useful to
@@ -419,11 +420,11 @@ letter ‘a’, and <code>False</code> if it doesn’t.</p>
 <div class="codewrapper sourceCode" id="cb5">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Return True if x is even, False if not</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> pred(x):</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="st">'a'</span> <span class="kw">in</span> x</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>bag.<span class="bu">filter</span>(pred).compute()</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a><span class="co"># Return True if x is even, False if not</span></span>
+<span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a><span class="kw">def</span> pred(x):</span>
+<span id="cb5-3"><a href="#cb5-3" tabindex="-1"></a>    <span class="cf">return</span> <span class="st">'a'</span> <span class="kw">in</span> x</span>
+<span id="cb5-4"><a href="#cb5-4" tabindex="-1"></a></span>
+<span id="cb5-5"><a href="#cb5-5" tabindex="-1"></a>bag.<span class="bu">filter</span>(pred).compute()</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -448,7 +449,7 @@ letter ‘a’, and <code>False</code> if it doesn’t.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1">Show me the solution</h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p>The output will be <code>[True, True, True, False, True]</code>.</p>
 </div>
@@ -461,14 +462,15 @@ letter ‘a’, and <code>False</code> if it doesn’t.</p>
 <div class="codewrapper sourceCode" id="cb7">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> count_chars(x):</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    per_word <span class="op">=</span> [<span class="bu">len</span>(w) <span class="cf">for</span> w <span class="kw">in</span> x]</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="bu">sum</span>(per_word)</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>bag.reduction(count_chars, <span class="bu">sum</span>).visualize()</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="kw">def</span> count_chars(x):</span>
+<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a>    per_word <span class="op">=</span> [<span class="bu">len</span>(w) <span class="cf">for</span> w <span class="kw">in</span> x]</span>
+<span id="cb7-3"><a href="#cb7-3" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" tabindex="-1"></a>    <span class="cf">return</span> <span class="bu">sum</span>(per_word)</span>
+<span id="cb7-5"><a href="#cb7-5" tabindex="-1"></a></span>
+<span id="cb7-6"><a href="#cb7-6" tabindex="-1"></a>bag.reduction(count_chars, <span class="bu">sum</span>).visualize()</span></code></pre>
 </div>
-<figure><img src="../fig/dask-bag-reduction.svg" class="output figure mx-auto d-block" alt="boxes and arrows"><figcaption>A reduction.</figcaption></figure><div id="challenge-consider-pluck" class="callout challenge">
+<figure><img src="../fig/dask-bag-reduction.svg" class="output figure mx-auto d-block" alt="boxes and arrows"><div class="figcaption">A reduction.</div>
+</figure><div id="challenge-consider-pluck" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
@@ -483,17 +485,17 @@ implement this if <code>pluck</code> wasn’t there?</p>
 <div class="codewrapper sourceCode" id="cb8">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> dask <span class="im">import</span> bags <span class="im">as</span> db</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> [</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>   { <span class="st">"name"</span>: <span class="st">"John"</span>, <span class="st">"age"</span>: <span class="dv">42</span> },</span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>   { <span class="st">"name"</span>: <span class="st">"Mary"</span>, <span class="st">"age"</span>: <span class="dv">35</span> },</span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>   { <span class="st">"name"</span>: <span class="st">"Paul"</span>, <span class="st">"age"</span>: <span class="dv">78</span> },</span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>   { <span class="st">"name"</span>: <span class="st">"Julia"</span>, <span class="st">"age"</span>: <span class="dv">10</span> }</span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>]</span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>bag <span class="op">=</span> db.from_sequence(data)</span>
-<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>...</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="im">from</span> dask <span class="im">import</span> bags <span class="im">as</span> db</span>
+<span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" tabindex="-1"></a>data <span class="op">=</span> [</span>
+<span id="cb8-4"><a href="#cb8-4" tabindex="-1"></a>   { <span class="st">"name"</span>: <span class="st">"John"</span>, <span class="st">"age"</span>: <span class="dv">42</span> },</span>
+<span id="cb8-5"><a href="#cb8-5" tabindex="-1"></a>   { <span class="st">"name"</span>: <span class="st">"Mary"</span>, <span class="st">"age"</span>: <span class="dv">35</span> },</span>
+<span id="cb8-6"><a href="#cb8-6" tabindex="-1"></a>   { <span class="st">"name"</span>: <span class="st">"Paul"</span>, <span class="st">"age"</span>: <span class="dv">78</span> },</span>
+<span id="cb8-7"><a href="#cb8-7" tabindex="-1"></a>   { <span class="st">"name"</span>: <span class="st">"Julia"</span>, <span class="st">"age"</span>: <span class="dv">10</span> }</span>
+<span id="cb8-8"><a href="#cb8-8" tabindex="-1"></a>]</span>
+<span id="cb8-9"><a href="#cb8-9" tabindex="-1"></a></span>
+<span id="cb8-10"><a href="#cb8-10" tabindex="-1"></a>bag <span class="op">=</span> db.from_sequence(data)</span>
+<span id="cb8-11"><a href="#cb8-11" tabindex="-1"></a>...</span></code></pre>
 </div>
 </div>
 </div>
@@ -503,16 +505,16 @@ implement this if <code>pluck</code> wasn’t there?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2">Show me the solution</h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <p>The <code>pluck</code> method is a mapping. The input is supposed to
 be a bag of dictionaries.</p>
 <div class="codewrapper sourceCode" id="cb9">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> functools <span class="im">import</span> partial</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> operator <span class="im">import</span> getitem</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>bag.<span class="bu">map</span>(partial(getitem, <span class="st">"name"</span>)).compute()</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a><span class="im">from</span> functools <span class="im">import</span> partial</span>
+<span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a><span class="im">from</span> operator <span class="im">import</span> getitem</span>
+<span id="cb9-3"><a href="#cb9-3" tabindex="-1"></a>bag.<span class="bu">map</span>(partial(getitem, <span class="st">"name"</span>)).compute()</span></code></pre>
 </div>
 </div>
 </div>
@@ -537,41 +539,40 @@ compute <span class="math inline">\(\pi\)</span>.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3">Show me the solution</h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb10">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> dask.bag</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> numpy <span class="im">import</span> repeat</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> random</span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> calc_pi(N):</span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Computes the value of pi using N random samples."""</span></span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>    M <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(N):</span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>        <span class="co"># take a sample</span></span>
-<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>        x <span class="op">=</span> random.uniform(<span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span>)</span>
-<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>        y <span class="op">=</span> random.uniform(<span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span>)</span>
-<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> x<span class="op">*</span>x <span class="op">+</span> y<span class="op">*</span>y <span class="op">&lt;</span> <span class="fl">1.</span>: M<span class="op">+=</span><span class="dv">1</span></span>
-<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="dv">4</span> <span class="op">*</span> M <span class="op">/</span> N</span>
-<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>bag <span class="op">=</span> dask.bag.from_sequence(repeat(<span class="dv">10</span><span class="op">**</span><span class="dv">7</span>, <span class="dv">24</span>))</span>
-<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>shots <span class="op">=</span> bag.<span class="bu">map</span>(calc_pi)</span>
-<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>estimate <span class="op">=</span> shots.mean()</span>
-<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a>estimate.compute()</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a><span class="im">import</span> dask.bag</span>
+<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a><span class="im">from</span> numpy <span class="im">import</span> repeat</span>
+<span id="cb10-3"><a href="#cb10-3" tabindex="-1"></a><span class="im">import</span> random</span>
+<span id="cb10-4"><a href="#cb10-4" tabindex="-1"></a></span>
+<span id="cb10-5"><a href="#cb10-5" tabindex="-1"></a><span class="kw">def</span> calc_pi(N):</span>
+<span id="cb10-6"><a href="#cb10-6" tabindex="-1"></a>    <span class="co">"""Computes the value of pi using N random samples."""</span></span>
+<span id="cb10-7"><a href="#cb10-7" tabindex="-1"></a>    M <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb10-8"><a href="#cb10-8" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(N):</span>
+<span id="cb10-9"><a href="#cb10-9" tabindex="-1"></a>        <span class="co"># take a sample</span></span>
+<span id="cb10-10"><a href="#cb10-10" tabindex="-1"></a>        x <span class="op">=</span> random.uniform(<span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span>)</span>
+<span id="cb10-11"><a href="#cb10-11" tabindex="-1"></a>        y <span class="op">=</span> random.uniform(<span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span>)</span>
+<span id="cb10-12"><a href="#cb10-12" tabindex="-1"></a>        <span class="cf">if</span> x<span class="op">*</span>x <span class="op">+</span> y<span class="op">*</span>y <span class="op">&lt;</span> <span class="fl">1.</span>: M<span class="op">+=</span><span class="dv">1</span></span>
+<span id="cb10-13"><a href="#cb10-13" tabindex="-1"></a>    <span class="cf">return</span> <span class="dv">4</span> <span class="op">*</span> M <span class="op">/</span> N</span>
+<span id="cb10-14"><a href="#cb10-14" tabindex="-1"></a></span>
+<span id="cb10-15"><a href="#cb10-15" tabindex="-1"></a>bag <span class="op">=</span> dask.bag.from_sequence(repeat(<span class="dv">10</span><span class="op">**</span><span class="dv">7</span>, <span class="dv">24</span>))</span>
+<span id="cb10-16"><a href="#cb10-16" tabindex="-1"></a>shots <span class="op">=</span> bag.<span class="bu">map</span>(calc_pi)</span>
+<span id="cb10-17"><a href="#cb10-17" tabindex="-1"></a>estimate <span class="op">=</span> shots.mean()</span>
+<span id="cb10-18"><a href="#cb10-18" tabindex="-1"></a>estimate.compute()</span></code></pre>
 </div>
 </div>
 </div>
 </div>
 </div>
-<div id="note" class="callout callout">
+<div id="callout1" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div id="note" class="callout-inner">
-<h3 class="callout-title">Note<a class="anchor" aria-label="anchor" href="#note"></a>
-</h3>
+<div class="section level3 callout-title callout-inner">
+<h3 class="callout-title" id="note">Note<a class="anchor" aria-label="anchor" href="#note"></a></h3>
 <div class="callout-content">
 <p>By default Dask runs a bag using multi-processing. This alleviates
 problems with the GIL, but also means a larger overhead.</p>
@@ -657,7 +658,7 @@ any links that you are not going to use.
   "identifier": "https://template-source.github.io/NA/instructor/map-and-reduce.html",
   "dateCreated": "2023-07-03",
   "dateModified": "2023-01-11",
-  "datePublished": "2024-02-27"
+  "datePublished": "2024-03-05"
 }
 
   </script><script>

@@ -353,40 +353,40 @@ lesson material automatically.</p>
 <div class="codewrapper sourceCode" id="cb2" file="src/pyproject.toml">
 <h3 class="code-label">TOML<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode toml" tabindex="0"><code class="sourceCode toml"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">[</span><span class="dt">tool</span><span class="kw">.</span><span class="dt">poetry</span><span class="kw">]</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="dt">name</span> <span class="op">=</span> <span class="st">"parallel-python"</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="dt">version</span> <span class="op">=</span> <span class="st">"0.1.0"</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="dt">description</span> <span class="op">=</span> <span class="st">"Testing environment for Parallel Python workshop"</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="dt">authors</span> <span class="op">=</span> <span class="op">[</span><span class="st">"Johan Hidding &lt;j.hidding@esciencecenter.nl&gt;"</span><span class="op">]</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="dt">license</span> <span class="op">=</span> <span class="st">"Apache-2.0"</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="kw">[</span><span class="dt">tool</span><span class="kw">.</span><span class="dt">poetry</span><span class="kw">.</span><span class="dt">dependencies</span><span class="kw">]</span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="dt">python</span> <span class="op">=</span> <span class="st">"&gt;=3.9, &lt;3.11"</span></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="dt">numba</span> <span class="op">=</span> <span class="st">"^0.56.4"</span></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="dt">dask</span> <span class="op">=</span> <span class="op">{</span><span class="dt">extras</span><span class="op"> =</span> <span class="op">[</span><span class="st">"complete"</span><span class="op">], </span><span class="dt">version</span><span class="op"> =</span> <span class="st">"^2022.12.1"</span><span class="op">}</span></span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="dt">richbench</span> <span class="op">=</span> <span class="st">"^1.0.3"</span></span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="dt">matplotlib</span> <span class="op">=</span> <span class="st">"^3.6.2"</span></span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="dt">numba-progress</span> <span class="op">=</span> <span class="st">"^0.0.4"</span></span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="dt">pandas</span> <span class="op">=</span> <span class="st">"^1.5.2"</span></span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="dt">plotnine</span> <span class="op">=</span> <span class="st">"^0.10.1"</span></span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="kw">[</span><span class="dt">tool</span><span class="kw">.</span><span class="dt">poetry</span><span class="kw">.</span><span class="dt">dev-dependencies</span><span class="kw">]</span></span>
-<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a><span class="kw">[</span><span class="dt">build-system</span><span class="kw">]</span></span>
-<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a><span class="dt">requires</span> <span class="op">=</span> <span class="op">[</span><span class="st">"poetry-core&gt;=1.0.0"</span><span class="op">]</span></span>
-<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a><span class="dt">build-backend</span> <span class="op">=</span> <span class="st">"poetry.core.masonry.api"</span></span></code></pre>
+<pre class="sourceCode toml" tabindex="0"><code class="sourceCode toml"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="kw">[tool.poetry]</span></span>
+<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a><span class="dt">name</span> <span class="op">=</span> <span class="st">"parallel-python"</span></span>
+<span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a><span class="dt">version</span> <span class="op">=</span> <span class="st">"0.1.0"</span></span>
+<span id="cb2-4"><a href="#cb2-4" tabindex="-1"></a><span class="dt">description</span> <span class="op">=</span> <span class="st">"Testing environment for Parallel Python workshop"</span></span>
+<span id="cb2-5"><a href="#cb2-5" tabindex="-1"></a><span class="dt">authors</span> <span class="op">=</span> <span class="op">[</span><span class="st">"Johan Hidding &lt;j.hidding@esciencecenter.nl&gt;"</span><span class="op">]</span></span>
+<span id="cb2-6"><a href="#cb2-6" tabindex="-1"></a><span class="dt">license</span> <span class="op">=</span> <span class="st">"Apache-2.0"</span></span>
+<span id="cb2-7"><a href="#cb2-7" tabindex="-1"></a></span>
+<span id="cb2-8"><a href="#cb2-8" tabindex="-1"></a><span class="kw">[tool.poetry.dependencies]</span></span>
+<span id="cb2-9"><a href="#cb2-9" tabindex="-1"></a><span class="dt">python</span> <span class="op">=</span> <span class="st">"&gt;=3.9, &lt;3.11"</span></span>
+<span id="cb2-10"><a href="#cb2-10" tabindex="-1"></a><span class="dt">numba</span> <span class="op">=</span> <span class="st">"^0.56.4"</span></span>
+<span id="cb2-11"><a href="#cb2-11" tabindex="-1"></a><span class="dt">dask</span> <span class="op">=</span> <span class="op">{</span><span class="dt">extras</span><span class="op"> =</span> <span class="op">[</span><span class="st">"complete"</span><span class="op">], </span><span class="dt">version</span><span class="op"> =</span> <span class="st">"^2022.12.1"</span><span class="op">}</span></span>
+<span id="cb2-12"><a href="#cb2-12" tabindex="-1"></a><span class="dt">richbench</span> <span class="op">=</span> <span class="st">"^1.0.3"</span></span>
+<span id="cb2-13"><a href="#cb2-13" tabindex="-1"></a><span class="dt">matplotlib</span> <span class="op">=</span> <span class="st">"^3.6.2"</span></span>
+<span id="cb2-14"><a href="#cb2-14" tabindex="-1"></a><span class="dt">numba-progress</span> <span class="op">=</span> <span class="st">"^0.0.4"</span></span>
+<span id="cb2-15"><a href="#cb2-15" tabindex="-1"></a><span class="dt">pandas</span> <span class="op">=</span> <span class="st">"^1.5.2"</span></span>
+<span id="cb2-16"><a href="#cb2-16" tabindex="-1"></a><span class="dt">plotnine</span> <span class="op">=</span> <span class="st">"^0.10.1"</span></span>
+<span id="cb2-17"><a href="#cb2-17" tabindex="-1"></a></span>
+<span id="cb2-18"><a href="#cb2-18" tabindex="-1"></a><span class="kw">[tool.poetry.dev-dependencies]</span></span>
+<span id="cb2-19"><a href="#cb2-19" tabindex="-1"></a></span>
+<span id="cb2-20"><a href="#cb2-20" tabindex="-1"></a><span class="kw">[build-system]</span></span>
+<span id="cb2-21"><a href="#cb2-21" tabindex="-1"></a><span class="dt">requires</span> <span class="op">=</span> <span class="op">[</span><span class="st">"poetry-core&gt;=1.0.0"</span><span class="op">]</span></span>
+<span id="cb2-22"><a href="#cb2-22" tabindex="-1"></a><span class="dt">build-backend</span> <span class="op">=</span> <span class="st">"poetry.core.masonry.api"</span></span></code></pre>
 </div>
 <div class="codewrapper sourceCode" id="cb3" file="src/Makefile">
 <h3 class="code-label">MAKEFILE<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode makefile" tabindex="0"><code class="sourceCode makefile"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="dt">.RECIPEPREFIX </span><span class="ch">=</span><span class="st"> &gt;</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="ot">.PHONY:</span><span class="dt"> bench</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="dv">bench:</span><span class="dt"> mandelbrot-timings.svg</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="dv">mandelbrot-timings.svg:</span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>&gt; poetry run python -m mandelbrot.bench_all</span></code></pre>
+<pre class="sourceCode makefile" tabindex="0"><code class="sourceCode makefile"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="dt">.RECIPEPREFIX</span> <span class="ch">=</span><span class="st"> &gt;</span></span>
+<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a><span class="ot">.PHONY:</span><span class="dt"> bench</span></span>
+<span id="cb3-4"><a href="#cb3-4" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" tabindex="-1"></a><span class="dv">bench:</span><span class="dt"> mandelbrot-timings.svg</span></span>
+<span id="cb3-6"><a href="#cb3-6" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="#cb3-7" tabindex="-1"></a><span class="dv">mandelbrot-timings.svg:</span></span>
+<span id="cb3-8"><a href="#cb3-8" tabindex="-1"></a>&gt; poetry run python -m mandelbrot.bench_all</span></code></pre>
 </div>
 <!-- 
 Place links that you need to refer to multiple times across pages here. Delete
@@ -440,8 +440,8 @@ any links that you are not going to use.
   "url": "https://template-source.github.io/NA/instructor-notes.html",
   "identifier": "https://template-source.github.io/NA/instructor-notes.html",
   "dateCreated": "2023-07-03",
-  "dateModified": "2024-02-27",
-  "datePublished": "2024-02-27"
+  "dateModified": "2024-03-05",
+  "datePublished": "2024-03-05"
 }
 
   </script><script>

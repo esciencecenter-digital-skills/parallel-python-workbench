@@ -340,25 +340,25 @@ consecutive numbers:</p>
 <div class="codewrapper sourceCode" id="cb1">
 <h3 class="code-label">C<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode c" tabindex="0"><code class="sourceCode c"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;pybind11/pybind11.h&gt;</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>namespace py <span class="op">=</span> pybind11<span class="op">;</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="dt">long</span> <span class="dt">long</span> sum_range<span class="op">(</span><span class="dt">long</span> <span class="dt">long</span> high<span class="op">)</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="dt">long</span> <span class="dt">long</span> i<span class="op">;</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="dt">long</span> <span class="dt">long</span> s <span class="op">=</span> <span class="dv">0</span><span class="bu">LL</span><span class="op">;</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> <span class="op">(</span>i <span class="op">=</span> <span class="dv">0</span><span class="bu">LL</span><span class="op">;</span> i <span class="op">&lt;</span> high<span class="op">;</span> i<span class="op">++)</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>      s <span class="op">+=</span> <span class="op">(</span><span class="dt">long</span> <span class="dt">long</span><span class="op">)</span>i<span class="op">;</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> s<span class="op">;</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>PYBIND11_MODULE<span class="op">(</span>test_pybind<span class="op">,</span> m<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>    m<span class="op">.</span>doc<span class="op">()</span> <span class="op">=</span> <span class="st">"Export the sum_range function as sum_range"</span><span class="op">;</span></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>    m<span class="op">.</span>def<span class="op">(</span><span class="st">"sum_range"</span><span class="op">,</span> <span class="op">&amp;</span>sum_range<span class="op">,</span> <span class="st">"Adds upp consecutive integer numbers from 0 up to and including high-1"</span><span class="op">);</span></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre>
+<pre class="sourceCode c" tabindex="0"><code class="sourceCode c"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;pybind11/pybind11.h&gt;</span></span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a>namespace py <span class="op">=</span> pybind11<span class="op">;</span></span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a><span class="dt">long</span> <span class="dt">long</span> sum_range<span class="op">(</span><span class="dt">long</span> <span class="dt">long</span> high<span class="op">)</span></span>
+<span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb1-6"><a href="#cb1-6" tabindex="-1"></a>  <span class="dt">long</span> <span class="dt">long</span> i<span class="op">;</span></span>
+<span id="cb1-7"><a href="#cb1-7" tabindex="-1"></a>  <span class="dt">long</span> <span class="dt">long</span> s <span class="op">=</span> <span class="dv">0</span><span class="bu">LL</span><span class="op">;</span></span>
+<span id="cb1-8"><a href="#cb1-8" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" tabindex="-1"></a>  <span class="cf">for</span> <span class="op">(</span>i <span class="op">=</span> <span class="dv">0</span><span class="bu">LL</span><span class="op">;</span> i <span class="op">&lt;</span> high<span class="op">;</span> i<span class="op">++)</span></span>
+<span id="cb1-10"><a href="#cb1-10" tabindex="-1"></a>      s <span class="op">+=</span> <span class="op">(</span><span class="dt">long</span> <span class="dt">long</span><span class="op">)</span>i<span class="op">;</span></span>
+<span id="cb1-11"><a href="#cb1-11" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="#cb1-12" tabindex="-1"></a>  <span class="cf">return</span> s<span class="op">;</span></span>
+<span id="cb1-13"><a href="#cb1-13" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb1-14"><a href="#cb1-14" tabindex="-1"></a></span>
+<span id="cb1-15"><a href="#cb1-15" tabindex="-1"></a>PYBIND11_MODULE<span class="op">(</span>test_pybind<span class="op">,</span> m<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb1-16"><a href="#cb1-16" tabindex="-1"></a>    m<span class="op">.</span>doc<span class="op">()</span> <span class="op">=</span> <span class="st">"Export the sum_range function as sum_range"</span><span class="op">;</span></span>
+<span id="cb1-17"><a href="#cb1-17" tabindex="-1"></a></span>
+<span id="cb1-18"><a href="#cb1-18" tabindex="-1"></a>    m<span class="op">.</span>def<span class="op">(</span><span class="st">"sum_range"</span><span class="op">,</span> <span class="op">&amp;</span>sum_range<span class="op">,</span> <span class="st">"Adds upp consecutive integer numbers from 0 up to and including high-1"</span><span class="op">);</span></span>
+<span id="cb1-19"><a href="#cb1-19" tabindex="-1"></a><span class="op">}</span></span></code></pre>
 </div>
 <p>You can easily compile and link it into a shared object (.so) file.
 First you need pybind11. You can install it in a number of ways, like
@@ -366,21 +366,21 @@ pip, but I prefer creating virtual environments using pipenv.</p>
 <div class="codewrapper sourceCode" id="cb2">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install pipenv</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pipenv</span> install pybind11</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="ex">pipenv</span> shell</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="ex">c++</span> <span class="at">-O3</span> <span class="at">-Wall</span> <span class="at">-shared</span> <span class="at">-std</span><span class="op">=</span>c++11 <span class="at">-fPIC</span> <span class="kw">`</span><span class="ex">python3</span> <span class="at">-m</span> pybind11 <span class="at">--includes</span><span class="kw">`</span> test.c <span class="at">-o</span> test_pybind.so</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="ex">pip</span> install pipenv</span>
+<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a><span class="ex">pipenv</span> install pybind11</span>
+<span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a><span class="ex">pipenv</span> shell</span>
+<span id="cb2-4"><a href="#cb2-4" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" tabindex="-1"></a><span class="ex">c++</span> <span class="at">-O3</span> <span class="at">-Wall</span> <span class="at">-shared</span> <span class="at">-std</span><span class="op">=</span>c++11 <span class="at">-fPIC</span> <span class="kw">`</span><span class="ex">python3</span> <span class="at">-m</span> pybind11 <span class="at">--includes</span><span class="kw">`</span> test.c <span class="at">-o</span> test_pybind.so</span></code></pre>
 </div>
 <p>which generates a <code>test_pybind.so</code> shared object which you
 can call from a iPython shell, like this:</p>
 <div class="codewrapper sourceCode" id="cb3">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span><span class="im">import</span> test_pybind</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>sum_range<span class="op">=</span>test_pybind.sum_range</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>high<span class="op">=</span><span class="dv">1000000000</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>brute_force_sum<span class="op">=</span>sum_range(high)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="op">%</span><span class="im">import</span> test_pybind</span>
+<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a><span class="op">%</span>sum_range<span class="op">=</span>test_pybind.sum_range</span>
+<span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a><span class="op">%</span>high<span class="op">=</span><span class="dv">1000000000</span></span>
+<span id="cb3-4"><a href="#cb3-4" tabindex="-1"></a><span class="op">%</span>brute_force_sum<span class="op">=</span>sum_range(high)</span></code></pre>
 </div>
 <p>Now you might want to check the output, by comparing with the
 well-known formula for the sum of consecutive integers. ~~~python
@@ -394,16 +394,16 @@ be just the algorithm:</p>
 <div class="codewrapper sourceCode" id="cb4">
 <h3 class="code-label">C<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode c" tabindex="0"><code class="sourceCode c"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="dt">long</span> <span class="dt">long</span> sum_range<span class="op">(</span><span class="dt">long</span> <span class="dt">long</span> high<span class="op">)</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">long</span> <span class="dt">long</span> i<span class="op">;</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">long</span> <span class="dt">long</span> s <span class="op">=</span> <span class="dv">0</span><span class="bu">LL</span><span class="op">;</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> <span class="op">(</span>i <span class="op">=</span> <span class="dv">0</span><span class="bu">LL</span><span class="op">;</span> i <span class="op">&lt;</span> high<span class="op">;</span> i<span class="op">++)</span></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>      s <span class="op">+=</span> <span class="op">(</span><span class="dt">long</span> <span class="dt">long</span><span class="op">)</span>i<span class="op">;</span></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> s<span class="op">;</span></span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre>
+<pre class="sourceCode c" tabindex="0"><code class="sourceCode c"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="dt">long</span> <span class="dt">long</span> sum_range<span class="op">(</span><span class="dt">long</span> <span class="dt">long</span> high<span class="op">)</span></span>
+<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb4-3"><a href="#cb4-3" tabindex="-1"></a>  <span class="dt">long</span> <span class="dt">long</span> i<span class="op">;</span></span>
+<span id="cb4-4"><a href="#cb4-4" tabindex="-1"></a>  <span class="dt">long</span> <span class="dt">long</span> s <span class="op">=</span> <span class="dv">0</span><span class="bu">LL</span><span class="op">;</span></span>
+<span id="cb4-5"><a href="#cb4-5" tabindex="-1"></a></span>
+<span id="cb4-6"><a href="#cb4-6" tabindex="-1"></a>  <span class="cf">for</span> <span class="op">(</span>i <span class="op">=</span> <span class="dv">0</span><span class="bu">LL</span><span class="op">;</span> i <span class="op">&lt;</span> high<span class="op">;</span> i<span class="op">++)</span></span>
+<span id="cb4-7"><a href="#cb4-7" tabindex="-1"></a>      s <span class="op">+=</span> <span class="op">(</span><span class="dt">long</span> <span class="dt">long</span><span class="op">)</span>i<span class="op">;</span></span>
+<span id="cb4-8"><a href="#cb4-8" tabindex="-1"></a></span>
+<span id="cb4-9"><a href="#cb4-9" tabindex="-1"></a>  <span class="cf">return</span> s<span class="op">;</span></span>
+<span id="cb4-10"><a href="#cb4-10" tabindex="-1"></a><span class="op">}</span></span></code></pre>
 </div>
 <p>Compile and link using ~<del>bash gcc -O3 -g -fPIC -c -o test.o
 test.c ld -shared -o libtest.so test.o</del>~</p>
@@ -412,13 +412,13 @@ test.c ld -shared -o libtest.so test.o</del>~</p>
 <div class="codewrapper sourceCode" id="cb5">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span><span class="im">import</span> ctypes</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>testlib <span class="op">=</span> ctypes.cdll.LoadLibrary(<span class="st">"./libtest.so"</span>)</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>sum_range <span class="op">=</span> testlib.sum_range</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>sum_range.argtypes <span class="op">=</span> [ctypes.c_longlong]</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>sum_range.restype <span class="op">=</span> ctypes.c_longlong</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>high<span class="op">=</span><span class="dv">1000000000</span></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>brute_force_sum<span class="op">=</span>sum_range(high)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a><span class="op">%</span><span class="im">import</span> ctypes</span>
+<span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a><span class="op">%</span>testlib <span class="op">=</span> ctypes.cdll.LoadLibrary(<span class="st">"./libtest.so"</span>)</span>
+<span id="cb5-3"><a href="#cb5-3" tabindex="-1"></a><span class="op">%</span>sum_range <span class="op">=</span> testlib.sum_range</span>
+<span id="cb5-4"><a href="#cb5-4" tabindex="-1"></a><span class="op">%</span>sum_range.argtypes <span class="op">=</span> [ctypes.c_longlong]</span>
+<span id="cb5-5"><a href="#cb5-5" tabindex="-1"></a><span class="op">%</span>sum_range.restype <span class="op">=</span> ctypes.c_longlong</span>
+<span id="cb5-6"><a href="#cb5-6" tabindex="-1"></a><span class="op">%</span>high<span class="op">=</span><span class="dv">1000000000</span></span>
+<span id="cb5-7"><a href="#cb5-7" tabindex="-1"></a><span class="op">%</span>brute_force_sum<span class="op">=</span>sum_range(high)</span></code></pre>
 </div>
 <p>Again, you can compare with the formula for the sum of consecutive
 integers. ~~~python %sum_from_formula=high*(high-1)/2 %sum_from_formula
@@ -453,17 +453,17 @@ blog by Christopher Swenson</a>.</p>
 <div class="codewrapper sourceCode" id="cb7">
 <h3 class="code-label">C<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode c" tabindex="0"><code class="sourceCode c"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="dt">long</span> <span class="dt">long</span> conditional_sum_range<span class="op">(</span><span class="dt">long</span> <span class="dt">long</span> to<span class="op">)</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">long</span> <span class="dt">long</span> i<span class="op">;</span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">long</span> <span class="dt">long</span> s <span class="op">=</span> <span class="dv">0</span><span class="bu">LL</span><span class="op">;</span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> <span class="op">(</span>i <span class="op">=</span> <span class="dv">0</span><span class="bu">LL</span><span class="op">;</span> i <span class="op">&lt;</span> to<span class="op">;</span> i<span class="op">++)</span></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="op">(</span>i <span class="op">%</span> <span class="dv">3</span> <span class="op">==</span> <span class="dv">0</span><span class="op">)</span></span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>      s <span class="op">+=</span> i<span class="op">;</span></span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> s<span class="op">;</span></span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre>
+<pre class="sourceCode c" tabindex="0"><code class="sourceCode c"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="dt">long</span> <span class="dt">long</span> conditional_sum_range<span class="op">(</span><span class="dt">long</span> <span class="dt">long</span> to<span class="op">)</span></span>
+<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb7-3"><a href="#cb7-3" tabindex="-1"></a>  <span class="dt">long</span> <span class="dt">long</span> i<span class="op">;</span></span>
+<span id="cb7-4"><a href="#cb7-4" tabindex="-1"></a>  <span class="dt">long</span> <span class="dt">long</span> s <span class="op">=</span> <span class="dv">0</span><span class="bu">LL</span><span class="op">;</span></span>
+<span id="cb7-5"><a href="#cb7-5" tabindex="-1"></a></span>
+<span id="cb7-6"><a href="#cb7-6" tabindex="-1"></a>  <span class="cf">for</span> <span class="op">(</span>i <span class="op">=</span> <span class="dv">0</span><span class="bu">LL</span><span class="op">;</span> i <span class="op">&lt;</span> to<span class="op">;</span> i<span class="op">++)</span></span>
+<span id="cb7-7"><a href="#cb7-7" tabindex="-1"></a>    <span class="cf">if</span> <span class="op">(</span>i <span class="op">%</span> <span class="dv">3</span> <span class="op">==</span> <span class="dv">0</span><span class="op">)</span></span>
+<span id="cb7-8"><a href="#cb7-8" tabindex="-1"></a>      s <span class="op">+=</span> i<span class="op">;</span></span>
+<span id="cb7-9"><a href="#cb7-9" tabindex="-1"></a></span>
+<span id="cb7-10"><a href="#cb7-10" tabindex="-1"></a>  <span class="cf">return</span> s<span class="op">;</span></span>
+<span id="cb7-11"><a href="#cb7-11" tabindex="-1"></a><span class="op">}</span></span></code></pre>
 </div>
 </div>
 </div>
@@ -473,7 +473,7 @@ blog by Christopher Swenson</a>.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1">Show me the solution</h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p>Insert a line <code>if i%3==0:</code> in the code for
 <code>sum_range_numba</code> and rename it to
@@ -481,13 +481,13 @@ blog by Christopher Swenson</a>.</p>
 <div class="codewrapper sourceCode" id="cb8">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="at">@numba.jit</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> conditional_sum_range_numba(a: <span class="bu">int</span>):</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    x <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(a):</span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> i<span class="op">%</span><span class="dv">3</span><span class="op">==</span><span class="dv">0</span>:</span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>            x <span class="op">+=</span> i</span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> x</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="at">@numba.jit</span></span>
+<span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a><span class="kw">def</span> conditional_sum_range_numba(a: <span class="bu">int</span>):</span>
+<span id="cb8-3"><a href="#cb8-3" tabindex="-1"></a>    x <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb8-4"><a href="#cb8-4" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(a):</span>
+<span id="cb8-5"><a href="#cb8-5" tabindex="-1"></a>        <span class="cf">if</span> i<span class="op">%</span><span class="dv">3</span><span class="op">==</span><span class="dv">0</span>:</span>
+<span id="cb8-6"><a href="#cb8-6" tabindex="-1"></a>            x <span class="op">+=</span> i</span>
+<span id="cb8-7"><a href="#cb8-7" tabindex="-1"></a>    <span class="cf">return</span> x</span></code></pre>
 </div>
 <p>Let’s check how fast it runs.</p>
 <pre><code>%timeit conditional_sum_range_numba(10**7)</code></pre>
@@ -502,20 +502,20 @@ file name is still <code>test.c</code>:</p>
 <div class="codewrapper sourceCode" id="cb11">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gcc</span> <span class="at">-O3</span> <span class="at">-g</span> <span class="at">-fPIC</span> <span class="at">-c</span> <span class="at">-o</span> test.o test.c</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ld</span> <span class="at">-shared</span> <span class="at">-o</span> libtest.so test.o</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a><span class="fu">gcc</span> <span class="at">-O3</span> <span class="at">-g</span> <span class="at">-fPIC</span> <span class="at">-c</span> <span class="at">-o</span> test.o test.c</span>
+<span id="cb11-2"><a href="#cb11-2" tabindex="-1"></a><span class="fu">ld</span> <span class="at">-shared</span> <span class="at">-o</span> libtest.so test.o</span></code></pre>
 </div>
 <p>Again, we can time our compiled <code>conditional_sum_range</code> C
 library, e.g. from the iPython interface:</p>
 <div class="codewrapper sourceCode" id="cb12">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> ctypes</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>testlib <span class="op">=</span> ctypes.cdll.LoadLibrary(<span class="st">"./libtest.so"</span>)</span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>conditional_sum_range <span class="op">=</span> testlib.conditional_sum_range</span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>conditional_sum_range.argtypes <span class="op">=</span> [ctypes.c_longlong]</span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>conditional_sum_range.restype <span class="op">=</span> ctypes.c_longlong</span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>timeit conditional_sum_range(<span class="dv">10</span><span class="op">**</span><span class="dv">7</span>)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a><span class="im">import</span> ctypes</span>
+<span id="cb12-2"><a href="#cb12-2" tabindex="-1"></a>testlib <span class="op">=</span> ctypes.cdll.LoadLibrary(<span class="st">"./libtest.so"</span>)</span>
+<span id="cb12-3"><a href="#cb12-3" tabindex="-1"></a>conditional_sum_range <span class="op">=</span> testlib.conditional_sum_range</span>
+<span id="cb12-4"><a href="#cb12-4" tabindex="-1"></a>conditional_sum_range.argtypes <span class="op">=</span> [ctypes.c_longlong]</span>
+<span id="cb12-5"><a href="#cb12-5" tabindex="-1"></a>conditional_sum_range.restype <span class="op">=</span> ctypes.c_longlong</span>
+<span id="cb12-6"><a href="#cb12-6" tabindex="-1"></a><span class="op">%</span>timeit conditional_sum_range(<span class="dv">10</span><span class="op">**</span><span class="dv">7</span>)</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -540,21 +540,21 @@ need to replace <code>&amp;sum_range</code> by
 <div class="codewrapper sourceCode" id="cb14">
 <h3 class="code-label">C<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode c" tabindex="0"><code class="sourceCode c"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>PYBIND11_MODULE<span class="op">(</span>test_pybind<span class="op">,</span> m<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>    m<span class="op">.</span>doc<span class="op">()</span> <span class="op">=</span> <span class="st">"pybind11 example plugin"</span><span class="op">;</span> <span class="co">// optional module docstring</span></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>    m<span class="op">.</span>def<span class="op">(</span><span class="st">"sum_range"</span><span class="op">,</span> py<span class="op">::</span>vectorize<span class="op">(</span>sum_range<span class="op">),</span> <span class="st">"Adds upp consecutive integer numbers from 0 up to and including high-1"</span><span class="op">);</span></span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre>
+<pre class="sourceCode c" tabindex="0"><code class="sourceCode c"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a>PYBIND11_MODULE<span class="op">(</span>test_pybind<span class="op">,</span> m<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb14-2"><a href="#cb14-2" tabindex="-1"></a>    m<span class="op">.</span>doc<span class="op">()</span> <span class="op">=</span> <span class="st">"pybind11 example plugin"</span><span class="op">;</span> <span class="co">// optional module docstring</span></span>
+<span id="cb14-3"><a href="#cb14-3" tabindex="-1"></a></span>
+<span id="cb14-4"><a href="#cb14-4" tabindex="-1"></a>    m<span class="op">.</span>def<span class="op">(</span><span class="st">"sum_range"</span><span class="op">,</span> py<span class="op">::</span>vectorize<span class="op">(</span>sum_range<span class="op">),</span> <span class="st">"Adds upp consecutive integer numbers from 0 up to and including high-1"</span><span class="op">);</span></span>
+<span id="cb14-5"><a href="#cb14-5" tabindex="-1"></a><span class="op">}</span></span></code></pre>
 </div>
 <p>Now let’s see what happens if we pass <code>test_pybind.so</code> an
 array instead of an integer.</p>
 <div class="codewrapper sourceCode" id="cb15">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span><span class="im">import</span> test_pybind</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>sum_range<span class="op">=</span>test_pybind.sum_range</span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>ys<span class="op">=</span><span class="bu">range</span>(<span class="dv">10</span>)</span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>sum_range(ys)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a><span class="op">%</span><span class="im">import</span> test_pybind</span>
+<span id="cb15-2"><a href="#cb15-2" tabindex="-1"></a><span class="op">%</span>sum_range<span class="op">=</span>test_pybind.sum_range</span>
+<span id="cb15-3"><a href="#cb15-3" tabindex="-1"></a><span class="op">%</span>ys<span class="op">=</span><span class="bu">range</span>(<span class="dv">10</span>)</span>
+<span id="cb15-4"><a href="#cb15-4" tabindex="-1"></a><span class="op">%</span>sum_range(ys)</span></code></pre>
 </div>
 <p>gives</p>
 <div class="codewrapper">
@@ -568,8 +568,8 @@ first):</p>
 <div class="codewrapper sourceCode" id="cb17">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>out<span class="op">=</span>sum_range(ys)</span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>out[<span class="dv">1</span>:]<span class="op">-</span>out[:<span class="op">-</span><span class="dv">1</span>]</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" tabindex="-1"></a><span class="op">%</span>out<span class="op">=</span>sum_range(ys)</span>
+<span id="cb17-2"><a href="#cb17-2" tabindex="-1"></a><span class="op">%</span>out[<span class="dv">1</span>:]<span class="op">-</span>out[:<span class="op">-</span><span class="dv">1</span>]</span></code></pre>
 </div>
 <p>which gives</p>
 <div class="codewrapper">
@@ -588,8 +588,8 @@ be run multithreaded. try the following from an iPython shell:</p>
 <div class="codewrapper sourceCode" id="cb19">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>high<span class="op">=</span><span class="bu">int</span>(<span class="fl">1e9</span>)</span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>timeit(sum_range(high))</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" tabindex="-1"></a><span class="op">%</span>high<span class="op">=</span><span class="bu">int</span>(<span class="fl">1e9</span>)</span>
+<span id="cb19-2"><a href="#cb19-2" tabindex="-1"></a><span class="op">%</span>timeit(sum_range(high))</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -603,20 +603,20 @@ were running without overhead. Let’s try:</p>
 <div class="codewrapper sourceCode" id="cb21">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> threading <span class="im">as</span> T</span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> time</span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> timer():</span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>    start_time <span class="op">=</span> time.time()</span>
-<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> x <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10</span>):</span>
-<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>        t1 <span class="op">=</span> T.Thread(target<span class="op">=</span>sum_range, args<span class="op">=</span>(high,))</span>
-<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>        t2 <span class="op">=</span> T.Thread(target<span class="op">=</span>sum_range, args<span class="op">=</span>(high,))</span>
-<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>        t1.start()</span>
-<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>        t2.start()</span>
-<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>        t1.join()</span>
-<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a>        t2.join()</span>
-<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a>    end_time <span class="op">=</span> time.time()</span>
-<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Time elapsed = </span><span class="sc">{</span>end_time<span class="op">-</span>start_time<span class="sc">:.2f}</span><span class="ss">s"</span>)</span>
-<span id="cb21-14"><a href="#cb21-14" aria-hidden="true" tabindex="-1"></a>timer()</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" tabindex="-1"></a><span class="im">import</span> threading <span class="im">as</span> T</span>
+<span id="cb21-2"><a href="#cb21-2" tabindex="-1"></a><span class="im">import</span> time</span>
+<span id="cb21-3"><a href="#cb21-3" tabindex="-1"></a><span class="kw">def</span> timer():</span>
+<span id="cb21-4"><a href="#cb21-4" tabindex="-1"></a>    start_time <span class="op">=</span> time.time()</span>
+<span id="cb21-5"><a href="#cb21-5" tabindex="-1"></a>    <span class="cf">for</span> x <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10</span>):</span>
+<span id="cb21-6"><a href="#cb21-6" tabindex="-1"></a>        t1 <span class="op">=</span> T.Thread(target<span class="op">=</span>sum_range, args<span class="op">=</span>(high,))</span>
+<span id="cb21-7"><a href="#cb21-7" tabindex="-1"></a>        t2 <span class="op">=</span> T.Thread(target<span class="op">=</span>sum_range, args<span class="op">=</span>(high,))</span>
+<span id="cb21-8"><a href="#cb21-8" tabindex="-1"></a>        t1.start()</span>
+<span id="cb21-9"><a href="#cb21-9" tabindex="-1"></a>        t2.start()</span>
+<span id="cb21-10"><a href="#cb21-10" tabindex="-1"></a>        t1.join()</span>
+<span id="cb21-11"><a href="#cb21-11" tabindex="-1"></a>        t2.join()</span>
+<span id="cb21-12"><a href="#cb21-12" tabindex="-1"></a>    end_time <span class="op">=</span> time.time()</span>
+<span id="cb21-13"><a href="#cb21-13" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Time elapsed = </span><span class="sc">{</span>end_time<span class="op">-</span>start_time<span class="sc">:.2f}</span><span class="ss">s"</span>)</span>
+<span id="cb21-14"><a href="#cb21-14" tabindex="-1"></a>timer()</span></code></pre>
 </div>
 <p>This gives</p>
 <pre><code>Time elapsed = 5.59s</code></pre>
@@ -627,52 +627,52 @@ parallelly. We need to add a single declaration to test.c:
 <div class="codewrapper sourceCode" id="cb23">
 <h3 class="code-label">C<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode c" tabindex="0"><code class="sourceCode c"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>PYBIND11_MODULE<span class="op">(</span>test_pybind<span class="op">,</span> m<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>    m<span class="op">.</span>doc<span class="op">()</span> <span class="op">=</span> <span class="st">"pybind11 example plugin"</span><span class="op">;</span> <span class="co">// optional module docstring</span></span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>    m<span class="op">.</span>def<span class="op">(</span><span class="st">"sum_range"</span><span class="op">,</span> py<span class="op">::</span>vectorize<span class="op">(</span>sum_range<span class="op">),</span> <span class="st">"Adds upp consecutive integer numbers from 0 up to and including high-1"</span><span class="op">);</span></span>
-<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre>
+<pre class="sourceCode c" tabindex="0"><code class="sourceCode c"><span id="cb23-1"><a href="#cb23-1" tabindex="-1"></a>PYBIND11_MODULE<span class="op">(</span>test_pybind<span class="op">,</span> m<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb23-2"><a href="#cb23-2" tabindex="-1"></a>    m<span class="op">.</span>doc<span class="op">()</span> <span class="op">=</span> <span class="st">"pybind11 example plugin"</span><span class="op">;</span> <span class="co">// optional module docstring</span></span>
+<span id="cb23-3"><a href="#cb23-3" tabindex="-1"></a></span>
+<span id="cb23-4"><a href="#cb23-4" tabindex="-1"></a>    m<span class="op">.</span>def<span class="op">(</span><span class="st">"sum_range"</span><span class="op">,</span> py<span class="op">::</span>vectorize<span class="op">(</span>sum_range<span class="op">),</span> <span class="st">"Adds upp consecutive integer numbers from 0 up to and including high-1"</span><span class="op">);</span></span>
+<span id="cb23-5"><a href="#cb23-5" tabindex="-1"></a><span class="op">}</span></span></code></pre>
 </div>
 <p>like this:</p>
 <div class="codewrapper sourceCode" id="cb24">
 <h3 class="code-label">C<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode c" tabindex="0"><code class="sourceCode c"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>PYBIND11_MODULE<span class="op">(</span>test_pybind<span class="op">,</span> m<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>    m<span class="op">.</span>doc<span class="op">()</span> <span class="op">=</span> <span class="st">"pybind11 example plugin"</span><span class="op">;</span> <span class="co">// optional module docstring</span></span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>    m<span class="op">.</span>def<span class="op">(</span><span class="st">"sum_range"</span><span class="op">,</span> <span class="op">&amp;</span>sum_range<span class="op">,</span> <span class="st">"A function which adds upp numbers from 0 up to and including high-1"</span><span class="op">,</span> py<span class="op">::</span>call_guard<span class="op">&lt;</span>py<span class="op">::</span>gil_scoped_release<span class="op">&gt;());</span></span>
-<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre>
+<pre class="sourceCode c" tabindex="0"><code class="sourceCode c"><span id="cb24-1"><a href="#cb24-1" tabindex="-1"></a>PYBIND11_MODULE<span class="op">(</span>test_pybind<span class="op">,</span> m<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb24-2"><a href="#cb24-2" tabindex="-1"></a>    m<span class="op">.</span>doc<span class="op">()</span> <span class="op">=</span> <span class="st">"pybind11 example plugin"</span><span class="op">;</span> <span class="co">// optional module docstring</span></span>
+<span id="cb24-3"><a href="#cb24-3" tabindex="-1"></a></span>
+<span id="cb24-4"><a href="#cb24-4" tabindex="-1"></a>    m<span class="op">.</span>def<span class="op">(</span><span class="st">"sum_range"</span><span class="op">,</span> <span class="op">&amp;</span>sum_range<span class="op">,</span> <span class="st">"A function which adds upp numbers from 0 up to and including high-1"</span><span class="op">,</span> py<span class="op">::</span>call_guard<span class="op">&lt;</span>py<span class="op">::</span>gil_scoped_release<span class="op">&gt;());</span></span>
+<span id="cb24-5"><a href="#cb24-5" tabindex="-1"></a><span class="op">}</span></span></code></pre>
 </div>
 <p>Now compile again:</p>
 <div class="codewrapper sourceCode" id="cb25">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="ex">c++</span> <span class="at">-O3</span> <span class="at">-Wall</span> <span class="at">-shared</span> <span class="at">-std</span><span class="op">=</span>c++11 <span class="at">-fPIC</span> <span class="kw">`</span><span class="ex">python3</span> <span class="at">-m</span> pybind11 <span class="at">--includes</span><span class="kw">`</span> test.c <span class="at">-o</span> test_pybind.so</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" tabindex="-1"></a><span class="ex">c++</span> <span class="at">-O3</span> <span class="at">-Wall</span> <span class="at">-shared</span> <span class="at">-std</span><span class="op">=</span>c++11 <span class="at">-fPIC</span> <span class="kw">`</span><span class="ex">python3</span> <span class="at">-m</span> pybind11 <span class="at">--includes</span><span class="kw">`</span> test.c <span class="at">-o</span> test_pybind.so</span></code></pre>
 </div>
 <p>Reimport the rebuilt shared object - this can only be done by
 quitting and relaunching the iPython interpreter - and time again.</p>
 <div class="codewrapper sourceCode" id="cb26">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> test_pybind</span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> time</span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> threading <span class="im">as</span> T</span>
-<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>sum_range<span class="op">=</span>test_pybind.sum_range</span>
-<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>high<span class="op">=</span><span class="bu">int</span>(<span class="fl">1e9</span>)</span>
-<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> timer():</span>
-<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a>    start_time <span class="op">=</span> time.time()</span>
-<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> x <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10</span>):</span>
-<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a>        t1 <span class="op">=</span> T.Thread(target<span class="op">=</span>sum_range, args<span class="op">=</span>(high,))</span>
-<span id="cb26-12"><a href="#cb26-12" aria-hidden="true" tabindex="-1"></a>        t2 <span class="op">=</span> T.Thread(target<span class="op">=</span>sum_range, args<span class="op">=</span>(high,))</span>
-<span id="cb26-13"><a href="#cb26-13" aria-hidden="true" tabindex="-1"></a>        t1.start()</span>
-<span id="cb26-14"><a href="#cb26-14" aria-hidden="true" tabindex="-1"></a>        t2.start()</span>
-<span id="cb26-15"><a href="#cb26-15" aria-hidden="true" tabindex="-1"></a>        t1.join()</span>
-<span id="cb26-16"><a href="#cb26-16" aria-hidden="true" tabindex="-1"></a>        t2.join()</span>
-<span id="cb26-17"><a href="#cb26-17" aria-hidden="true" tabindex="-1"></a>    end_time <span class="op">=</span> time.time()</span>
-<span id="cb26-18"><a href="#cb26-18" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Time elapsed = </span><span class="sc">{</span>end_time<span class="op">-</span>start_time<span class="sc">:.2f}</span><span class="ss">s"</span>)</span>
-<span id="cb26-19"><a href="#cb26-19" aria-hidden="true" tabindex="-1"></a>timer()</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" tabindex="-1"></a><span class="im">import</span> test_pybind</span>
+<span id="cb26-2"><a href="#cb26-2" tabindex="-1"></a><span class="im">import</span> time</span>
+<span id="cb26-3"><a href="#cb26-3" tabindex="-1"></a><span class="im">import</span> threading <span class="im">as</span> T</span>
+<span id="cb26-4"><a href="#cb26-4" tabindex="-1"></a></span>
+<span id="cb26-5"><a href="#cb26-5" tabindex="-1"></a>sum_range<span class="op">=</span>test_pybind.sum_range</span>
+<span id="cb26-6"><a href="#cb26-6" tabindex="-1"></a>high<span class="op">=</span><span class="bu">int</span>(<span class="fl">1e9</span>)</span>
+<span id="cb26-7"><a href="#cb26-7" tabindex="-1"></a></span>
+<span id="cb26-8"><a href="#cb26-8" tabindex="-1"></a><span class="kw">def</span> timer():</span>
+<span id="cb26-9"><a href="#cb26-9" tabindex="-1"></a>    start_time <span class="op">=</span> time.time()</span>
+<span id="cb26-10"><a href="#cb26-10" tabindex="-1"></a>    <span class="cf">for</span> x <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10</span>):</span>
+<span id="cb26-11"><a href="#cb26-11" tabindex="-1"></a>        t1 <span class="op">=</span> T.Thread(target<span class="op">=</span>sum_range, args<span class="op">=</span>(high,))</span>
+<span id="cb26-12"><a href="#cb26-12" tabindex="-1"></a>        t2 <span class="op">=</span> T.Thread(target<span class="op">=</span>sum_range, args<span class="op">=</span>(high,))</span>
+<span id="cb26-13"><a href="#cb26-13" tabindex="-1"></a>        t1.start()</span>
+<span id="cb26-14"><a href="#cb26-14" tabindex="-1"></a>        t2.start()</span>
+<span id="cb26-15"><a href="#cb26-15" tabindex="-1"></a>        t1.join()</span>
+<span id="cb26-16"><a href="#cb26-16" tabindex="-1"></a>        t2.join()</span>
+<span id="cb26-17"><a href="#cb26-17" tabindex="-1"></a>    end_time <span class="op">=</span> time.time()</span>
+<span id="cb26-18"><a href="#cb26-18" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Time elapsed = </span><span class="sc">{</span>end_time<span class="op">-</span>start_time<span class="sc">:.2f}</span><span class="ss">s"</span>)</span>
+<span id="cb26-19"><a href="#cb26-19" tabindex="-1"></a>timer()</span></code></pre>
 </div>
 <p>This gives:</p>
 <div class="codewrapper">
@@ -768,7 +768,7 @@ any links that you are not going to use.
   "identifier": "https://template-source.github.io/NA/instructor/extra-external-c.html",
   "dateCreated": "2023-07-03",
   "dateModified": "2023-01-11",
-  "datePublished": "2024-02-27"
+  "datePublished": "2024-03-05"
 }
 
   </script><script>

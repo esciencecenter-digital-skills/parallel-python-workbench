@@ -335,26 +335,25 @@ examples.</p>
 <div class="codewrapper sourceCode" id="cb1">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Summation making use of numpy:</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>result <span class="op">=</span> np.arange(<span class="dv">10</span><span class="op">**</span><span class="dv">7</span>).<span class="bu">sum</span>()</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="co"># Summation making use of numpy:</span></span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a>result <span class="op">=</span> np.arange(<span class="dv">10</span><span class="op">**</span><span class="dv">7</span>).<span class="bu">sum</span>()</span></code></pre>
 </div>
 <div class="codewrapper sourceCode" id="cb2">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The same summation, but using dask to parallelize the code.</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># NB: the API for dask arrays mimics that of numpy</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> dask.array <span class="im">as</span> da</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>work <span class="op">=</span> da.arange(<span class="dv">10</span><span class="op">**</span><span class="dv">7</span>).<span class="bu">sum</span>()</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>result <span class="op">=</span> work.compute()</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="co"># The same summation, but using dask to parallelize the code.</span></span>
+<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a><span class="co"># NB: the API for dask arrays mimics that of numpy</span></span>
+<span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a><span class="im">import</span> dask.array <span class="im">as</span> da</span>
+<span id="cb2-4"><a href="#cb2-4" tabindex="-1"></a>work <span class="op">=</span> da.arange(<span class="dv">10</span><span class="op">**</span><span class="dv">7</span>).<span class="bu">sum</span>()</span>
+<span id="cb2-5"><a href="#cb2-5" tabindex="-1"></a>result <span class="op">=</span> work.compute()</span></code></pre>
 </div>
-<div id="try-a-heavy-enough-task" class="callout callout">
+<div id="callout1" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div id="try-a-heavy-enough-task" class="callout-inner">
-<h3 class="callout-title">Try a heavy enough task<a class="anchor" aria-label="anchor" href="#try-a-heavy-enough-task"></a>
-</h3>
+<div class="section level3 callout-title callout-inner">
+<h3 class="callout-title" id="try-a-heavy-enough-task">Try a heavy enough task<a class="anchor" aria-label="anchor" href="#try-a-heavy-enough-task"></a></h3>
 <div class="callout-content">
 <p>It could be that a task this small does not register on your radar.
 Depending on your computer you will have to raise the power to
@@ -364,14 +363,15 @@ for too much memory can make your computer slow to a crawl.</p>
 </div>
 </div>
 </div>
-<figure><img src="../fig/system-monitor.jpg" alt="screenshot of system monitor" class="figure mx-auto d-block"><figcaption>System monitor</figcaption></figure><p>How can we test this in a more practical way? In Jupyter we can use
+<figure><img src="../fig/system-monitor.jpg" alt="screenshot of system monitor" class="figure mx-auto d-block"><div class="figcaption">System monitor</div>
+</figure><p>How can we test this in a more practical way? In Jupyter we can use
 some line magics, small “magic words” preceded by the symbol
 <code>%%</code> that modify the behaviour of the cell.</p>
 <div class="codewrapper sourceCode" id="cb3">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>time</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>np.arange(<span class="dv">10</span><span class="op">**</span><span class="dv">7</span>).<span class="bu">sum</span>()</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="op">%%</span>time</span>
+<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a>np.arange(<span class="dv">10</span><span class="op">**</span><span class="dv">7</span>).<span class="bu">sum</span>()</span></code></pre>
 </div>
 <p>The <code>%%time</code> line magic checks how long it took for a
 computation to finish. It does nothing to change the computation itself.
@@ -389,16 +389,16 @@ better.</p>
 <div class="codewrapper sourceCode" id="cb4">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>timeit</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>np.arange(<span class="dv">10</span><span class="op">**</span><span class="dv">7</span>).<span class="bu">sum</span>()</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="op">%%</span>timeit</span>
+<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a>np.arange(<span class="dv">10</span><span class="op">**</span><span class="dv">7</span>).<span class="bu">sum</span>()</span></code></pre>
 </div>
 <p>If you want to store the output of <code>%%timeit</code> in a Python
 variable, you can do so with the <code>-o</code> flag.</p>
 <div class="codewrapper sourceCode" id="cb5">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>time <span class="op">=</span> <span class="op">%</span>timeit <span class="op">-</span>o np.arange(<span class="dv">10</span><span class="op">**</span><span class="dv">7</span>).<span class="bu">sum</span>()</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Time taken: </span><span class="sc">{</span>time<span class="sc">.</span>average<span class="sc">:.4f}</span><span class="ss">s"</span>)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a>time <span class="op">=</span> <span class="op">%</span>timeit <span class="op">-</span>o np.arange(<span class="dv">10</span><span class="op">**</span><span class="dv">7</span>).<span class="bu">sum</span>()</span>
+<span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Time taken: </span><span class="sc">{</span>time<span class="sc">.</span>average<span class="sc">:.4f}</span><span class="ss">s"</span>)</span></code></pre>
 </div>
 <p>Note that this does not tell you anything about memory consumption or
 efficiency.</p>
@@ -416,7 +416,7 @@ code below in the console:</p>
 <div class="codewrapper sourceCode" id="cb6">
 <h3 class="code-label">SH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode sh" tabindex="0"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install memory_profiler</span></code></pre>
+<pre class="sourceCode sh" tabindex="0"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="ex">pip</span> install memory_profiler</span></code></pre>
 </div>
 <p>In Jupyter, type the following lines to compare the memory usage of
 the serial and parallel versions of the code presented above (again,
@@ -425,33 +425,34 @@ needed):</p>
 <div class="codewrapper sourceCode" id="cb7">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> dask.array <span class="im">as</span> da</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> memory_profiler <span class="im">import</span> memory_usage</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> sum_with_numpy():</span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Serial implementation</span></span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    np.arange(<span class="dv">10</span><span class="op">**</span><span class="dv">7</span>).<span class="bu">sum</span>()</span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> sum_with_dask():</span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Parallel implementation</span></span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>    work <span class="op">=</span> da.arange(<span class="dv">10</span><span class="op">**</span><span class="dv">7</span>).<span class="bu">sum</span>()</span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>    work.compute()</span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>memory_numpy <span class="op">=</span> memory_usage(sum_with_numpy, interval<span class="op">=</span><span class="fl">0.01</span>)</span>
-<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>memory_dask <span class="op">=</span> memory_usage(sum_with_dask, interval<span class="op">=</span><span class="fl">0.01</span>)</span>
-<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot results</span></span>
-<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>plt.plot(memory_numpy, label<span class="op">=</span><span class="st">'numpy'</span>)</span>
-<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>plt.plot(memory_dask, label<span class="op">=</span><span class="st">'dask'</span>)</span>
-<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Time step'</span>)</span>
-<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Memory / MB'</span>)</span>
-<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
-<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a><span class="im">import</span> dask.array <span class="im">as</span> da</span>
+<span id="cb7-3"><a href="#cb7-3" tabindex="-1"></a><span class="im">from</span> memory_profiler <span class="im">import</span> memory_usage</span>
+<span id="cb7-4"><a href="#cb7-4" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb7-5"><a href="#cb7-5" tabindex="-1"></a></span>
+<span id="cb7-6"><a href="#cb7-6" tabindex="-1"></a><span class="kw">def</span> sum_with_numpy():</span>
+<span id="cb7-7"><a href="#cb7-7" tabindex="-1"></a>    <span class="co"># Serial implementation</span></span>
+<span id="cb7-8"><a href="#cb7-8" tabindex="-1"></a>    np.arange(<span class="dv">10</span><span class="op">**</span><span class="dv">7</span>).<span class="bu">sum</span>()</span>
+<span id="cb7-9"><a href="#cb7-9" tabindex="-1"></a></span>
+<span id="cb7-10"><a href="#cb7-10" tabindex="-1"></a><span class="kw">def</span> sum_with_dask():</span>
+<span id="cb7-11"><a href="#cb7-11" tabindex="-1"></a>    <span class="co"># Parallel implementation</span></span>
+<span id="cb7-12"><a href="#cb7-12" tabindex="-1"></a>    work <span class="op">=</span> da.arange(<span class="dv">10</span><span class="op">**</span><span class="dv">7</span>).<span class="bu">sum</span>()</span>
+<span id="cb7-13"><a href="#cb7-13" tabindex="-1"></a>    work.compute()</span>
+<span id="cb7-14"><a href="#cb7-14" tabindex="-1"></a></span>
+<span id="cb7-15"><a href="#cb7-15" tabindex="-1"></a>memory_numpy <span class="op">=</span> memory_usage(sum_with_numpy, interval<span class="op">=</span><span class="fl">0.01</span>)</span>
+<span id="cb7-16"><a href="#cb7-16" tabindex="-1"></a>memory_dask <span class="op">=</span> memory_usage(sum_with_dask, interval<span class="op">=</span><span class="fl">0.01</span>)</span>
+<span id="cb7-17"><a href="#cb7-17" tabindex="-1"></a></span>
+<span id="cb7-18"><a href="#cb7-18" tabindex="-1"></a><span class="co"># Plot results</span></span>
+<span id="cb7-19"><a href="#cb7-19" tabindex="-1"></a>plt.plot(memory_numpy, label<span class="op">=</span><span class="st">'numpy'</span>)</span>
+<span id="cb7-20"><a href="#cb7-20" tabindex="-1"></a>plt.plot(memory_dask, label<span class="op">=</span><span class="st">'dask'</span>)</span>
+<span id="cb7-21"><a href="#cb7-21" tabindex="-1"></a>plt.xlabel(<span class="st">'Time step'</span>)</span>
+<span id="cb7-22"><a href="#cb7-22" tabindex="-1"></a>plt.ylabel(<span class="st">'Memory / MB'</span>)</span>
+<span id="cb7-23"><a href="#cb7-23" tabindex="-1"></a>plt.legend()</span>
+<span id="cb7-24"><a href="#cb7-24" tabindex="-1"></a>plt.show()</span></code></pre>
 </div>
 <p>The figure should be similar to the one below:</p>
-<figure><img src="../fig/memory.png" alt="showing very high peak for numpy, and constant low line for dask" class="figure mx-auto d-block"><figcaption>Memory performance</figcaption></figure><div id="exercise-plenary" class="callout challenge">
+<figure><img src="../fig/memory.png" alt="showing very high peak for numpy, and constant low line for dask" class="figure mx-auto d-block"><div class="figcaption">Memory performance</div>
+</figure><div id="exercise-plenary" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
@@ -468,7 +469,7 @@ needed):</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1">Show me the solution</h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p>Chunking! Dask chunks the large array, such that the data is never
 entirely in memory.</p>
@@ -476,13 +477,12 @@ entirely in memory.</p>
 </div>
 </div>
 </div>
-<div id="profiling-from-dask" class="callout callout">
+<div id="callout2" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div id="profiling-from-dask" class="callout-inner">
-<h3 class="callout-title">Profiling from Dask<a class="anchor" aria-label="anchor" href="#profiling-from-dask"></a>
-</h3>
+<div class="section level3 callout-title callout-inner">
+<h3 class="callout-title" id="profiling-from-dask">Profiling from Dask<a class="anchor" aria-label="anchor" href="#profiling-from-dask"></a></h3>
 <div class="callout-content">
 <p>Dask has several option to do profiling from Dask itself. See the <a href="https://docs.dask.org/en/latest/diagnostics-local.html" class="external-link">dask
 documentation</a> for more information.</p>
@@ -495,22 +495,21 @@ documentation</a> for more information.</p>
 <p>Using more cores for a computation can decrease the run time. The
 first question is of course: how many cores do I have? See the snippets
 below to find out:</p>
-<div id="find-out-how-many-cores-your-machine-has" class="callout callout">
+<div id="callout3" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div id="find-out-how-many-cores-your-machine-has" class="callout-inner">
-<h3 class="callout-title">Find out how many cores your machine has<a class="anchor" aria-label="anchor" href="#find-out-how-many-cores-your-machine-has"></a>
-</h3>
+<div class="section level3 callout-title callout-inner">
+<h3 class="callout-title" id="find-out-how-many-cores-your-machine-has">Find out how many cores your machine has<a class="anchor" aria-label="anchor" href="#find-out-how-many-cores-your-machine-has"></a></h3>
 <div class="callout-content">
 <p>The number of cores can be found from Python by executing:</p>
 <div class="codewrapper sourceCode" id="cb8">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> psutil</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>N_physical_cores <span class="op">=</span> psutil.cpu_count(logical<span class="op">=</span><span class="va">False</span>)</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>N_logical_cores <span class="op">=</span> psutil.cpu_count(logical<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"The number of physical/logical cores is </span><span class="sc">{</span>N_physical_cores<span class="sc">}</span><span class="ss">/</span><span class="sc">{</span>N_logical_cores<span class="sc">}</span><span class="ss">"</span>)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="im">import</span> psutil</span>
+<span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a>N_physical_cores <span class="op">=</span> psutil.cpu_count(logical<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb8-3"><a href="#cb8-3" tabindex="-1"></a>N_logical_cores <span class="op">=</span> psutil.cpu_count(logical<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb8-4"><a href="#cb8-4" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"The number of physical/logical cores is </span><span class="sc">{</span>N_physical_cores<span class="sc">}</span><span class="ss">/</span><span class="sc">{</span>N_logical_cores<span class="sc">}</span><span class="ss">"</span>)</span></code></pre>
 </div>
 </div>
 </div>
@@ -526,20 +525,21 @@ reasons for this, hyper-threading being one of them.</p>
 <div class="codewrapper sourceCode" id="cb9">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> []</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> n <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">9</span>):</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    time_taken <span class="op">=</span> <span class="op">%</span>timeit <span class="op">-</span>r <span class="dv">1</span> <span class="op">-</span>o da.arange(<span class="dv">5</span><span class="op">*</span><span class="dv">10</span><span class="op">**</span><span class="dv">7</span>).<span class="bu">sum</span>().compute(num_workers<span class="op">=</span>n)</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    x.append(time_taken.average)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a>x <span class="op">=</span> []</span>
+<span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a><span class="cf">for</span> n <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">9</span>):</span>
+<span id="cb9-3"><a href="#cb9-3" tabindex="-1"></a>    time_taken <span class="op">=</span> <span class="op">%</span>timeit <span class="op">-</span>r <span class="dv">1</span> <span class="op">-</span>o da.arange(<span class="dv">5</span><span class="op">*</span><span class="dv">10</span><span class="op">**</span><span class="dv">7</span>).<span class="bu">sum</span>().compute(num_workers<span class="op">=</span>n)</span>
+<span id="cb9-4"><a href="#cb9-4" tabindex="-1"></a>    x.append(time_taken.average)</span></code></pre>
 </div>
 <p>Gives the following result:</p>
 <div class="codewrapper sourceCode" id="cb10">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> pd.DataFrame({<span class="st">"n"</span>: <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">9</span>), <span class="st">"t"</span>: x})</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>data.set_index(<span class="st">"n"</span>).plot()</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a>data <span class="op">=</span> pd.DataFrame({<span class="st">"n"</span>: <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">9</span>), <span class="st">"t"</span>: x})</span>
+<span id="cb10-3"><a href="#cb10-3" tabindex="-1"></a>data.set_index(<span class="st">"n"</span>).plot()</span></code></pre>
 </div>
-<figure><img src="../fig/more-cores.svg" alt="showing that using more cores can also make things slower" class="figure mx-auto d-block"><figcaption>Timings against number of cores</figcaption></figure><div id="discussion" class="callout discussion">
+<figure><img src="../fig/more-cores.svg" alt="showing that using more cores can also make things slower" class="figure mx-auto d-block"><div class="figcaption">Timings against number of cores</div>
+</figure><div id="discussion" class="callout discussion">
 <div class="callout-square">
 <i class="callout-icon" data-feather="message-circle"></i>
 </div>
@@ -635,7 +635,7 @@ any links that you are not going to use.
   "identifier": "https://template-source.github.io/NA/instructor/benchmarking.html",
   "dateCreated": "2023-07-03",
   "dateModified": "2023-01-04",
-  "datePublished": "2024-02-27"
+  "datePublished": "2024-03-05"
 }
 
   </script><script>

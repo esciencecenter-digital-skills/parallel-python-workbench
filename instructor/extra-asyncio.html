@@ -380,7 +380,7 @@ thought. Function calls can be evaluated by a single active agent.</p>
   <h3 class="accordion-header" id="headingInstructor1">
 <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div>Instructor Note</h3>
 </button>
-<div id="collapseInstructor1" class="accordion-collapse collapse" aria-labelledby="headingInstructor1" data-bs-parent="#accordionInstructor1">
+<div id="collapseInstructor1" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor1" aria-labelledby="headingInstructor1">
 <div class="accordion-body">
 <p>This section goes rather in depth on coroutines. This is meant to
 grow the correct mental model about what’s going on with
@@ -397,27 +397,27 @@ produces all integers (if you wait long enough):</p>
 <div class="codewrapper sourceCode" id="cb2">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> integers():</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  a <span class="op">=</span> <span class="dv">1</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">while</span> <span class="va">True</span>:</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">yield</span> a</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    a <span class="op">+=</span> <span class="dv">1</span></span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="kw">def</span> integers():</span>
+<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a>  a <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a>  <span class="cf">while</span> <span class="va">True</span>:</span>
+<span id="cb2-4"><a href="#cb2-4" tabindex="-1"></a>    <span class="cf">yield</span> a</span>
+<span id="cb2-5"><a href="#cb2-5" tabindex="-1"></a>    a <span class="op">+=</span> <span class="dv">1</span></span></code></pre>
 </div>
 <p>Then</p>
 <div class="codewrapper sourceCode" id="cb3">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> integers():</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>(i)</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> i <span class="op">&gt;</span> <span class="dv">10</span>:   <span class="co"># or this would take a while</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">break</span></span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> integers():</span>
+<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a>  <span class="bu">print</span>(i)</span>
+<span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a>  <span class="cf">if</span> i <span class="op">&gt;</span> <span class="dv">10</span>:   <span class="co"># or this would take a while</span></span>
+<span id="cb3-4"><a href="#cb3-4" tabindex="-1"></a>    <span class="cf">break</span></span></code></pre>
 </div>
 <p>or</p>
 <div class="codewrapper sourceCode" id="cb4">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> itertools <span class="im">import</span> islice</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>islice(integers(), <span class="dv">0</span>, <span class="dv">10</span>)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="im">from</span> itertools <span class="im">import</span> islice</span>
+<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a>islice(integers(), <span class="dv">0</span>, <span class="dv">10</span>)</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -454,32 +454,32 @@ numbers?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1">Show me the solution</h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb7">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> even_integers():</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> i <span class="kw">in</span> integers():</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> i <span class="op">%</span> <span class="dv">2</span> <span class="op">==</span> <span class="dv">0</span>:</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>      <span class="cf">yield</span> i</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="kw">def</span> even_integers():</span>
+<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a>  <span class="cf">for</span> i <span class="kw">in</span> integers():</span>
+<span id="cb7-3"><a href="#cb7-3" tabindex="-1"></a>    <span class="cf">if</span> i <span class="op">%</span> <span class="dv">2</span> <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb7-4"><a href="#cb7-4" tabindex="-1"></a>      <span class="cf">yield</span> i</span></code></pre>
 </div>
 <p>or</p>
 <div class="codewrapper sourceCode" id="cb8">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> even_integers():</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> (i <span class="cf">for</span> i <span class="kw">in</span> integers() <span class="cf">if</span> i <span class="op">%</span> <span class="dv">2</span> <span class="op">==</span> <span class="dv">0</span>)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="kw">def</span> even_integers():</span>
+<span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a>  <span class="cf">return</span> (i <span class="cf">for</span> i <span class="kw">in</span> integers() <span class="cf">if</span> i <span class="op">%</span> <span class="dv">2</span> <span class="op">==</span> <span class="dv">0</span>)</span></code></pre>
 </div>
 <p>For the Fibonacci numbers:</p>
 <div class="codewrapper sourceCode" id="cb9">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> fib():</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  a, b <span class="op">=</span> <span class="dv">1</span>, <span class="dv">1</span></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">while</span> <span class="va">True</span>:</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">yield</span> a</span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    a, b <span class="op">=</span> b, a <span class="op">+</span> b</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a><span class="kw">def</span> fib():</span>
+<span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a>  a, b <span class="op">=</span> <span class="dv">1</span>, <span class="dv">1</span></span>
+<span id="cb9-3"><a href="#cb9-3" tabindex="-1"></a>  <span class="cf">while</span> <span class="va">True</span>:</span>
+<span id="cb9-4"><a href="#cb9-4" tabindex="-1"></a>    <span class="cf">yield</span> a</span>
+<span id="cb9-5"><a href="#cb9-5" tabindex="-1"></a>    a, b <span class="op">=</span> b, a <span class="op">+</span> b</span></code></pre>
 </div>
 </div>
 </div>
@@ -497,16 +497,16 @@ that prints whatever you send to it.</p>
 <div class="codewrapper sourceCode" id="cb10">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> printer():</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">while</span> <span class="va">True</span>:</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    x <span class="op">=</span> <span class="cf">yield</span></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(x)</span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> printer()</span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="bu">next</span>(p)   <span class="co"># we need to advance the coroutine to the first yield</span></span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>p.send(<span class="st">"Mercury"</span>)</span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>p.send(<span class="st">"Venus"</span>)</span>
-<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>p.send(<span class="st">"Earth"</span>)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a><span class="kw">def</span> printer():</span>
+<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a>  <span class="cf">while</span> <span class="va">True</span>:</span>
+<span id="cb10-3"><a href="#cb10-3" tabindex="-1"></a>    x <span class="op">=</span> <span class="cf">yield</span></span>
+<span id="cb10-4"><a href="#cb10-4" tabindex="-1"></a>    <span class="bu">print</span>(x)</span>
+<span id="cb10-5"><a href="#cb10-5" tabindex="-1"></a></span>
+<span id="cb10-6"><a href="#cb10-6" tabindex="-1"></a>p <span class="op">=</span> printer()</span>
+<span id="cb10-7"><a href="#cb10-7" tabindex="-1"></a><span class="bu">next</span>(p)   <span class="co"># we need to advance the coroutine to the first yield</span></span>
+<span id="cb10-8"><a href="#cb10-8" tabindex="-1"></a>p.send(<span class="st">"Mercury"</span>)</span>
+<span id="cb10-9"><a href="#cb10-9" tabindex="-1"></a>p.send(<span class="st">"Venus"</span>)</span>
+<span id="cb10-10"><a href="#cb10-10" tabindex="-1"></a>p.send(<span class="st">"Earth"</span>)</span></code></pre>
 </div>
 <div id="challenge-line-numbers" class="callout challenge">
 <div class="callout-square">
@@ -525,16 +525,16 @@ that prints whatever you send to it.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2">Show me the solution</h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb11">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> printer():</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  lineno <span class="op">=</span> <span class="dv">1</span></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">while</span> <span class="va">True</span>:</span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    x <span class="op">=</span> <span class="cf">yield</span></span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>lineno<span class="sc">:03}</span><span class="ss"> </span><span class="sc">{</span>x<span class="sc">}</span><span class="ss">"</span>)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a><span class="kw">def</span> printer():</span>
+<span id="cb11-2"><a href="#cb11-2" tabindex="-1"></a>  lineno <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb11-3"><a href="#cb11-3" tabindex="-1"></a>  <span class="cf">while</span> <span class="va">True</span>:</span>
+<span id="cb11-4"><a href="#cb11-4" tabindex="-1"></a>    x <span class="op">=</span> <span class="cf">yield</span></span>
+<span id="cb11-5"><a href="#cb11-5" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>lineno<span class="sc">:03}</span><span class="ss"> </span><span class="sc">{</span>x<span class="sc">}</span><span class="ss">"</span>)</span></code></pre>
 </div>
 </div>
 </div>
@@ -579,14 +579,14 @@ futures in any cell.</p>
 <div class="codewrapper sourceCode" id="cb12">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> asyncio</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="cf">async</span> <span class="kw">def</span> counter(name):</span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">5</span>):</span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>name<span class="sc">:&lt;10}</span><span class="ss"> </span><span class="sc">{</span>i<span class="sc">:03}</span><span class="ss">"</span>)</span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">await</span> asyncio.sleep(<span class="fl">0.2</span>)</span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="cf">await</span> counter(<span class="st">"Venus"</span>)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a><span class="im">import</span> asyncio</span>
+<span id="cb12-2"><a href="#cb12-2" tabindex="-1"></a></span>
+<span id="cb12-3"><a href="#cb12-3" tabindex="-1"></a><span class="cf">async</span> <span class="kw">def</span> counter(name):</span>
+<span id="cb12-4"><a href="#cb12-4" tabindex="-1"></a>  <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">5</span>):</span>
+<span id="cb12-5"><a href="#cb12-5" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>name<span class="sc">:&lt;10}</span><span class="ss"> </span><span class="sc">{</span>i<span class="sc">:03}</span><span class="ss">"</span>)</span>
+<span id="cb12-6"><a href="#cb12-6" tabindex="-1"></a>    <span class="cf">await</span> asyncio.sleep(<span class="fl">0.2</span>)</span>
+<span id="cb12-7"><a href="#cb12-7" tabindex="-1"></a></span>
+<span id="cb12-8"><a href="#cb12-8" tabindex="-1"></a><span class="cf">await</span> counter(<span class="st">"Venus"</span>)</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -602,7 +602,7 @@ two coroutines.</p>
 <div class="codewrapper sourceCode" id="cb14">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="cf">await</span> asyncio.gather(counter(<span class="st">"Earth"</span>), counter(<span class="st">"Moon"</span>))</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a><span class="cf">await</span> asyncio.gather(counter(<span class="st">"Earth"</span>), counter(<span class="st">"Moon"</span>))</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -627,15 +627,15 @@ program will look like this:</p>
 <div class="codewrapper sourceCode" id="cb16">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> asyncio</span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>...</span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="cf">async</span> <span class="kw">def</span> main():</span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>    ...</span>
-<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
-<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>    asyncio.run(main())</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a><span class="im">import</span> asyncio</span>
+<span id="cb16-2"><a href="#cb16-2" tabindex="-1"></a></span>
+<span id="cb16-3"><a href="#cb16-3" tabindex="-1"></a>...</span>
+<span id="cb16-4"><a href="#cb16-4" tabindex="-1"></a></span>
+<span id="cb16-5"><a href="#cb16-5" tabindex="-1"></a><span class="cf">async</span> <span class="kw">def</span> main():</span>
+<span id="cb16-6"><a href="#cb16-6" tabindex="-1"></a>    ...</span>
+<span id="cb16-7"><a href="#cb16-7" tabindex="-1"></a></span>
+<span id="cb16-8"><a href="#cb16-8" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
+<span id="cb16-9"><a href="#cb16-9" tabindex="-1"></a>    asyncio.run(main())</span></code></pre>
 </div>
 <p>Asyncio, just like we saw with Dask, is contagious. Once you have
 async code at some low level, higher level code also needs to be async:
@@ -657,7 +657,7 @@ timer.</p>
   <h3 class="accordion-header" id="headingInstructor2">
 <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div>Instructor Note</h3>
 </button>
-<div id="collapseInstructor2" class="accordion-collapse collapse" aria-labelledby="headingInstructor2" data-bs-parent="#accordionInstructor2">
+<div id="collapseInstructor2" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor2" aria-labelledby="headingInstructor2">
 <div class="accordion-body">
 <p>It may be best to let participants copy paste this snippet from the
 collaborative document. You may want to explain what a context manager
@@ -670,31 +670,31 @@ novices.</p>
 <div class="codewrapper sourceCode" id="async-timer">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="async-timer-1"><a href="#async-timer-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> dataclasses <span class="im">import</span> dataclass</span>
-<span id="async-timer-2"><a href="#async-timer-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> typing <span class="im">import</span> Optional</span>
-<span id="async-timer-3"><a href="#async-timer-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> time <span class="im">import</span> perf_counter</span>
-<span id="async-timer-4"><a href="#async-timer-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> contextlib <span class="im">import</span> asynccontextmanager</span>
-<span id="async-timer-5"><a href="#async-timer-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="async-timer-6"><a href="#async-timer-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="async-timer-7"><a href="#async-timer-7" aria-hidden="true" tabindex="-1"></a><span class="at">@dataclass</span></span>
-<span id="async-timer-8"><a href="#async-timer-8" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Elapsed:</span>
-<span id="async-timer-9"><a href="#async-timer-9" aria-hidden="true" tabindex="-1"></a>    time: Optional[<span class="bu">float</span>] <span class="op">=</span> <span class="va">None</span></span>
-<span id="async-timer-10"><a href="#async-timer-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="async-timer-11"><a href="#async-timer-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="async-timer-12"><a href="#async-timer-12" aria-hidden="true" tabindex="-1"></a><span class="at">@asynccontextmanager</span></span>
-<span id="async-timer-13"><a href="#async-timer-13" aria-hidden="true" tabindex="-1"></a><span class="cf">async</span> <span class="kw">def</span> timer():</span>
-<span id="async-timer-14"><a href="#async-timer-14" aria-hidden="true" tabindex="-1"></a>    e <span class="op">=</span> Elapsed()</span>
-<span id="async-timer-15"><a href="#async-timer-15" aria-hidden="true" tabindex="-1"></a>    t <span class="op">=</span> perf_counter()</span>
-<span id="async-timer-16"><a href="#async-timer-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">yield</span> e</span>
-<span id="async-timer-17"><a href="#async-timer-17" aria-hidden="true" tabindex="-1"></a>    e.time <span class="op">=</span> perf_counter() <span class="op">-</span> t</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="async-timer-1"><a href="#async-timer-1" tabindex="-1"></a><span class="im">from</span> dataclasses <span class="im">import</span> dataclass</span>
+<span id="async-timer-2"><a href="#async-timer-2" tabindex="-1"></a><span class="im">from</span> typing <span class="im">import</span> Optional</span>
+<span id="async-timer-3"><a href="#async-timer-3" tabindex="-1"></a><span class="im">from</span> time <span class="im">import</span> perf_counter</span>
+<span id="async-timer-4"><a href="#async-timer-4" tabindex="-1"></a><span class="im">from</span> contextlib <span class="im">import</span> asynccontextmanager</span>
+<span id="async-timer-5"><a href="#async-timer-5" tabindex="-1"></a></span>
+<span id="async-timer-6"><a href="#async-timer-6" tabindex="-1"></a></span>
+<span id="async-timer-7"><a href="#async-timer-7" tabindex="-1"></a><span class="at">@dataclass</span></span>
+<span id="async-timer-8"><a href="#async-timer-8" tabindex="-1"></a><span class="kw">class</span> Elapsed:</span>
+<span id="async-timer-9"><a href="#async-timer-9" tabindex="-1"></a>    time: Optional[<span class="bu">float</span>] <span class="op">=</span> <span class="va">None</span></span>
+<span id="async-timer-10"><a href="#async-timer-10" tabindex="-1"></a></span>
+<span id="async-timer-11"><a href="#async-timer-11" tabindex="-1"></a></span>
+<span id="async-timer-12"><a href="#async-timer-12" tabindex="-1"></a><span class="at">@asynccontextmanager</span></span>
+<span id="async-timer-13"><a href="#async-timer-13" tabindex="-1"></a><span class="cf">async</span> <span class="kw">def</span> timer():</span>
+<span id="async-timer-14"><a href="#async-timer-14" tabindex="-1"></a>    e <span class="op">=</span> Elapsed()</span>
+<span id="async-timer-15"><a href="#async-timer-15" tabindex="-1"></a>    t <span class="op">=</span> perf_counter()</span>
+<span id="async-timer-16"><a href="#async-timer-16" tabindex="-1"></a>    <span class="cf">yield</span> e</span>
+<span id="async-timer-17"><a href="#async-timer-17" tabindex="-1"></a>    e.time <span class="op">=</span> perf_counter() <span class="op">-</span> t</span></code></pre>
 </div>
 <p>Now we can write:</p>
 <div class="codewrapper sourceCode" id="cb17">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="cf">async</span> <span class="cf">with</span> timer() <span class="im">as</span> t:</span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">await</span> asyncio.sleep(<span class="fl">0.2</span>)</span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"that took </span><span class="sc">{</span>t<span class="sc">.</span>time<span class="sc">}</span><span class="ss"> seconds"</span>)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" tabindex="-1"></a><span class="cf">async</span> <span class="cf">with</span> timer() <span class="im">as</span> t:</span>
+<span id="cb17-2"><a href="#cb17-2" tabindex="-1"></a>  <span class="cf">await</span> asyncio.sleep(<span class="fl">0.2</span>)</span>
+<span id="cb17-3"><a href="#cb17-3" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"that took </span><span class="sc">{</span>t<span class="sc">.</span>time<span class="sc">}</span><span class="ss"> seconds"</span>)</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -713,30 +713,30 @@ code!</p>
 <div class="codewrapper sourceCode" id="calc-pi-numba">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="calc-pi-numba-1"><a href="#calc-pi-numba-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> random</span>
-<span id="calc-pi-numba-2"><a href="#calc-pi-numba-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numba</span>
-<span id="calc-pi-numba-3"><a href="#calc-pi-numba-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="calc-pi-numba-4"><a href="#calc-pi-numba-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="calc-pi-numba-5"><a href="#calc-pi-numba-5" aria-hidden="true" tabindex="-1"></a><span class="at">@numba.njit</span>(nogil<span class="op">=</span><span class="va">True</span>)</span>
-<span id="calc-pi-numba-6"><a href="#calc-pi-numba-6" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> calc_pi(N):</span>
-<span id="calc-pi-numba-7"><a href="#calc-pi-numba-7" aria-hidden="true" tabindex="-1"></a>    M <span class="op">=</span> <span class="dv">0</span></span>
-<span id="calc-pi-numba-8"><a href="#calc-pi-numba-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(N):</span>
-<span id="calc-pi-numba-9"><a href="#calc-pi-numba-9" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Simulate impact coordinates</span></span>
-<span id="calc-pi-numba-10"><a href="#calc-pi-numba-10" aria-hidden="true" tabindex="-1"></a>        x <span class="op">=</span> random.uniform(<span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span>)</span>
-<span id="calc-pi-numba-11"><a href="#calc-pi-numba-11" aria-hidden="true" tabindex="-1"></a>        y <span class="op">=</span> random.uniform(<span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span>)</span>
-<span id="calc-pi-numba-12"><a href="#calc-pi-numba-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="calc-pi-numba-13"><a href="#calc-pi-numba-13" aria-hidden="true" tabindex="-1"></a>        <span class="co"># True if impact happens inside the circle</span></span>
-<span id="calc-pi-numba-14"><a href="#calc-pi-numba-14" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> x<span class="op">**</span><span class="dv">2</span> <span class="op">+</span> y<span class="op">**</span><span class="dv">2</span> <span class="op">&lt;</span> <span class="fl">1.0</span>:</span>
-<span id="calc-pi-numba-15"><a href="#calc-pi-numba-15" aria-hidden="true" tabindex="-1"></a>            M <span class="op">+=</span> <span class="dv">1</span></span>
-<span id="calc-pi-numba-16"><a href="#calc-pi-numba-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="dv">4</span> <span class="op">*</span> M <span class="op">/</span> N</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="calc-pi-numba-1"><a href="#calc-pi-numba-1" tabindex="-1"></a><span class="im">import</span> random</span>
+<span id="calc-pi-numba-2"><a href="#calc-pi-numba-2" tabindex="-1"></a><span class="im">import</span> numba</span>
+<span id="calc-pi-numba-3"><a href="#calc-pi-numba-3" tabindex="-1"></a></span>
+<span id="calc-pi-numba-4"><a href="#calc-pi-numba-4" tabindex="-1"></a></span>
+<span id="calc-pi-numba-5"><a href="#calc-pi-numba-5" tabindex="-1"></a><span class="at">@numba.njit</span>(nogil<span class="op">=</span><span class="va">True</span>)</span>
+<span id="calc-pi-numba-6"><a href="#calc-pi-numba-6" tabindex="-1"></a><span class="kw">def</span> calc_pi(N):</span>
+<span id="calc-pi-numba-7"><a href="#calc-pi-numba-7" tabindex="-1"></a>    M <span class="op">=</span> <span class="dv">0</span></span>
+<span id="calc-pi-numba-8"><a href="#calc-pi-numba-8" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(N):</span>
+<span id="calc-pi-numba-9"><a href="#calc-pi-numba-9" tabindex="-1"></a>        <span class="co"># Simulate impact coordinates</span></span>
+<span id="calc-pi-numba-10"><a href="#calc-pi-numba-10" tabindex="-1"></a>        x <span class="op">=</span> random.uniform(<span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span>)</span>
+<span id="calc-pi-numba-11"><a href="#calc-pi-numba-11" tabindex="-1"></a>        y <span class="op">=</span> random.uniform(<span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span>)</span>
+<span id="calc-pi-numba-12"><a href="#calc-pi-numba-12" tabindex="-1"></a></span>
+<span id="calc-pi-numba-13"><a href="#calc-pi-numba-13" tabindex="-1"></a>        <span class="co"># True if impact happens inside the circle</span></span>
+<span id="calc-pi-numba-14"><a href="#calc-pi-numba-14" tabindex="-1"></a>        <span class="cf">if</span> x<span class="op">**</span><span class="dv">2</span> <span class="op">+</span> y<span class="op">**</span><span class="dv">2</span> <span class="op">&lt;</span> <span class="fl">1.0</span>:</span>
+<span id="calc-pi-numba-15"><a href="#calc-pi-numba-15" tabindex="-1"></a>            M <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="calc-pi-numba-16"><a href="#calc-pi-numba-16" tabindex="-1"></a>    <span class="cf">return</span> <span class="dv">4</span> <span class="op">*</span> M <span class="op">/</span> N</span></code></pre>
 </div>
 <p>We can send work to another thread with
 <code>asyncio.to_thread</code>.</p>
 <div class="codewrapper sourceCode" id="cb19">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="cf">async</span> <span class="cf">with</span> timer() <span class="im">as</span> t:</span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">await</span> asyncio.to_thread(calc_pi, <span class="dv">10</span><span class="op">**</span><span class="dv">7</span>)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" tabindex="-1"></a><span class="cf">async</span> <span class="cf">with</span> timer() <span class="im">as</span> t:</span>
+<span id="cb19-2"><a href="#cb19-2" tabindex="-1"></a>    <span class="cf">await</span> asyncio.to_thread(calc_pi, <span class="dv">10</span><span class="op">**</span><span class="dv">7</span>)</span></code></pre>
 </div>
 <div id="gather-multiple-outcomes" class="callout challenge">
 <div class="callout-square">
@@ -757,15 +757,15 @@ computations, and time them.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3">Show me the solution</h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb20">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="cf">async</span> <span class="cf">with</span> timer() <span class="im">as</span> t:</span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>    result <span class="op">=</span> <span class="cf">await</span> asyncio.gather(</span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>       asyncio.to_thread(calc_pi, <span class="dv">10</span><span class="op">**</span><span class="dv">7</span>),</span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>       asyncio.to_thread(calc_pi, <span class="dv">10</span><span class="op">**</span><span class="dv">7</span>))</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" tabindex="-1"></a><span class="cf">async</span> <span class="cf">with</span> timer() <span class="im">as</span> t:</span>
+<span id="cb20-2"><a href="#cb20-2" tabindex="-1"></a>    result <span class="op">=</span> <span class="cf">await</span> asyncio.gather(</span>
+<span id="cb20-3"><a href="#cb20-3" tabindex="-1"></a>       asyncio.to_thread(calc_pi, <span class="dv">10</span><span class="op">**</span><span class="dv">7</span>),</span>
+<span id="cb20-4"><a href="#cb20-4" tabindex="-1"></a>       asyncio.to_thread(calc_pi, <span class="dv">10</span><span class="op">**</span><span class="dv">7</span>))</span></code></pre>
 </div>
 </div>
 </div>
@@ -775,19 +775,19 @@ computations, and time them.</p>
 <div class="codewrapper sourceCode" id="async-calc-pi">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="async-calc-pi-1"><a href="#async-calc-pi-1" aria-hidden="true" tabindex="-1"></a><span class="cf">async</span> <span class="kw">def</span> calc_pi_split(N, M):</span>
-<span id="async-calc-pi-2"><a href="#async-calc-pi-2" aria-hidden="true" tabindex="-1"></a>    lst <span class="op">=</span> <span class="cf">await</span> asyncio.gather(<span class="op">*</span>(asyncio.to_thread(calc_pi, N) <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(M)))</span>
-<span id="async-calc-pi-3"><a href="#async-calc-pi-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="bu">sum</span>(lst) <span class="op">/</span> M</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="async-calc-pi-1"><a href="#async-calc-pi-1" tabindex="-1"></a><span class="cf">async</span> <span class="kw">def</span> calc_pi_split(N, M):</span>
+<span id="async-calc-pi-2"><a href="#async-calc-pi-2" tabindex="-1"></a>    lst <span class="op">=</span> <span class="cf">await</span> asyncio.gather(<span class="op">*</span>(asyncio.to_thread(calc_pi, N) <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(M)))</span>
+<span id="async-calc-pi-3"><a href="#async-calc-pi-3" tabindex="-1"></a>    <span class="cf">return</span> <span class="bu">sum</span>(lst) <span class="op">/</span> M</span></code></pre>
 </div>
 <p>Now, see if we get a speed up.</p>
 <div class="codewrapper sourceCode" id="async-calc-pi-main">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="async-calc-pi-main-1"><a href="#async-calc-pi-main-1" aria-hidden="true" tabindex="-1"></a><span class="cf">async</span> <span class="cf">with</span> timer() <span class="im">as</span> t:</span>
-<span id="async-calc-pi-main-2"><a href="#async-calc-pi-main-2" aria-hidden="true" tabindex="-1"></a>    pi <span class="op">=</span> <span class="cf">await</span> asyncio.to_thread(calc_pi, <span class="dv">10</span><span class="op">**</span><span class="dv">8</span>)</span>
-<span id="async-calc-pi-main-3"><a href="#async-calc-pi-main-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Value of π: </span><span class="sc">{</span>pi<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="async-calc-pi-main-4"><a href="#async-calc-pi-main-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="async-calc-pi-main-5"><a href="#async-calc-pi-main-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"that took </span><span class="sc">{</span>t<span class="sc">.</span>time<span class="sc">}</span><span class="ss"> seconds"</span>)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="async-calc-pi-main-1"><a href="#async-calc-pi-main-1" tabindex="-1"></a><span class="cf">async</span> <span class="cf">with</span> timer() <span class="im">as</span> t:</span>
+<span id="async-calc-pi-main-2"><a href="#async-calc-pi-main-2" tabindex="-1"></a>    pi <span class="op">=</span> <span class="cf">await</span> asyncio.to_thread(calc_pi, <span class="dv">10</span><span class="op">**</span><span class="dv">8</span>)</span>
+<span id="async-calc-pi-main-3"><a href="#async-calc-pi-main-3" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Value of π: </span><span class="sc">{</span>pi<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="async-calc-pi-main-4"><a href="#async-calc-pi-main-4" tabindex="-1"></a></span>
+<span id="async-calc-pi-main-5"><a href="#async-calc-pi-main-5" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"that took </span><span class="sc">{</span>t<span class="sc">.</span>time<span class="sc">}</span><span class="ss"> seconds"</span>)</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -798,11 +798,11 @@ that took 2.3300534340087324 seconds</code></pre>
 <div class="codewrapper sourceCode" id="async-calc-pi-main">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="async-calc-pi-main-1"><a href="#async-calc-pi-main-1" aria-hidden="true" tabindex="-1"></a><span class="cf">async</span> <span class="cf">with</span> timer() <span class="im">as</span> t:</span>
-<span id="async-calc-pi-main-2"><a href="#async-calc-pi-main-2" aria-hidden="true" tabindex="-1"></a>    pi <span class="op">=</span> <span class="cf">await</span> calc_pi_split(<span class="dv">10</span><span class="op">**</span><span class="dv">7</span>, <span class="dv">10</span>)</span>
-<span id="async-calc-pi-main-3"><a href="#async-calc-pi-main-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Value of π: </span><span class="sc">{</span>pi<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="async-calc-pi-main-4"><a href="#async-calc-pi-main-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="async-calc-pi-main-5"><a href="#async-calc-pi-main-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"that took </span><span class="sc">{</span>t<span class="sc">.</span>time<span class="sc">}</span><span class="ss"> seconds"</span>)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="async-calc-pi-main-1"><a href="#async-calc-pi-main-1" tabindex="-1"></a><span class="cf">async</span> <span class="cf">with</span> timer() <span class="im">as</span> t:</span>
+<span id="async-calc-pi-main-2"><a href="#async-calc-pi-main-2" tabindex="-1"></a>    pi <span class="op">=</span> <span class="cf">await</span> calc_pi_split(<span class="dv">10</span><span class="op">**</span><span class="dv">7</span>, <span class="dv">10</span>)</span>
+<span id="async-calc-pi-main-3"><a href="#async-calc-pi-main-3" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Value of π: </span><span class="sc">{</span>pi<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="async-calc-pi-main-4"><a href="#async-calc-pi-main-4" tabindex="-1"></a></span>
+<span id="async-calc-pi-main-5"><a href="#async-calc-pi-main-5" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"that took </span><span class="sc">{</span>t<span class="sc">.</span>time<span class="sc">}</span><span class="ss"> seconds"</span>)</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -835,7 +835,7 @@ it.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution4" aria-expanded="false" aria-controls="collapseSolution4">
   <h4 class="accordion-header" id="headingSolution4">Show me the solution</h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
 <div class="accordion-body">
 <p>Make sure that you create an <code>async</code> main function, and
 run it using <code>asyncio.run</code>. Create a small module called
@@ -843,44 +843,44 @@ run it using <code>asyncio.run</code>. Create a small module called
 <div class="codewrapper sourceCode" id="cb23" file="src/calc_pi/__init__.py">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># file: calc_pi/__init__.py</span></span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="co"># may remain empty</span></span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" tabindex="-1"></a><span class="co"># file: calc_pi/__init__.py</span></span>
+<span id="cb23-2"><a href="#cb23-2" tabindex="-1"></a><span class="co"># may remain empty</span></span></code></pre>
 </div>
 <p>Put the Numba code in a separate file
 <code>calc_pi/numba.py</code>.</p>
 <div class="codewrapper sourceCode" id="cb24" file="src/calc_pi/numba.py">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># file: calc_pi/numba.py</span></span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="op">&lt;&lt;</span>calc<span class="op">-</span>pi<span class="op">-</span>numba<span class="op">&gt;&gt;</span></span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" tabindex="-1"></a><span class="co"># file: calc_pi/numba.py</span></span>
+<span id="cb24-2"><a href="#cb24-2" tabindex="-1"></a></span>
+<span id="cb24-3"><a href="#cb24-3" tabindex="-1"></a><span class="op">&lt;&lt;</span>calc<span class="op">-</span>pi<span class="op">-</span>numba<span class="op">&gt;&gt;</span></span></code></pre>
 </div>
 <p>Put the async timer function in a separate file
 <code>async_timer.py</code>.</p>
 <div class="codewrapper sourceCode" id="cb25" file="src/async_timer.py">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># file: async_timer.py</span></span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="op">&lt;&lt;</span><span class="cf">async</span><span class="op">-</span>timer<span class="op">&gt;&gt;</span></span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" tabindex="-1"></a><span class="co"># file: async_timer.py</span></span>
+<span id="cb25-2"><a href="#cb25-2" tabindex="-1"></a></span>
+<span id="cb25-3"><a href="#cb25-3" tabindex="-1"></a><span class="op">&lt;&lt;</span><span class="cf">async</span><span class="op">-</span>timer<span class="op">&gt;&gt;</span></span></code></pre>
 </div>
 <div class="codewrapper sourceCode" id="cb26" file="src/calc_pi/async_pi.py">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># file: calc_pi/async_pi.py</span></span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> asyncio</span>
-<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> async_timer <span class="im">import</span> timer</span>
-<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> .numba <span class="im">import</span> calc_pi</span>
-<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a><span class="op">&lt;&lt;</span><span class="cf">async</span><span class="op">-</span>calc<span class="op">-</span>pi<span class="op">&gt;&gt;</span></span>
-<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a><span class="cf">async</span> <span class="kw">def</span> main():</span>
-<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a>    calc_pi(<span class="dv">1</span>)</span>
-<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a>    <span class="op">&lt;&lt;</span><span class="cf">async</span><span class="op">-</span>calc<span class="op">-</span>pi<span class="op">-</span>main<span class="op">&gt;&gt;</span></span>
-<span id="cb26-12"><a href="#cb26-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-13"><a href="#cb26-13" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
-<span id="cb26-14"><a href="#cb26-14" aria-hidden="true" tabindex="-1"></a>    asyncio.run(main())</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" tabindex="-1"></a><span class="co"># file: calc_pi/async_pi.py</span></span>
+<span id="cb26-2"><a href="#cb26-2" tabindex="-1"></a></span>
+<span id="cb26-3"><a href="#cb26-3" tabindex="-1"></a><span class="im">import</span> asyncio</span>
+<span id="cb26-4"><a href="#cb26-4" tabindex="-1"></a><span class="im">from</span> async_timer <span class="im">import</span> timer</span>
+<span id="cb26-5"><a href="#cb26-5" tabindex="-1"></a><span class="im">from</span> .numba <span class="im">import</span> calc_pi</span>
+<span id="cb26-6"><a href="#cb26-6" tabindex="-1"></a></span>
+<span id="cb26-7"><a href="#cb26-7" tabindex="-1"></a><span class="op">&lt;&lt;</span><span class="cf">async</span><span class="op">-</span>calc<span class="op">-</span>pi<span class="op">&gt;&gt;</span></span>
+<span id="cb26-8"><a href="#cb26-8" tabindex="-1"></a></span>
+<span id="cb26-9"><a href="#cb26-9" tabindex="-1"></a><span class="cf">async</span> <span class="kw">def</span> main():</span>
+<span id="cb26-10"><a href="#cb26-10" tabindex="-1"></a>    calc_pi(<span class="dv">1</span>)</span>
+<span id="cb26-11"><a href="#cb26-11" tabindex="-1"></a>    <span class="op">&lt;&lt;</span><span class="cf">async</span><span class="op">-</span>calc<span class="op">-</span>pi<span class="op">-</span>main<span class="op">&gt;&gt;</span></span>
+<span id="cb26-12"><a href="#cb26-12" tabindex="-1"></a></span>
+<span id="cb26-13"><a href="#cb26-13" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
+<span id="cb26-14"><a href="#cb26-14" tabindex="-1"></a>    asyncio.run(main())</span></code></pre>
 </div>
 <p>You may run this using <code>python -m calc_pi.async_pi</code>.</p>
 </div>
@@ -906,40 +906,41 @@ see?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution5" aria-expanded="false" aria-controls="collapseSolution5">
   <h4 class="accordion-header" id="headingSolution5">Show me the solution</h4>
 </button>
-<div id="collapseSolution5" class="accordion-collapse collapse" aria-labelledby="headingSolution5" data-bs-parent="#accordionSolution5">
+<div id="collapseSolution5" class="accordion-collapse collapse" data-bs-parent="#accordionSolution5" aria-labelledby="headingSolution5">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb27" file="src/calc_pi/granularity.py">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> asyncio</span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> plotnine <span class="im">import</span> ggplot, geom_line, geom_point, aes, scale_y_log10, scale_x_log10</span>
-<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> .numba <span class="im">import</span> calc_pi</span>
-<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> .async_pi <span class="im">import</span> calc_pi_split</span>
-<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> async_timer <span class="im">import</span> timer</span>
-<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a>calc_pi(<span class="dv">1</span>)  <span class="co"># compile the numba function</span></span>
-<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-12"><a href="#cb27-12" aria-hidden="true" tabindex="-1"></a><span class="cf">async</span> <span class="kw">def</span> main():</span>
-<span id="cb27-13"><a href="#cb27-13" aria-hidden="true" tabindex="-1"></a>    timings <span class="op">=</span> []</span>
-<span id="cb27-14"><a href="#cb27-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> njobs <span class="kw">in</span> [<span class="dv">2</span><span class="op">**</span>i <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">13</span>)]:</span>
-<span id="cb27-15"><a href="#cb27-15" aria-hidden="true" tabindex="-1"></a>        jobsize <span class="op">=</span> <span class="dv">2</span><span class="op">**</span><span class="dv">25</span> <span class="op">//</span> njobs</span>
-<span id="cb27-16"><a href="#cb27-16" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>jobsize<span class="sc">}</span><span class="ss"> - </span><span class="sc">{</span>njobs<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb27-17"><a href="#cb27-17" aria-hidden="true" tabindex="-1"></a>        <span class="cf">async</span> <span class="cf">with</span> timer() <span class="im">as</span> t:</span>
-<span id="cb27-18"><a href="#cb27-18" aria-hidden="true" tabindex="-1"></a>            <span class="cf">await</span> calc_pi_split(jobsize, njobs)</span>
-<span id="cb27-19"><a href="#cb27-19" aria-hidden="true" tabindex="-1"></a>        timings.append((jobsize, njobs, t.time))</span>
-<span id="cb27-20"><a href="#cb27-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-21"><a href="#cb27-21" aria-hidden="true" tabindex="-1"></a>    timings <span class="op">=</span> pd.DataFrame(timings, columns<span class="op">=</span>(<span class="st">"jobsize"</span>, <span class="st">"njobs"</span>, <span class="st">"time"</span>))</span>
-<span id="cb27-22"><a href="#cb27-22" aria-hidden="true" tabindex="-1"></a>    plot <span class="op">=</span> ggplot(timings, aes(x<span class="op">=</span><span class="st">"njobs"</span>, y<span class="op">=</span><span class="st">"time"</span>)) <span class="op">\</span></span>
-<span id="cb27-23"><a href="#cb27-23" aria-hidden="true" tabindex="-1"></a>        <span class="op">+</span> geom_line() <span class="op">+</span> geom_point() <span class="op">+</span> scale_y_log10() <span class="op">+</span> scale_x_log10()</span>
-<span id="cb27-24"><a href="#cb27-24" aria-hidden="true" tabindex="-1"></a>    plot.save(<span class="st">"asyncio-timings.svg"</span>)</span>
-<span id="cb27-25"><a href="#cb27-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-26"><a href="#cb27-26" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
-<span id="cb27-27"><a href="#cb27-27" aria-hidden="true" tabindex="-1"></a>    asyncio.run(main())</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" tabindex="-1"></a><span class="im">import</span> asyncio</span>
+<span id="cb27-2"><a href="#cb27-2" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb27-3"><a href="#cb27-3" tabindex="-1"></a><span class="im">from</span> plotnine <span class="im">import</span> ggplot, geom_line, geom_point, aes, scale_y_log10, scale_x_log10</span>
+<span id="cb27-4"><a href="#cb27-4" tabindex="-1"></a></span>
+<span id="cb27-5"><a href="#cb27-5" tabindex="-1"></a><span class="im">from</span> .numba <span class="im">import</span> calc_pi</span>
+<span id="cb27-6"><a href="#cb27-6" tabindex="-1"></a><span class="im">from</span> .async_pi <span class="im">import</span> calc_pi_split</span>
+<span id="cb27-7"><a href="#cb27-7" tabindex="-1"></a><span class="im">from</span> async_timer <span class="im">import</span> timer</span>
+<span id="cb27-8"><a href="#cb27-8" tabindex="-1"></a></span>
+<span id="cb27-9"><a href="#cb27-9" tabindex="-1"></a>calc_pi(<span class="dv">1</span>)  <span class="co"># compile the numba function</span></span>
+<span id="cb27-10"><a href="#cb27-10" tabindex="-1"></a></span>
+<span id="cb27-11"><a href="#cb27-11" tabindex="-1"></a></span>
+<span id="cb27-12"><a href="#cb27-12" tabindex="-1"></a><span class="cf">async</span> <span class="kw">def</span> main():</span>
+<span id="cb27-13"><a href="#cb27-13" tabindex="-1"></a>    timings <span class="op">=</span> []</span>
+<span id="cb27-14"><a href="#cb27-14" tabindex="-1"></a>    <span class="cf">for</span> njobs <span class="kw">in</span> [<span class="dv">2</span><span class="op">**</span>i <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">13</span>)]:</span>
+<span id="cb27-15"><a href="#cb27-15" tabindex="-1"></a>        jobsize <span class="op">=</span> <span class="dv">2</span><span class="op">**</span><span class="dv">25</span> <span class="op">//</span> njobs</span>
+<span id="cb27-16"><a href="#cb27-16" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>jobsize<span class="sc">}</span><span class="ss"> - </span><span class="sc">{</span>njobs<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb27-17"><a href="#cb27-17" tabindex="-1"></a>        <span class="cf">async</span> <span class="cf">with</span> timer() <span class="im">as</span> t:</span>
+<span id="cb27-18"><a href="#cb27-18" tabindex="-1"></a>            <span class="cf">await</span> calc_pi_split(jobsize, njobs)</span>
+<span id="cb27-19"><a href="#cb27-19" tabindex="-1"></a>        timings.append((jobsize, njobs, t.time))</span>
+<span id="cb27-20"><a href="#cb27-20" tabindex="-1"></a></span>
+<span id="cb27-21"><a href="#cb27-21" tabindex="-1"></a>    timings <span class="op">=</span> pd.DataFrame(timings, columns<span class="op">=</span>(<span class="st">"jobsize"</span>, <span class="st">"njobs"</span>, <span class="st">"time"</span>))</span>
+<span id="cb27-22"><a href="#cb27-22" tabindex="-1"></a>    plot <span class="op">=</span> ggplot(timings, aes(x<span class="op">=</span><span class="st">"njobs"</span>, y<span class="op">=</span><span class="st">"time"</span>)) <span class="op">\</span></span>
+<span id="cb27-23"><a href="#cb27-23" tabindex="-1"></a>        <span class="op">+</span> geom_line() <span class="op">+</span> geom_point() <span class="op">+</span> scale_y_log10() <span class="op">+</span> scale_x_log10()</span>
+<span id="cb27-24"><a href="#cb27-24" tabindex="-1"></a>    plot.save(<span class="st">"asyncio-timings.svg"</span>)</span>
+<span id="cb27-25"><a href="#cb27-25" tabindex="-1"></a></span>
+<span id="cb27-26"><a href="#cb27-26" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
+<span id="cb27-27"><a href="#cb27-27" tabindex="-1"></a>    asyncio.run(main())</span></code></pre>
 </div>
-<figure><img src="../fig/asyncio-timings.svg" alt="a dip at njobs=10 and overhead ~0.1ms per task" class="figure mx-auto d-block"><figcaption>timings</figcaption></figure><p>The work takes about 0.1s more when using 1000 tasks, so assuming
+<figure><img src="../fig/asyncio-timings.svg" alt="a dip at njobs=10 and overhead ~0.1ms per task" class="figure mx-auto d-block"><div class="figcaption">timings</div>
+</figure><p>The work takes about 0.1s more when using 1000 tasks, so assuming
 that overhead scales linearly with the amount of tasks, we can learn
 that the overhead is around 0.1ms per task.</p>
 </div>
@@ -1031,7 +1032,7 @@ any links that you are not going to use.
   "identifier": "https://template-source.github.io/NA/instructor/extra-asyncio.html",
   "dateCreated": "2023-07-03",
   "dateModified": "2023-07-03",
-  "datePublished": "2024-02-27"
+  "datePublished": "2024-03-05"
 }
 
   </script><script>
