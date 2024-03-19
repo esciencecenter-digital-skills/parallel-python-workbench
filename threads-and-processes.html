@@ -408,14 +408,13 @@ easy.</p>
 without referencing any Python objects, while the <code>nogil</code>
 argument enables lifting the GIL during the execution of the
 function.</p>
-<div id="callout1" class="callout">
+<div id="use-nopythontrue-or-numba.njit" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div class="section level3 callout-title callout-inner">
-<h3 class="callout-title" id="use-nopythontrue-or-numba-njit">Use <code>nopython=True</code> or
-<code>@numba.njit</code>
-<a class="anchor" aria-label="anchor" href="#use-nopythontrue-or-numba-njit"></a></h3>
+<div id="use-nopythontrue-or-numba.njit" class="callout-inner">
+<h3 class="callout-title">Use<code>nopython=True</code>or<code>@numba.njit</code><a class="anchor" aria-label="anchor" href="#use-nopythontrue-or-numba.njit"></a>
+</h3>
 <div class="callout-content">
 <p>It’s generally a good idea to use <code>nopython=True</code> with
 <code>@numba.jit</code> to make sure the entire function is running
@@ -446,7 +445,7 @@ generated arrays using <code>numpy.sort</code> in parallel.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1">Show me the solution</h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb4">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -510,13 +509,13 @@ multiprocessing is beneficial under limited circumstances - namely, when
 the resource utilisation (or runtime) of a function is
 <em>measureably</em> larger than the overhead of creating a new
 process.</p>
-<div id="callout2" class="callout">
+<div id="protect-process-creation-with-an-if-block" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div class="section level3 callout-title callout-inner">
-<h3 class="callout-title" id="protect-process-creation-with-an-if-block">Protect process creation with an
-<code>if</code>-block<a class="anchor" aria-label="anchor" href="#protect-process-creation-with-an-if-block"></a></h3>
+<div id="protect-process-creation-with-an-if-block" class="callout-inner">
+<h3 class="callout-title">Protect process creation with an<code>if</code>-block<a class="anchor" aria-label="anchor" href="#protect-process-creation-with-an-if-block"></a>
+</h3>
 <div class="callout-content">
 <p>A module should be safely importable. Any code that creates
 processes, pools, or managers should be protected with:</p>
@@ -571,7 +570,7 @@ use a queue to return the result<a class="anchor" aria-label="anchor" href="#exe
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2">Show me the solution</h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb9">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -612,12 +611,13 @@ use a queue to return the result<a class="anchor" aria-label="anchor" href="#exe
 </div>
 </div>
 </div>
-<div id="callout3" class="callout">
+<div id="sharing-state" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div class="section level3 callout-title callout-inner">
-<h3 class="callout-title" id="sharing-state">Sharing state<a class="anchor" aria-label="anchor" href="#sharing-state"></a></h3>
+<div id="sharing-state" class="callout-inner">
+<h3 class="callout-title">Sharing state<a class="anchor" aria-label="anchor" href="#sharing-state"></a>
+</h3>
 <div class="callout-content">
 <p>It is also possible to share state between processes. The simpler of
 the several ways is to use shared memory via <code>Value</code> or
@@ -675,7 +675,7 @@ claim.</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3">Show me the solution</h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb11">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -776,7 +776,7 @@ any links that you are not going to use.
         <p>Materials licensed under <a href="LICENSE.html">CC-BY 4.0</a> by the authors</p>
         
         <p>Template licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">CC-BY 4.0</a> by <a href="https://carpentries.org/" class="external-link">The Carpentries</a></p>
-        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.16.2" class="external-link">sandpaper (0.16.2)</a>, <a href="https://github.com/carpentries/pegboard/tree/0.7.4" class="external-link">pegboard (0.7.4)</a>, and <a href="https://github.com/carpentries/varnish/tree/1.0.1" class="external-link">varnish (1.0.1)</a></p>
+        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.16.3" class="external-link">sandpaper (0.16.3)</a>, <a href="https://github.com/carpentries/pegboard/tree/0.7.4" class="external-link">pegboard (0.7.4)</a>, and <a href="https://github.com/carpentries/varnish/tree/1.0.1" class="external-link">varnish (1.0.1)</a></p>
 			</div>
 		</footer></div> <!-- / div.container -->
 	<div id="to-top">
@@ -799,7 +799,7 @@ any links that you are not going to use.
   "identifier": "https://template-source.github.io/NA/threads-and-processes.html",
   "dateCreated": "2023-07-03",
   "dateModified": "2023-01-06",
-  "datePublished": "2024-03-12"
+  "datePublished": "2024-03-19"
 }
 
   </script><script>
