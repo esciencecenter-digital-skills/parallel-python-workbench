@@ -685,7 +685,7 @@ you also think of one that is fundamentally non-parallelizable?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p>Answers may differ. An ubiquitous example of a naturally parallel
 problem is a parameter scan, where you need to evaluate some model for N
@@ -755,7 +755,7 @@ soup done any faster?</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <ul>
 <li>You can cut vegetables while simmering the split peas.</li>
@@ -800,7 +800,7 @@ any links that you are not going to use.
 </div>
 </div></section><section id="aio-benchmarking"><p>Content from <a href="benchmarking.html">Benchmarking</a></p>
 <hr>
-<p>Last updated on 2023-01-04 |
+<p>Last updated on 2024-10-30 |
 
         <a href="https://example.com/template-source/edit/main/episodes/benchmarking.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
@@ -914,6 +914,49 @@ variable, you can do so with the <code>-o</code> flag.</p>
 </div>
 <p>Note that this does not tell you anything about memory consumption or
 efficiency.</p>
+<div id="timeit" class="callout challenge">
+<div class="callout-square">
+<i class="callout-icon" data-feather="zap"></i>
+</div>
+<div id="timeit" class="callout-inner">
+<h3 class="callout-title">Timeit</h3>
+<div class="callout-content">
+<p>Use <code>timeit</code> to time the following snippets:</p>
+<div class="codewrapper sourceCode" id="cb6">
+<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a>[x<span class="op">**</span><span class="dv">2</span> <span class="cf">for</span> x <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">100</span>)]</span></code></pre>
+</div>
+<div class="codewrapper sourceCode" id="cb7">
+<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="bu">map</span>(<span class="kw">lambda</span> x: x<span class="op">**</span><span class="dv">2</span>, <span class="bu">range</span>(<span class="dv">100</span>))</span></code></pre>
+</div>
+<p>Can you explain the difference? How about the following</p>
+<div class="codewrapper sourceCode" id="cb8">
+<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="cf">for</span> x <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">100</span>):</span>
+<span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a>    x<span class="op">**</span><span class="dv">2</span></span></code></pre>
+</div>
+<p>Is that faster than the first one? Why?</p>
+</div>
+</div>
+</div>
+<div id="accordionSolution1" class="accordion challenge-accordion accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
+  <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
+</button>
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div class="accordion-body">
+<p>Python’s <code>map</code> function is lazy. It won’t compute anything
+until you iterate it. Try <code>list(map(...))</code>. The third example
+doesn’t allocate any memory, which makes it faster.</p>
+</div>
+</div>
+</div>
+</div>
 </div>
 <div class="section level1">
 <h1 id="memory-profiling">Memory profiling<a class="anchor" aria-label="anchor" href="#memory-profiling"></a>
@@ -928,42 +971,42 @@ performance, and identifying possible bottlenecks is
 <p>We will use the <a href="https://github.com/pythonprofilers/memory_profiler" class="external-link"><code>memory_profiler</code>
 package</a> to track memory usage. It can be installed executing the
 code below in the console:</p>
-<div class="codewrapper sourceCode" id="cb6">
+<div class="codewrapper sourceCode" id="cb9">
 <h3 class="code-label">SH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode sh" tabindex="0"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="ex">pip</span> install memory_profiler</span></code></pre>
+<pre class="sourceCode sh" tabindex="0"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a><span class="ex">pip</span> install memory_profiler</span></code></pre>
 </div>
 <p>In Jupyter, type the following lines to compare the memory usage of
 the serial and parallel versions of the code presented above (again,
 change the value of <code>10**7</code> to something higher if
 needed):</p>
-<div class="codewrapper sourceCode" id="cb7">
+<div class="codewrapper sourceCode" id="cb10">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a><span class="im">import</span> dask.array <span class="im">as</span> da</span>
-<span id="cb7-3"><a href="#cb7-3" tabindex="-1"></a><span class="im">from</span> memory_profiler <span class="im">import</span> memory_usage</span>
-<span id="cb7-4"><a href="#cb7-4" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb7-5"><a href="#cb7-5" tabindex="-1"></a></span>
-<span id="cb7-6"><a href="#cb7-6" tabindex="-1"></a><span class="kw">def</span> sum_with_numpy():</span>
-<span id="cb7-7"><a href="#cb7-7" tabindex="-1"></a>    <span class="co"># Serial implementation</span></span>
-<span id="cb7-8"><a href="#cb7-8" tabindex="-1"></a>    np.arange(<span class="dv">10</span><span class="op">**</span><span class="dv">7</span>).<span class="bu">sum</span>()</span>
-<span id="cb7-9"><a href="#cb7-9" tabindex="-1"></a></span>
-<span id="cb7-10"><a href="#cb7-10" tabindex="-1"></a><span class="kw">def</span> sum_with_dask():</span>
-<span id="cb7-11"><a href="#cb7-11" tabindex="-1"></a>    <span class="co"># Parallel implementation</span></span>
-<span id="cb7-12"><a href="#cb7-12" tabindex="-1"></a>    work <span class="op">=</span> da.arange(<span class="dv">10</span><span class="op">**</span><span class="dv">7</span>).<span class="bu">sum</span>()</span>
-<span id="cb7-13"><a href="#cb7-13" tabindex="-1"></a>    work.compute()</span>
-<span id="cb7-14"><a href="#cb7-14" tabindex="-1"></a></span>
-<span id="cb7-15"><a href="#cb7-15" tabindex="-1"></a>memory_numpy <span class="op">=</span> memory_usage(sum_with_numpy, interval<span class="op">=</span><span class="fl">0.01</span>)</span>
-<span id="cb7-16"><a href="#cb7-16" tabindex="-1"></a>memory_dask <span class="op">=</span> memory_usage(sum_with_dask, interval<span class="op">=</span><span class="fl">0.01</span>)</span>
-<span id="cb7-17"><a href="#cb7-17" tabindex="-1"></a></span>
-<span id="cb7-18"><a href="#cb7-18" tabindex="-1"></a><span class="co"># Plot results</span></span>
-<span id="cb7-19"><a href="#cb7-19" tabindex="-1"></a>plt.plot(memory_numpy, label<span class="op">=</span><span class="st">'numpy'</span>)</span>
-<span id="cb7-20"><a href="#cb7-20" tabindex="-1"></a>plt.plot(memory_dask, label<span class="op">=</span><span class="st">'dask'</span>)</span>
-<span id="cb7-21"><a href="#cb7-21" tabindex="-1"></a>plt.xlabel(<span class="st">'Time step'</span>)</span>
-<span id="cb7-22"><a href="#cb7-22" tabindex="-1"></a>plt.ylabel(<span class="st">'Memory / MB'</span>)</span>
-<span id="cb7-23"><a href="#cb7-23" tabindex="-1"></a>plt.legend()</span>
-<span id="cb7-24"><a href="#cb7-24" tabindex="-1"></a>plt.show()</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a><span class="im">import</span> dask.array <span class="im">as</span> da</span>
+<span id="cb10-3"><a href="#cb10-3" tabindex="-1"></a><span class="im">from</span> memory_profiler <span class="im">import</span> memory_usage</span>
+<span id="cb10-4"><a href="#cb10-4" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb10-5"><a href="#cb10-5" tabindex="-1"></a></span>
+<span id="cb10-6"><a href="#cb10-6" tabindex="-1"></a><span class="kw">def</span> sum_with_numpy():</span>
+<span id="cb10-7"><a href="#cb10-7" tabindex="-1"></a>    <span class="co"># Serial implementation</span></span>
+<span id="cb10-8"><a href="#cb10-8" tabindex="-1"></a>    np.arange(<span class="dv">10</span><span class="op">**</span><span class="dv">7</span>).<span class="bu">sum</span>()</span>
+<span id="cb10-9"><a href="#cb10-9" tabindex="-1"></a></span>
+<span id="cb10-10"><a href="#cb10-10" tabindex="-1"></a><span class="kw">def</span> sum_with_dask():</span>
+<span id="cb10-11"><a href="#cb10-11" tabindex="-1"></a>    <span class="co"># Parallel implementation</span></span>
+<span id="cb10-12"><a href="#cb10-12" tabindex="-1"></a>    work <span class="op">=</span> da.arange(<span class="dv">10</span><span class="op">**</span><span class="dv">7</span>).<span class="bu">sum</span>()</span>
+<span id="cb10-13"><a href="#cb10-13" tabindex="-1"></a>    work.compute()</span>
+<span id="cb10-14"><a href="#cb10-14" tabindex="-1"></a></span>
+<span id="cb10-15"><a href="#cb10-15" tabindex="-1"></a>memory_numpy <span class="op">=</span> memory_usage(sum_with_numpy, interval<span class="op">=</span><span class="fl">0.01</span>)</span>
+<span id="cb10-16"><a href="#cb10-16" tabindex="-1"></a>memory_dask <span class="op">=</span> memory_usage(sum_with_dask, interval<span class="op">=</span><span class="fl">0.01</span>)</span>
+<span id="cb10-17"><a href="#cb10-17" tabindex="-1"></a></span>
+<span id="cb10-18"><a href="#cb10-18" tabindex="-1"></a><span class="co"># Plot results</span></span>
+<span id="cb10-19"><a href="#cb10-19" tabindex="-1"></a>plt.plot(memory_numpy, label<span class="op">=</span><span class="st">'numpy'</span>)</span>
+<span id="cb10-20"><a href="#cb10-20" tabindex="-1"></a>plt.plot(memory_dask, label<span class="op">=</span><span class="st">'dask'</span>)</span>
+<span id="cb10-21"><a href="#cb10-21" tabindex="-1"></a>plt.xlabel(<span class="st">'Time step'</span>)</span>
+<span id="cb10-22"><a href="#cb10-22" tabindex="-1"></a>plt.ylabel(<span class="st">'Memory / MB'</span>)</span>
+<span id="cb10-23"><a href="#cb10-23" tabindex="-1"></a>plt.legend()</span>
+<span id="cb10-24"><a href="#cb10-24" tabindex="-1"></a>plt.show()</span></code></pre>
 </div>
 <p>The figure should be similar to the one below:</p>
 <figure><img src="fig/memory.png" alt="showing very high peak for numpy, and constant low line for dask" class="figure mx-auto d-block"><div class="figcaption">Memory performance</div>
@@ -978,12 +1021,12 @@ needed):</p>
 </div>
 </div>
 </div>
-<div id="accordionSolution1" class="accordion challenge-accordion accordion-flush">
+<div id="accordionSolution2" class="accordion challenge-accordion accordion-flush">
 <div class="accordion-item">
-<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
-  <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
+<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
+  <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <p>Chunking! Dask chunks the large array, such that the data is never
 entirely in memory.</p>
@@ -1018,13 +1061,13 @@ below to find out:</p>
 <h3 class="callout-title">Find out how many cores your machine has</h3>
 <div class="callout-content">
 <p>The number of cores can be found from Python by executing:</p>
-<div class="codewrapper sourceCode" id="cb8">
+<div class="codewrapper sourceCode" id="cb11">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="im">import</span> psutil</span>
-<span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a>N_physical_cores <span class="op">=</span> psutil.cpu_count(logical<span class="op">=</span><span class="va">False</span>)</span>
-<span id="cb8-3"><a href="#cb8-3" tabindex="-1"></a>N_logical_cores <span class="op">=</span> psutil.cpu_count(logical<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb8-4"><a href="#cb8-4" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"The number of physical/logical cores is </span><span class="sc">{</span>N_physical_cores<span class="sc">}</span><span class="ss">/</span><span class="sc">{</span>N_logical_cores<span class="sc">}</span><span class="ss">"</span>)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a><span class="im">import</span> psutil</span>
+<span id="cb11-2"><a href="#cb11-2" tabindex="-1"></a>N_physical_cores <span class="op">=</span> psutil.cpu_count(logical<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb11-3"><a href="#cb11-3" tabindex="-1"></a>N_logical_cores <span class="op">=</span> psutil.cpu_count(logical<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb11-4"><a href="#cb11-4" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"The number of physical/logical cores is </span><span class="sc">{</span>N_physical_cores<span class="sc">}</span><span class="ss">/</span><span class="sc">{</span>N_logical_cores<span class="sc">}</span><span class="ss">"</span>)</span></code></pre>
 </div>
 </div>
 </div>
@@ -1037,21 +1080,21 @@ reasons for this, hyper-threading being one of them.</p>
 <p>See for instance the example below:</p>
 <p>On a machine with 4 physical and 8 logical cores doing this
 (admittedly oversimplistic) benchmark:</p>
-<div class="codewrapper sourceCode" id="cb9">
+<div class="codewrapper sourceCode" id="cb12">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a>x <span class="op">=</span> []</span>
-<span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a><span class="cf">for</span> n <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">9</span>):</span>
-<span id="cb9-3"><a href="#cb9-3" tabindex="-1"></a>    time_taken <span class="op">=</span> <span class="op">%</span>timeit <span class="op">-</span>r <span class="dv">1</span> <span class="op">-</span>o da.arange(<span class="dv">5</span><span class="op">*</span><span class="dv">10</span><span class="op">**</span><span class="dv">7</span>).<span class="bu">sum</span>().compute(num_workers<span class="op">=</span>n)</span>
-<span id="cb9-4"><a href="#cb9-4" tabindex="-1"></a>    x.append(time_taken.average)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a>x <span class="op">=</span> []</span>
+<span id="cb12-2"><a href="#cb12-2" tabindex="-1"></a><span class="cf">for</span> n <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">9</span>):</span>
+<span id="cb12-3"><a href="#cb12-3" tabindex="-1"></a>    time_taken <span class="op">=</span> <span class="op">%</span>timeit <span class="op">-</span>r <span class="dv">1</span> <span class="op">-</span>o da.arange(<span class="dv">5</span><span class="op">*</span><span class="dv">10</span><span class="op">**</span><span class="dv">7</span>).<span class="bu">sum</span>().compute(num_workers<span class="op">=</span>n)</span>
+<span id="cb12-4"><a href="#cb12-4" tabindex="-1"></a>    x.append(time_taken.average)</span></code></pre>
 </div>
 <p>Gives the following result:</p>
-<div class="codewrapper sourceCode" id="cb10">
+<div class="codewrapper sourceCode" id="cb13">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a>data <span class="op">=</span> pd.DataFrame({<span class="st">"n"</span>: <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">9</span>), <span class="st">"t"</span>: x})</span>
-<span id="cb10-3"><a href="#cb10-3" tabindex="-1"></a>data.set_index(<span class="st">"n"</span>).plot()</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb13-2"><a href="#cb13-2" tabindex="-1"></a>data <span class="op">=</span> pd.DataFrame({<span class="st">"n"</span>: <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">9</span>), <span class="st">"t"</span>: x})</span>
+<span id="cb13-3"><a href="#cb13-3" tabindex="-1"></a>data.set_index(<span class="st">"n"</span>).plot()</span></code></pre>
 </div>
 <figure><img src="fig/more-cores.svg" alt="showing that using more cores can also make things slower" class="figure mx-auto d-block"><div class="figcaption">Timings against number of cores</div>
 </figure><div id="discussion" class="callout discussion">
@@ -1649,7 +1692,7 @@ generated arrays using <code>numpy.sort</code> in parallel.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb4">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1775,7 +1818,7 @@ use a queue to return the result</h3>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb9">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1880,7 +1923,7 @@ claim.</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb11">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -3512,7 +3555,7 @@ numbers?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb7">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -3582,7 +3625,7 @@ that prints whatever you send to it.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb11">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -3803,7 +3846,7 @@ computations, and time them.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb20">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -3881,7 +3924,7 @@ it.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution4" aria-expanded="false" aria-controls="collapseSolution4">
   <h4 class="accordion-header" id="headingSolution4"> Show me the solution </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
 <div class="accordion-body">
 <p>Make sure that you create an <code>async</code> main function, and
 run it using <code>asyncio.run</code>. Create a small module called
@@ -3951,7 +3994,7 @@ see?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution5" aria-expanded="false" aria-controls="collapseSolution5">
   <h4 class="accordion-header" id="headingSolution5"> Show me the solution </h4>
 </button>
-<div id="collapseSolution5" class="accordion-collapse collapse" aria-labelledby="headingSolution5" data-bs-parent="#accordionSolution5">
+<div id="collapseSolution5" class="accordion-collapse collapse" data-bs-parent="#accordionSolution5" aria-labelledby="headingSolution5">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb27" file="src/calc_pi/granularity.py">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -4485,9 +4528,9 @@ any links that you are not going to use.
   "creativeWorkStatus": "active",
   "url": "https://template-source.github.io/NA/aio.html",
   "identifier": "https://template-source.github.io/NA/aio.html",
-  "dateCreated": "2024-09-09",
-  "dateModified": "2024-10-29",
-  "datePublished": "2024-10-29"
+  "dateCreated": "2024-10-29",
+  "dateModified": "2024-10-30",
+  "datePublished": "2024-10-30"
 }
 
   </script><script>
