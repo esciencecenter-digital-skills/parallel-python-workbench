@@ -31,46 +31,45 @@ See an overview below:
 | `dask.futures`   | `concurrent.futures` | Control execution, low-level        | ❌      |
 
 # Dask Delayed
-A lot of the functionalities in Dask is based on an important concept known as *delayed evaluation*.
-We will then go a bit deeper into `dask.delayed`.
+A lot of the functionalities in Dask are based on an important concept known as *delayed evaluation*. 
+Hence we go a bit deeper into `dask.delayed`.
 
-`dask.delayed` changes the strategy by which our computation is evaluated.
-Normally, you expect that a computer runs commands when you ask for them, and that you can give the next command when the current job is complete.
-With delayed evaluation we do not wait before formulating the next command.
-Instead, we create the dependency graph of our complete computation without actually doing any work.
-Once we build the full dependency graph, we can see which jobs can be done in parallel and attribute those to different workers.
+`dask.delayed` changes the strategy by which our computation is evaluated. 
+Normally, you expect that a computer runs commands when you ask for them, and that you can give the next command when the current job is complete. 
+With delayed evaluation we do not wait before formulating the next command. 
+Instead, we create the dependency graph of our complete computation without actually doing any work. 
+Once we build the full dependency graph, we can see which jobs can be done in parallel and have those scheduled to different workers.
 
 To express a computation in this world, we need to handle future objects *as if they're already there*.
 These objects may be referred to as either *futures* or *promises*.
 
 :::callout
-Several Python libraries provide slightly different support for working with futures.
-The main difference between Python futures and Dask delayed objects is that futures are added to a queue at the point of definition, while delayed objects are silent until you ask to compute.
-We will refer to such 'live' futures as futures and to 'dead' futures (including the delayed) as **promises**.
+Several Python libraries provide slightly different support for working with futures. 
+The main difference between Python futures and Dask-delayed objects is that futures are added to a queue at the point of definition, while delayed objects are silent until you ask to compute. We will refer to such 'live' futures as futures proper, and to 'dead' futures (including the delayed) as **promises**.
 :::
 
 ~~~python
 from dask import delayed
 ~~~
 
-The `delayed` decorator builds a dependency graph from function calls.
+The `delayed` decorator builds a dependency graph from function calls:
 
 ~~~python
 @delayed
 def add(a, b):
     result = a + b
     print(f"{a} + {b} = {result}")
-    return a + b
+    return result
 ~~~
 
-A `delayed` function stores the requested function call inside a **promise**.
-The function is not actually executed yet, and we are *promised* a value that can be computed later.
+A `delayed` function stores the requested function call inside a **promise**. 
+The function is not actually executed yet, and we get a value *promised*, which can be computed later.
 
 ~~~python
 x_p = add(1, 2)
 ~~~
 
-We can check that `x_p` is now a `Delayed` value.
+We can check that `x_p` is now a `Delayed` value:
 
 ~~~python
 type(x_p)
@@ -80,8 +79,8 @@ type(x_p)
 ~~~
 
 > ## Note on notation
-> It is a good idea to suffix with `_p` variables that are promises.
-> That way you keep track of promises versus immediate values.
+> It is good practice to suffix with `_p` variables that are promises. That way you
+> keep track of promises versus immediate values.
 {: .callout}
 
 Only when we ask to evaluate the computation do we get an output:
@@ -115,8 +114,8 @@ y_p = add(x_p, 3)
 z_p = add(x_p, -3)
 ```
 
-Visualize and compute `y_p` and `z_p` separately.
-How often is `x_p` evaluated?
+Visualize and compute `y_p` and `z_p` separately. 
+How many times is `x_p` evaluated?
 
 Now change the workflow:
 
@@ -127,8 +126,8 @@ z_p = add(x_p, y_p)
 z_p.visualize(rankdir="LR")
 ```
 
-We pass the not-yet-computed promise `x_p` to both `y_p` and `z_p`.
-If you only compute `z_p`, how often do you expect `x_p` to be evaluated?
+We pass the not-yet-computed promise `x_p` to both `y_p` and `z_p`. 
+If you only compute `z_p`, how many times do you expect `x_p` to be evaluated? 
 Run the workflow to check your answer.
 
 ::::solution
@@ -197,8 +196,8 @@ add(*numbers)   # => 10
 ```
 :::
 
-We can build new primitives from the ground up.
-An important function frequently found where non-standard evaluation strategies are involved is `gather`.
+We can build new primitives from the ground up. 
+An important function that is found frequently where non-standard evaluation strategies are involved is `gather`. 
 We can implement `gather` as follows:
 
 ~~~python
@@ -221,7 +220,7 @@ It turns a list of promises into a promise of a list.
 This small example shows what `gather` does:
 
 ~~~python
-x_p = gather(*(add(n, n) for n in range(10))) # Shorthand for gather(add(1, 1), add(2, 2), ...)
+x_p = gather(*(delayed(add)(n, n) for n in range(10))) # Shorthand for gather(add(1, 1), add(2, 2), ...)
 x_p.visualize()
 ~~~
 
@@ -233,7 +232,9 @@ Computing the result
 ~~~python
 x_p.compute()
 ~~~
+
 gives
+
 ~~~output
 [out]: [0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
 ~~~
@@ -248,7 +249,7 @@ Use it to estimate $\pi$ several times and have it return the mean of the interm
 2.5
 ```
 
-Ensure that the entire computation is contained in a single promise.
+Make sure that the entire computation is contained in a single promise.
 
 ::::solution
 ## Solution
@@ -288,6 +289,6 @@ You can build complex computational workflows in this manner, sometimes replacin
 :::keypoints
 - We can change the strategy by which a computation is evaluated.
 - Nothing is computed until we run `compute()`.
-- By using delayed evaluation, Dask knows which jobs can be run in parallel.
+- With delayed evaluation Dask knows which jobs can be run in parallel.
 - Call `compute` only once at the end of your program to get the best results.
 :::

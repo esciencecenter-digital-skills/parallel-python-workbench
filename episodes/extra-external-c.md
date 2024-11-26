@@ -5,7 +5,7 @@ exercises: 30
 ---
 
 :::questions
-- Which options are available to call from Python code C and C++ libraries?
+- Which options are available to call from Python code any C and C++ libraries?
 - How does this work together with Numpy arrays?
 - How do I use this in multiple threads while lifting the GIL?
 :::
@@ -136,7 +136,7 @@ If you compare with the Numba timing from [Episode 3](computing-pi.md), you will
 ## C versus Numba
 Check if the Numba version of this conditional `sum range` function outperforms its C counterpart.
 
-Insprired by [a blog by Christopher Swenson](https://caswenson.com/2009_06_13_bypassing_the_python_gil_with_ctypes.html).
+Inspired by [a blog by Christopher Swenson](https://caswenson.com/2009_06_13_bypassing_the_python_gil_with_ctypes.html).
 
 ~~~c
 long long conditional_sum_range(long long to)
@@ -233,7 +233,8 @@ gives
 array([ 0,  0,  1,  3,  6, 10, 15, 21, 28, 36])
 ~~~
 
-It does not crash! You can check that the array is upon subtracting the previous sum from each sum (except the first):
+It does not crash! 
+You can check that the array is upon subtracting the previous sum from each sum (except the first):
 
 ~~~python
 %out=sum_range(ys)
@@ -351,7 +352,7 @@ as you would expect for two `sum_range` modules running in parallel.
 
 :::keypoints
 - Multiple options are available to call external C and C++ libraries, and the best choice depends on the complexity of your problem.
-- Obviously, there is an extra compile and link step, but you will get a much faster execution compared to pure Python.
+- Obviously, there is an extra compile and link step, but you will get a much faster execution than with pure Python.
 - Also, the GIL will be circumvented in calling these libraries.
 - Numba might also offer you the speed-up you want with even less effort.
 :::

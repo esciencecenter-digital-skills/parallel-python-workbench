@@ -35,14 +35,14 @@ This is actually nothing short of a miracle! We can write a complex number
 
 $$z = x + iy,$$
 
-remember that $i^2 = -1$ and act as if everything is normal!
+remember that $i^2 = -1$, and act as if everything is normal!
 :::
 
-The Mandelbrot set is the set of complex numbers $$c \in \mathbb{C}$$ for which the iteration,
+The Mandelbrot set is the set of complex numbers $$c \in \mathbb{C}$$ for which the iteration
 
 $$z_{n+1} = z_n^2 + c,$$
 
-converges, starting iteration at $z_0 = 0$.
+converges, starting from iteration at $z_0 = 0$. 
 We can visualize the Mandelbrot set by plotting the number of iterations needed for the absolute value $|z_n|$ to exceed 2 (for which it can be shown that the iteration always diverges).
 
 ![The whole Mandelbrot set](fig/mandelbrot-all.png){alt="colorful rendering of mandelbrot set"}
@@ -53,14 +53,14 @@ We may compute the Mandelbrot as follows:
 max_iter = 256
 width = 256
 height = 256
-center = -0.8+0.0j
-extent = 3.0+3.0j
+center = -0.8 + 0.0j
+extent = 3.0 + 3.0j
 scale = max((extent / width).real, (extent / height).imag)
 
 result = np.zeros((height, width), int)
 for j in range(height):
     for i in range(width):
-        c = center + (i - width // 2 + (j - height // 2)*1j) * scale
+        c = center + (i - width // 2 + 1j * (j - height // 2)) * scale
         z = 0
         for k in range(max_iter):
             z = z**2 + c
@@ -76,18 +76,19 @@ fig, ax = plt.subplots(1, 1, figsize=(10, 10))
 plot_extent = (width + 1j * height) * scale
 z1 = center - plot_extent / 2
 z2 = z1 + plot_extent
-ax.imshow(result**(1/3), origin='lower', extent=(z1.real, z2.real, z1.imag, z2.imag))
+ax.imshow(result**(1 / 3), origin='lower', extent=(z1.real, z2.real, z1.imag, z2.imag))
 ax.set_xlabel("$\Re(c)$")
 ax.set_ylabel("$\Im(c)$")
 ```
 
-Things become really loads of fun when we zoom in.
-We can play around with the `center` and `extent` values, and necessarily `max_iter`, to control our window.
+Things become really loads of fun when we zoom in. 
+We can play around with the `center` and `extent` values, and necessarily `max_iter`, to control our window:
+
 
 ```python
 max_iter = 1024
-center = -1.1195+0.2718j
-extent = 0.005+0.005j
+center = -1.1195 + 0.2718j
+extent = 0.005 + 0.005j
 ```
 
 When we zoom in on the Mandelbrot fractal, we get smaller copies of the larger set!
@@ -142,7 +143,7 @@ matplotlib.use(backend="Agg")
 from matplotlib import pyplot as plt
 import numpy as np
 
-from .bounding_box import BoundingBox
+from bounding_box import BoundingBox
 
 def plot_fractal(box: BoundingBox, values: np.ndarray, ax=None):
     if ax is None:
@@ -153,7 +154,7 @@ def plot_fractal(box: BoundingBox, values: np.ndarray, ax=None):
     z1 = box.center - plot_extent / 2
     z2 = z1 + plot_extent
     ax.imshow(values, origin='lower', extent=(z1.real, z2.real, z1.imag, z2.imag),
-              cmap=matplotlib.colormaps["jet"])
+              cmap=matplotlib.colormaps["viridis"])
     ax.set_xlabel("$\Re(c)$")
     ax.set_ylabel("$\Im(c)$")
     return fig, ax
@@ -162,8 +163,8 @@ def plot_fractal(box: BoundingBox, values: np.ndarray, ax=None):
 
 ::::solution
 ## Some solutions
-The natural approach with Python is to speed this up with Numba.
-Then, there are three ways to parallelize: first, let Numba parallelize the function; second, do a manual domain decomposition and use one of the many Python ways to run things multi-threaded; third, create a vectorized function and parallelize using `dask.array`.
+The natural approach with Python is to speed this up with Numba. 
+Then, there are three ways to parallelize: first, letting Numba parallelize the function; second, doing a manual domain decomposition and using one of the many Python ways to run multi-threaded things; third, creating a vectorized function and parallelizing it using `dask.array`. 
 This last option is almost always slower than `@njit(parallel=True)` and domain decomposition.
 
 ``` {.python file="src/mandelbrot/__init__.py"}
@@ -176,8 +177,7 @@ This last option is almost always slower than `@njit(parallel=True)` and domain 
 When we port the core Mandelbrot function to Numba, we need to keep some best practices in mind:
 
 - Don't pass composite objects other than Numpy arrays.
-- Avoid acquiring memory inside a Numba function; 
-  create an array in Python, then pass it to the Numba function.
+- Avoid acquiring memory inside a Numba function; rather, create an array in Python and then pass it to the Numba function.
 - Write a Pythonic wrapper around the Numba function for easy use.
 
 ``` {.python file="src/mandelbrot/numba_serial.py"}
@@ -185,7 +185,7 @@ from typing import Any, Optional
 import numba  # type:ignore
 import numpy as np
 
-from .bounding_box import BoundingBox
+from bounding_box import BoundingBox
 
 
 @numba.njit(nogil=True)
@@ -194,11 +194,11 @@ def compute_mandelbrot_numba(
         scale: complex, max_iter: int):
     for j in range(height):
         for i in range(width):
-            c = center + (i - width // 2 + (j - height // 2) * 1j) * scale
-            z = 0.0+0.0j
+            c = center + (i - width // 2 + 1j * (j - height // 2)) * scale
+            z = 0.0 + 0.0j
             for k in range(max_iter):
                 z = z**2 + c
-                if (z*z.conjugate()).real >= 4.0:
+                if (z * z.conjugate()).real >= 4.0:
                     break
             result[j, i] = k
     return result
@@ -273,14 +273,14 @@ def split(self, n):
             for j in range(n)]
 ```
 
-To perform the computation in parallel, lets go ahead and chose the most difficult path: `asyncio`.
-There are other ways to do this, setting up a number of threads, or use Dask.
-However, `asyncio` is available to us in Python natively.
+To perform the computation in parallel, let's go ahead and choose the most difficult path: `asyncio`. 
+There are other ways to do this, like setting up a number of threads or using Dask. 
+However, `asyncio` is available in Python natively. 
 In the end, the result is very similar to what we would get using `dask.delayed`.
 
-This may seem as a lot of code, but remember: we only used Numba to compile the core part and then used Asyncio to parallelize.
-The progress bar is a bit of flutter and the semaphore is only there to throttle the computation to fewer cores.
-Even then, this solution is by far the most extensive, but also the fastest.
+This may seem as a lot of code, but remember: we only use Numba to compile the core part and then Asyncio to parallelize. 
+The progress bar is a bit of flutter and the semaphore is only there to throttle the computation to fewer cores. 
+Even then, this solution is the most extensive by far but also the fastest.
 
 ``` {.python file="src/mandelbrot/domain_splitting.py"}
 from typing import Optional
@@ -325,8 +325,8 @@ def compute_mandelbrot(box: BoundingBox, max_iter: int,
 
 ::::solution
 ## Numba vectorize
-Another solution is to use Numba's `@guvectorize` decorator.
-The speed-up (on my machine) is not as dramatic as with the domain decomposition though.
+Another solution is to use Numba's `@guvectorize` decorator. 
+The speed-up (on my machine) is not as dramatic as with the domain decomposition, though.
 
 ``` {.python #bounding-box-methods}
 def grid(self):
@@ -475,7 +475,7 @@ If we take the centre of the last image, we get the following rendering of the J
 
 :::challenge
 ## Generalize
-Can you generalize your Mandelbrot code to compute both the Mandelbrot and the Julia sets  efficiently, while reusing as much code as possible?
+Can you generalize your Mandelbrot code to compute both the Mandelbrot and the Julia sets efficiently, while reusing as much code as possible?
 :::
 
 :::keypoints

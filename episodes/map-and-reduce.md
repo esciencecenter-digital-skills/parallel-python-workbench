@@ -53,7 +53,7 @@ bag = db.from_sequence(['mary', 'had', 'a', 'little', 'lamb'])
 
 ### Map
 
-A function that squares its argument is a mapping function that illustrates the concept of `map`:
+A function squaring its argument is a mapping function that illustrates the concept of `map`:
 
 ~~~python
 # Create a function for mapping
@@ -79,11 +79,11 @@ bag.map(f).visualize()
 
 ### Filter
 
-A function returning a boolean is a useful illustration of the concept of `filter`.
+We need a predicate, that is a function returning either true or false, to illustrate the concept of `filter`.
 In this case, we use a function returning `True` if the argument contains the letter 'a', and `False` if it does not.
 
 ~~~python
-# Return True if x is even, False if not
+# Return True if x contains the letter 'a', else False
 def pred(x):
     return 'a' in x
 
@@ -126,7 +126,7 @@ How would you implement `pluck` if it was not there?
 Hint: Try `pluck` on some example data.
 
 ```python
-from dask import bags as db
+from dask import bag as db
 
 data = [
    { "name": "John", "age": 42 },
@@ -172,7 +172,8 @@ def calc_pi(N):
         # take a sample
         x = random.uniform(-1, 1)
         y = random.uniform(-1, 1)
-        if x*x + y*y < 1.: M+=1
+        if x*x + y*y < 1.:
+            M += 1
     return 4 * M / N
 
 bag = dask.bag.from_sequence(repeat(10**7, 24))

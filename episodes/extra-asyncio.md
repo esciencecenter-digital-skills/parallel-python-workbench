@@ -10,7 +10,7 @@ exercises: 10
 :::
 
 :::objectives
-- Understand the difference between a coroutine and a function.
+- Understand the difference between a function and a coroutine.
 - Know the rudimentary basics of `asyncio`.
 - Perform parallel computations in `asyncio`.
 :::
@@ -38,6 +38,7 @@ When calling a function, you give it its arguments and temporarily forget what y
 Or, rather, you push on a stack and forget whatever you were doing.
 Then, you start working with the given arguments on a clean sheet (called a stack frame) until you obtain the function result.
 You remember only this result when you return to the stack and recall what you originally needed it for.
+
 In this manner, every function call pushes a frame onto the stack and every return statement has us popping back to the previous frame.
 
 [![](https://mermaid.ink/img/pako:eNp1kL1Ow0AQhF9luSYgHApEdUUogpCoKRCSm8U3JpbtXXM_NlGUd-dMYgqkdKvb-Wb25mAqdTDWBHwlSIWnhj8996UQcRWbkSNoy10HPz-dpvVmc_ucJK9VLG01dY72mmjowAHEEiZ46mFp2nGkJlB9_X3zOBssWLZYn8wsvSMUFHd_YNY_3N9dinubLScOv8TgMTaawhm9GPFCTmUVqRWdCpqwGkGCMYeFQVsIfaBWj6uZF81f1nm30BCXk3TpxeFfM6YwPXzPjctFHmZJafJ1PUpj8-jYt6Up5Zh1nKK-7qUyNvqEwqTBZZ9z6cbW3AUcfwB5sYta?type=png)](https://mermaid.live/edit#pako:eNp1kL1Ow0AQhF9luSYgHApEdUUogpCoKRCSm8U3JpbtXXM_NlGUd-dMYgqkdKvb-Wb25mAqdTDWBHwlSIWnhj8996UQcRWbkSNoy10HPz-dpvVmc_ucJK9VLG01dY72mmjowAHEEiZ46mFp2nGkJlB9_X3zOBssWLZYn8wsvSMUFHd_YNY_3N9dinubLScOv8TgMTaawhm9GPFCTmUVqRWdCpqwGkGCMYeFQVsIfaBWj6uZF81f1nm30BCXk3TpxeFfM6YwPXzPjctFHmZJafJ1PUpj8-jYt6Up5Zh1nKK-7qUyNvqEwqTBZZ9z6cbW3AUcfwB5sYta)
@@ -187,6 +188,7 @@ In practice, the send-form of coroutines is hardly ever used.
 Cases for needing it are infrequent, and chances are that nobody will understand your code.
 Asyncio has largely superseded this usage.
 
+
 The working of `asyncio` is only a small step away from that of coroutines.
 The intuition is that you can use coroutines to build a collaborative multi-threading environment.
 Most modern operating systems assign some time to execution threads and take control back pre-emptively to do something else.
@@ -256,7 +258,7 @@ async def main():
     ...
 
 if __name__ == "__main__":
-    asyncio.run(main)
+    asyncio.run(main())
 ```
 
 Asyncio is as contagious as Dask.
@@ -362,7 +364,7 @@ async def calc_pi_split(N, M):
     return sum(lst) / M
 ```
 
-and then verify the speed-up we get:
+and then verify the speed-up that we get:
 
 ``` {.python #async-calc-pi-main}
 async with timer() as t:

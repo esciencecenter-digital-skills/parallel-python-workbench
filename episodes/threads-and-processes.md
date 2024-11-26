@@ -42,7 +42,7 @@ t2.join()
 ## Discussion: where's the speed-up?
 While mileage may vary, parallelizing `calc_pi`, `calc_pi_numpy` and `calc_pi_numba` this way will not give the theoretical speed-up. 
 `calc_pi_numba` should give *some* speed-up, but nowhere near the ideal scaling for the number of cores. 
-This is because, at any given time, Python only allows one thread to access the interperter, a feature also known as the Global Interpreter Lock.
+This is because, at any given time, Python only allows one thread to access the interpreter, a feature also known as the Global Interpreter Lock.
 :::
 
 ## A few words about the Global Interpreter Lock
@@ -58,15 +58,18 @@ The downside of running multiple Python instances is that we need to share progr
 To this end, you need to serialize objects. 
 Serialization entails converting a Python object into a stream of bytes that can then be sent to the other process or, for example, stored to disk. 
 This is typically done using `pickle`, `json`, or similar, and creates a large overhead.
+
 The alternative is to bring parts of our code outside Python.
 Numpy has many routines that are largely situated outside of the GIL.
 Trying out and profiling your application is the only way to know for sure. 
 
-To write your own routines not subjected to the GIL there are several options: fortunately, `numba` makes this very easy.
+There are several options to make your own routines not subjected to the GIL: fortunately, `numba` makes this very easy.
 
-We can force off the GIL in Numba code by setting `nogil=True` inside the `numba.jit` decorator.
+We can unlock the GIL in Numba code by setting `nogil=True` inside the `numba.jit` decorator:
 
 ```python
+import random
+
 @numba.jit(nopython=True, nogil=True)
 def calc_pi_nogil(N):
     M = 0
@@ -82,8 +85,7 @@ The `nopython` argument forces Numba to compile the code without referencing any
 
 :::callout
 ## Use `nopython=True` or `@numba.njit`
-It is generally a good idea to use `nopython=True` with `@numba.jit` to make sure the entire function is running without referencing Python objects, because that will dramatically slow
-down most Numba code. 
+It is generally a good idea to use `nopython=True` with `@numba.jit` to make sure the entire function is running without referencing Python objects, because that will dramatically slow down most Numba code. 
 The decorator `@numba.njit` even has `nopython=True` by default. 
 :::
 
@@ -97,8 +99,10 @@ Try and sort two randomly generated arrays using `numpy.sort` in parallel.
 ::::solution
 ## Solution
 ```python
-rnd1 = np.random.random(high)
-rnd2 = np.random.random(high)
+n = 10**7
+rnd1 = np.random.random(n)
+rnd2 = np.random.random(n)
+
 %timeit -n 10 -r 10 np.sort(rnd1)
 ```
 
@@ -121,12 +125,24 @@ Python also enables parallelisation with multiple processes via the `multiproces
 It implements an API that is seemingly similar to threading:
 
 ```python
+import random
 from multiprocessing import Process
 
+# function in plain Python
 def calc_pi(N):
-    ...
+    M = 0
+    for i in range(N):
+        # Simulate impact coordinates
+        x = random.uniform(-1, 1)
+        y = random.uniform(-1, 1)
+
+        # True if impact happens inside the circle
+        if x**2 + y**2 < 1.0:
+            M += 1
+    return (4 * M / N, N)  # result, iterations
 
 if __name__ == '__main__':
+
     n = 10**7
     p1 = Process(target=calc_pi, args=(n,))
     p2 = Process(target=calc_pi, args=(n,))
@@ -202,11 +218,14 @@ def calc_pi(N, que):
 
 
 if __name__ == "__main__":
+
     ctx = mp.get_context("spawn")
     que = ctx.Queue()
+
     n = 10**7
     p1 = ctx.Process(target=calc_pi, args=(n, que))
     p2 = ctx.Process(target=calc_pi, args=(n, que))
+
     p1.start()
     p2.start()
 
@@ -235,9 +254,11 @@ Since Python 3.8, you can also create a Numpy array backed by a shared memory bu
 :::
 
 ## Process pool
+
 The `Pool` API provides a pool of worker processes that can execute tasks.
 Methods of the `Pool` object offer various convenient ways to implement data parallelism in your program.
-The most convenient way to create a pool object is with a context manager, either using the toplevel function `multiprocessing.Pool`, or by calling the `.Pool()` method on the context.  With the `Pool` object, tasks can be submitted by calling methods like `.apply()`, `.map()`, `.starmap()`, or their `.*_async()` versions.
+The most convenient way to create a pool object is with a context manager, either using the top-level function `multiprocessing.Pool`, or by calling the `.Pool()` method on the context.
+With the `Pool` object, tasks can be submitted by calling methods like `.apply()`, `.map()`, `.starmap()`, or their `.*_async()` versions.
 
 :::challenge
 ## Exercise: adapt the original exercise to submit tasks to a pool
