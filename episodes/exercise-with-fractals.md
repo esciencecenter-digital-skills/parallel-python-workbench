@@ -31,7 +31,8 @@ Multiplying with a number $z \in \mathbb{C}$ by 1 preserves $z$.
 Multiplying a point at $i = (0, 1)$ (having a positive angle of 90 degrees and absolute value 1), rotates it anti-clockwise by 90 degrees.
 Then you might see that $i^2 = (-1, 0)$.
 The funny thing is that we can treat $i$ as any ordinary number, and all our algebra still works out.
-This is actually nothing short of a miracle! We can write a complex number
+This is actually nothing short of a miracle! 
+We can write a complex number
 
 $$z = x + iy,$$
 

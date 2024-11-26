@@ -117,7 +117,8 @@ sequenceDiagram
 
 :::challenge
 ## Challenge: generate all even numbers
-Can you write a generator for all even numbers? Reuse `integers()`.
+Can you write a generator for all even numbers? 
+Reuse `integers()`.
 Extra: Can you generate the Fibonacci series?
 
 ::::solution
@@ -247,7 +248,8 @@ Moon       004
 ````
 
 
-Note that, although the Earth counter and Moon counter seem to operate at the same time, the scheduler is actually alternating them in a single thread! If you work outside of Jupyter, you need an asynchronous main function and must run it using `asyncio.run`.
+Note that, although the Earth counter and Moon counter seem to operate at the same time, the scheduler is actually alternating them in a single thread! 
+If you work outside of Jupyter, you need an asynchronous main function and must run it using `asyncio.run`.
 A typical program will look like this:
 
 ```python
@@ -263,7 +265,8 @@ if __name__ == "__main__":
 ```
 
 Asyncio is as contagious as Dask.
-Any higher-level code must be async once you have some async code at low level: [it's turtles all the way down](https://en.wikipedia.org/wiki/Turtles_all_the_way_down)! You may be tempted to implement `asyncio.run` in the middle of your code and interact with the asynchronous parts.
+Any higher-level code must be async once you have some async code at low level: [it's turtles all the way down](https://en.wikipedia.org/wiki/Turtles_all_the_way_down)! 
+You may be tempted to implement `asyncio.run` in the middle of your code and interact with the asynchronous parts.
 Multiple active Asyncio run-times will get you into troubles, though.
 Mixing Asyncio and classic code is possible in principle, but is considered bad practice.
 

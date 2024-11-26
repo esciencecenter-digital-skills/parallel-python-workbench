@@ -24,7 +24,8 @@ The algorithm we present is a classical demonstration of the power of Monte Carl
 This is a category of algorithms using random numbers to approximate exact results.
 This approach is simple and has a straightforward geometrical interpretation.
 
-We can compute the value of $\pi$ using a random number generator. We count the points falling inside the blue circle M compared to the green square N.
+We can compute the value of $\pi$ using a random number generator. 
+We count the points falling inside the blue circle M compared to the green square N.
 The ratio 4M/N then approximates $\pi$.
 
 ![Computing Pi](fig/calc_pi_3_wide.svg){alt="the area of a unit sphere contains a multiple of pi"}
@@ -90,7 +91,10 @@ def calc_pi_numpy(N):
     return 4 * M / N
 ```
 
-This is a **vectorized** version of the original algorithm. A problem written in a vectorized form becomes amenable to **data parallelization**, where each single operation is replicated over a large collection of data. Data parallelism contrasts with **task parallelism**, where different independent procedures are performed in parallel. An example of task parallelism is the pea-soup recipe in the introduction.
+This is a **vectorized** version of the original algorithm. 
+A problem written in a vectorized form becomes amenable to **data parallelization**, where each single operation is replicated over a large collection of data. 
+Data parallelism contrasts with **task parallelism**, where different independent procedures are performed in parallel. 
+An example of task parallelism is the pea-soup recipe in the introduction.
 
 This implementation is much faster than the 'naive' implementation above: 
 
@@ -112,8 +116,9 @@ What is the downside of the vectorized implementation?
 
 :::challenge
 ## Challenge: Daskify
-Write `calc_pi_dask` to make the Numpy version parallel. Compare its speed and memory performance with
-the Numpy version. NB: Remember that the API of `dask.array` mimics that of the Numpy.
+Write `calc_pi_dask` to make the Numpy version parallel. 
+Compare its speed and memory performance with the Numpy version. 
+NB: Remember that the API of `dask.array` mimics that of the Numpy.
 
 ::::solution
 ## Solution

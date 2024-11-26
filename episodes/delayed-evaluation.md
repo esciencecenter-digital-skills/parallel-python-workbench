@@ -45,7 +45,8 @@ These objects may be referred to as either *futures* or *promises*.
 
 :::callout
 Several Python libraries provide slightly different support for working with futures. 
-The main difference between Python futures and Dask-delayed objects is that futures are added to a queue at the point of definition, while delayed objects are silent until you ask to compute. We will refer to such 'live' futures as futures proper, and to 'dead' futures (including the delayed) as **promises**.
+The main difference between Python futures and Dask-delayed objects is that futures are added to a queue at the point of definition, while delayed objects are silent until you ask to compute. 
+We will refer to such 'live' futures as futures proper, and to 'dead' futures (including the delayed) as **promises**.
 :::
 
 ~~~python
@@ -79,8 +80,8 @@ type(x_p)
 ~~~
 
 > ## Note on notation
-> It is good practice to suffix with `_p` variables that are promises. That way you
-> keep track of promises versus immediate values.
+> It is good practice to suffix with `_p` variables that are promises. 
+> That way you keep track of promises versus immediate values.
 {: .callout}
 
 Only when we ask to evaluate the computation do we get an output:

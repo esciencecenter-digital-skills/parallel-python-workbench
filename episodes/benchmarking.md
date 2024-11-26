@@ -20,8 +20,9 @@ exercises: 20
 
 
 # A first example with Dask
-We will create parallel programs in Python later. First let's see a small example. Open
-your System Monitor (the application will vary between specific operating systems), and run the following code examples:
+We will create parallel programs in Python later. 
+First let's see a small example. 
+Open your System Monitor (the application will vary between specific operating systems), and run the following code examples:
 
 ```python
 # Summation making use of numpy:
@@ -39,7 +40,10 @@ result = work.compute()
 
 :::callout
 ## Try a heavy enough task
-Your system monitor may not detect so small a task. In your computer you may have to gradually raise the problem size to ``10**8`` or ``10**9`` to observe the effect in long enough a run. But be careful and increase slowly! Asking for too much memory can make your computer slow to a crawl.
+Your system monitor may not detect so small a task. 
+In your computer you may have to gradually raise the problem size to ``10**8`` or ``10**9`` to observe the effect in long enough a run. 
+But be careful and increase slowly! 
+Asking for too much memory can make your computer slow to a crawl.
 :::
 
 ![System monitor](fig/system-monitor.jpg){alt="screenshot of system monitor"}
@@ -60,8 +64,8 @@ If we run the chunk several times, we will notice variability in the reported ti
 How can we trust this timer, then?
 A possible solution will be to time the chunk several times, and take the average time as our valid measure.
 The `%%timeit` line magic does exactly this in a concise and convenient manner!
-`%%timeit` first measures how long it takes to run a command once, then
-repeats it enough times to get an average run-time. Also, `%%timeit` can measure run times discounting the overhead of setting up a problem and measuring only the performance of the code in the cell.
+`%%timeit` first measures how long it takes to run a command once, then repeats it enough times to get an average run-time. 
+Also, `%%timeit` can measure run times discounting the overhead of setting up a problem and measuring only the performance of the code in the cell.
 So this outcome is more trustworthy.
 
 ```python
@@ -90,17 +94,22 @@ Use `timeit` to time the following snippets:
 map(lambda x: x**2, range(100))
 ```
 
-Can you explain the difference? How about the following
+Can you explain the difference? 
+How about the following
 
 ```python
 for x in range(100):
     x**2
 ```
 
-Is that faster than the first one? Why?
+Is that faster than the first one? 
+Why?
 
 ::::solution
-Python's `map` function is lazy. It won't compute anything until you iterate it. Try `list(map(...))`. The third example doesn't allocate any memory, which makes it faster.
+Python's `map` function is lazy. 
+It won't compute anything until you iterate it. 
+Try `list(map(...))`. 
+The third example doesn't allocate any memory, which makes it faster.
 ::::
 :::
 
@@ -155,7 +164,8 @@ Why is the Dask solution more memory-efficient?
 
 ::::solution
 ## Solution
-Chunking! Dask chunks the large array so that the data is never entirely in memory.
+Chunking! 
+Dask chunks the large array so that the data is never entirely in memory.
 ::::
 :::
 
@@ -209,7 +219,9 @@ data.set_index("n").plot()
 
 :::discussion
 ## Discussion
-Why does the runtime increase if we add more than 4 cores? This has to do with **hyper-threading**. On most architectures it does not make much sense to use more workers than the physical cores you have.
+Why does the runtime increase if we add more than 4 cores? 
+This has to do with **hyper-threading**. 
+On most architectures it does not make much sense to use more workers than the physical cores you have.
 :::
 
 :::keypoints
