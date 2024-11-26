@@ -5,7 +5,7 @@ exercises: 30
 ---
 
 :::questions
-- Which options are available to call from Python C and C++ libraries?
+- Which options are available to call from Python code any C and C++ libraries?
 - How does this work together with Numpy arrays?
 - How do I use this in multiple threads while lifting the GIL?
 :::
@@ -20,7 +20,9 @@ exercises: 30
 # Calling C and C++ libraries
 ## Simple example using either pybind11 or ctypes
 External C and C++ libraries can be called from Python code using a number of options, e.g., Cython, CFFI, pybind11 and ctypes.
-We will discuss the last two because simple cases require the least amount of boilerplate. This may not be the case with more complex examples. Consider this simple C program, `test.c`, which adds up consecutive numbers:
+We will discuss the last two because simple cases require the least amount of boilerplate.
+This may not be the case with more complex examples.
+Consider this simple C program, `test.c`, which adds up consecutive numbers:
 
 ~~~c
 #include <pybind11/pybind11.h>
@@ -45,7 +47,8 @@ PYBIND11_MODULE(test_pybind, m) {
 
 ~~~
 
-You can easily compile and link it into a shared object (`*.so`) file with `pybind11`. You can install that in several ways, like `pip`; I prefer creating virtual environments using `pipenv`:
+You can easily compile and link it into a shared object (`*.so`) file with `pybind11`.
+You can install that in several ways, like `pip`; I prefer creating virtual environments using `pipenv`:
 
 ~~~bash
 pip install pipenv
@@ -73,8 +76,8 @@ Now you might want to check and compare the output with the well-known formula f
 ~~~
 
 Give this script a suitable name, such as `call_C_libraries.py`.
-The same thing can be done using `ctypes` instead of `pybind11`, but the coding requires slightly more boilerplate
-on the Python side and slightly less on the C side. The program `test.c` will just contain the algorithm:
+The same thing can be done using `ctypes` instead of `pybind11`, but the coding requires slightly more boilerplate on the Python side and slightly less on the C side.
+The program `test.c` will just contain the algorithm:
 
 ~~~c
 long long sum_range(long long high)
@@ -127,8 +130,7 @@ Now we can time our compiled `sum_range` C library, e.g. from the iPython interf
 2.69 ms ± 6.01 µs per loop (mean ± std. dev. of 7 runs, 100 loops each)
 ~~~
 
-If you contrast with the Numba timing in [Episode 3](computing-pi.md), you will see that the C library for `sum_range` is faster than
-the Numpy computation but significantly slower than the `numba.jit`-decorated function.
+If you compare with the Numba timing from [Episode 3](computing-pi.md), you will see that the C library for `sum_range` is faster than the numpy computation but significantly slower than the `numba.jit`-decorated function.
 
 :::challenge
 ## C versus Numba
@@ -202,9 +204,10 @@ The C code is somewhat faster than the Numba-decorated Python code for this slig
 :::
 
 ## Passing Numpy arrays to C libraries
-Now let us consider a more complex example. Instead of computing the sum of numbers up to an upper limit, let us
-compute that for an array of upper limits. This operation will return an array of sums. How difficult is it to modify our C and Python code
-to get this done? You just need to replace `&sum_range` with `py::vectorize(sum_range)`:
+Now let us consider a more complex example.
+Instead of computing the sum of numbers up to an upper limit, let us compute that for an array of upper limits.
+This operation will return an array of sums.
+How difficult is it to modify our C and Python code to get this done? You just need to replace `&sum_range` with `py::vectorize(sum_range)`:
 
 ~~~c
 PYBIND11_MODULE(test_pybind, m) {
@@ -230,7 +233,8 @@ gives
 array([ 0,  0,  1,  3,  6, 10, 15, 21, 28, 36])
 ~~~
 
-It does not crash! You can check that the array is correct upon subtracting the previous sum from each sum (except the first):
+It does not crash! 
+You can check that the array is upon subtracting the previous sum from each sum (except the first):
 
 ~~~python
 %out=sum_range(ys)
@@ -243,10 +247,11 @@ which gives
 array([0, 1, 2, 3, 4, 5, 6, 7, 8])
 ~~~
 
-which are the elements of `ys` except the last, as expected.
+that is, the elements of `ys` except the last, as expected.
 
 # Call the C library from multiple threads simultaneously.
-We can show that a C library compiled using `pybind11` can be run as multithreaded. Try the following from an iPython shell:
+We can show that a C library compiled using `pybind11` can be run as multithreaded.
+Try the following from an iPython shell:
 
 ~~~python
 %high=int(1e9)
@@ -283,7 +288,8 @@ gives
 Time elapsed = 5.59s
 ~~~
 
-i.e., more than twice the time we expected. In fact, the `sum_range` was run sequentially instead of parallelly.
+i.e., more than twice the time we expected.
+In fact, the `sum_range` was run sequentially instead of parallelly.
 We then need to add a single declaration to `test.c`: `py::call_guard<py::gil_scoped_release>()`:
 
 ~~~c
@@ -310,7 +316,7 @@ Now compile again:
 c++ -O3 -Wall -shared -std=c++11 -fPIC `python3 -m pybind11 --includes` test.c -o test_pybind.so
 ~~~
 
-Import again the rebuilt shared object (only possible after quitting and relaunching the iPython interpreter), and time again.
+Reimport the rebuilt shared object (only possible after quitting and relaunching the iPython interpreter) and time again.
 
 This code:
 
@@ -346,7 +352,7 @@ as you would expect for two `sum_range` modules running in parallel.
 
 :::keypoints
 - Multiple options are available to call external C and C++ libraries, and the best choice depends on the complexity of your problem.
-- Obviously, there is an extra compile-and-link step, but the execution will be much faster than pure Python.
+- Obviously, there is an extra compile and link step, but you will get a much faster execution than with pure Python.
 - Also, the GIL will be circumvented in calling these libraries.
 - Numba might also offer you the speed-up you want with even less effort.
 :::

@@ -72,7 +72,8 @@ This course illustrates these abstractions making ample use of Dask.
   We illustrate this model of working by computing the number $\pi$ later on.
 - Map/filter/reduce: this methodology combines different functionals to create a larger program.
   We implement this formalism when using `dask.bag` to count the number of unique words in a novel.
-- Task-based parallelization: this may be the most generic abstraction, as all the others can be expressed in terms of tasks or workflows. This is `dask.delayed`.
+- Task-based parallelization: this may be the most generic abstraction, as all the others can be expressed in terms of tasks or workflows. 
+  This is `dask.delayed`.
 
 # Why Python?
 Python is one of most widely used languages for scientific data analysis, visualization, and even modelling and simulation.

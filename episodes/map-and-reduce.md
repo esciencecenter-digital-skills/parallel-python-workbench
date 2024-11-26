@@ -15,7 +15,9 @@ exercises: 30
 - Use the `visualize` method to create dependency graphs.
 :::
 
-In computer science *bags* are unordered collections of data. In Dask, a `bag` is a collection that gets chunked internally. Operations on a bag are automatically parallelized over the chunks inside the bag.
+In computer science *bags* are unordered collections of data. 
+In Dask, a `bag` is a collection that get chunked internally. 
+Operations on a bag are automatically parallelized over the chunks inside the bag.
 
 Dask bags let you compose functionality using several primitive patterns: the most important of these are `map`, `filter`, `groupby`, `flatten`, and `reduction`.
 
@@ -29,18 +31,18 @@ In this set of operations `reduction` is rather special, because all operations 
 
 Operations on this level can be distinguished in several categories:
 
-- **map** (N to N) applies a function *one-to-one* on a list of arguments. This operation is **embarrassingly
-  parallel**.
+- **map** (N to N) applies a function *one-to-one* on a list of arguments. 
+  This operation is **embarrassingly parallel**.
 - **filter** (N to &lt;N) selects a subset from the data.
-- **reduction** (N to 1) computes an aggregate from a sequence of data; if the operation permits it
-  (summing, maximizing, etc), this can be done in parallel by reducing chunks of data and then
-  further processing the results of those chunks.
+- **reduction** (N to 1) computes an aggregate from a sequence of data; 
+  if the operation permits it (summing, maximizing, etc), this can be done in parallel by reducing chunks of data and then further processing the results of those chunks.
 - **groupby** (1 bag to N bags) groups data in subcategories.
 - **flatten** (N bags to 1 bag) combine many bags into one.
 
 Let's see examples of them in action.
 
-First, let's create the `bag` containing the elements we want to work with. In this case, the numbers from 0 to 5.
+First, let's create the `bag` containing the elements we want to work with. 
+In this case, the numbers from 0 to 5.
 
 ~~~python
 import dask.bag as db
@@ -78,8 +80,7 @@ bag.map(f).visualize()
 ### Filter
 
 We need a predicate, that is a function returning either true or false, to illustrate the concept of `filter`.
-In this case, we use a function returning `True` if the argument contains the letter 'a',
-and `False` if it does not.
+In this case, we use a function returning `True` if the argument contains the letter 'a', and `False` if it does not.
 
 ~~~python
 # Return True if x contains the letter 'a', else False
@@ -118,7 +119,9 @@ bag.reduction(count_chars, sum).visualize()
 
 :::challenge
 ## Challenge: consider `pluck`
-We previously discussed some generic operations on bags. In the documentation, lookup the `pluck` method. How would you implement `pluck` if it was not there?
+We previously discussed some generic operations on bags. 
+In the documentation, lookup the `pluck` method. 
+How would you implement `pluck` if it was not there?
 
 Hint: Try `pluck` on some example data.
 
@@ -137,7 +140,8 @@ bag = db.from_sequence(data)
 ```
 
 ::::solution
-The `pluck` method is a mapping. The input is supposed to be a bag of dictionaries.
+The `pluck` method is a mapping. 
+The input is supposed to be a bag of dictionaries.
 
 ```python
 from functools import partial
@@ -182,7 +186,8 @@ estimate.compute()
 
 :::callout
 ## Note
-By default Dask runs a bag using multiprocessing. This alleviates problems with the GIL, but also entails a larger overhead.
+By default Dask runs a bag using multiprocessing. 
+This alleviates problems with the GIL, but also entails a larger overhead.
 :::
 
 :::keypoints
