@@ -7,3 +7,5 @@
 | 2023-04-03        | Netherlands eScience Center | Online                     |          |
 | 2023-07-04        | Netherlands eScience Center | Amsterdam, The Netherlands |          |
 | 2024-03-19        | Netherlands eScience Center | Amsterdam, The Netherlands |          |
+| 2024-11-26        | Netherlands eScience Center & SURF | Amsterdam, The Netherlands |   |
+
